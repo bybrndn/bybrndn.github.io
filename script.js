@@ -1,9 +1,16 @@
 // ── PAGE TRANSITION OVERLAY ──
 const overlay = document.createElement('div');
-overlay.className = 'page-transition';
+overlay.className = 'page-transition enter';
 document.body.appendChild(overlay);
 
-// Intercept all internal link clicks
+// Fade in on load
+window.addEventListener('load', () => {
+  requestAnimationFrame(() => {
+    overlay.classList.remove('enter');
+  });
+});
+
+// Intercept internal links — fade out then navigate
 document.addEventListener('click', e => {
   const link = e.target.closest('a');
   if (!link) return;
@@ -12,16 +19,7 @@ document.addEventListener('click', e => {
 
   e.preventDefault();
   overlay.classList.add('enter');
-
-  setTimeout(() => {
-    window.location.href = href;
-  }, 500);
-});
-
-// On load — slide overlay out
-window.addEventListener('load', () => {
-  overlay.classList.add('exit');
-  setTimeout(() => overlay.classList.remove('enter', 'exit'), 600);
+  setTimeout(() => { window.location.href = href; }, 380);
 });
 
 // ── CUSTOM CURSOR ──
