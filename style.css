@@ -272,18 +272,15 @@ nav {
 .home-photo {
   width: 100%;
   overflow: hidden;
-  flex: 1;
-  min-height: 0;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
+  display: block;
+  line-height: 0;
 }
 
 
 .home-photo img {
   width: 100%;
-  height: 100%;
+  height: auto;
   max-height: 75vh;
   object-fit: cover;
   object-position: center top;
