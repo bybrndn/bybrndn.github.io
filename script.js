@@ -29,11 +29,11 @@ injectNav();
 
 // ── PROJECT REGISTRY ──
 const PROJECTS = [
-  { slug: 'itsmejagz',     title: 'ITSME<br>JAGZ',        path: '/projects/itsmejagz/itsmejagz.html' },
-  { slug: 'xtrovert',      title: 'XTRO<br>VERT',          path: '/projects/xtrovert/xtrovert.html' },
-  { slug: 'conversations', title: 'CONVER<br>SATIONS',     path: '/projects/conversations/conversations.html' },
-  { slug: 'conflict',      title: 'CONFLICT<br>AR',        path: '/projects/conflict/conflict.html' },
-  { slug: 'movemedia',     title: 'MOVE<br>MEDIA NZ',      path: '/projects/movemedia/movemedia.html' },
+  { slug: 'itsmejagz',     title: 'ITSME<br>JAGZ',       path: '/projects/itsmejagz/itsmejagz.html' },
+  { slug: 'xtrovert',      title: 'XTRO<br>VERT',         path: '/projects/xtrovert/xtrovert.html' },
+  { slug: 'conversations', title: 'CONVER<br>SATIONS',    path: '/projects/conversations/conversations.html' },
+  { slug: 'conflict',      title: 'CONFLICT<br>AR',       path: '/projects/conflict/conflict.html' },
+  { slug: 'movemedia',     title: 'MOVE<br>MEDIA NZ',     path: '/projects/movemedia/movemedia.html' },
 ];
 
 (function() {
@@ -47,20 +47,6 @@ const PROJECTS = [
   const titleEl = nextEl.querySelector('.next-title');
   if (titleEl) titleEl.innerHTML = next.title;
 })();
-
-// ── PAGE TRANSITIONS ── (disabled)
-});
-
-document.addEventListener('click', e => {
-  const link = e.target.closest('a');
-  if (!link) return;
-  const href = link.getAttribute('href');
-  if (!href || href.startsWith('#') || href.startsWith('mailto') || href.startsWith('tel') || link.target === '_blank') return;
-  e.preventDefault();
-  overlay.style.opacity = '1';
-  overlay.style.pointerEvents = 'all';
-  setTimeout(() => { window.location.href = href; }, 380);
-});
 
 // ── CUSTOM CURSOR ──
 const cursor = document.querySelector('.cursor');
