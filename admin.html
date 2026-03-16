@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BRNDN — Admin</title>
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'Grandspan Wide';
+      src: url('fonts/Grandspan-Wide.otf') format('opentype');
+    }
+
+    :root {
+      --bg: #0e0f14;
+      --surface: #16181f;
+      --surface2: #1e2029;
+      --border: rgba(255,255,255,0.07);
+      --text: #eceef2;
+      --muted: rgba(236,238,242,0.4);
+      --accent: #7c6fff;
+      --accent2: #a89fff;
+      --danger: #ff5e5e;
+      --success: #4ade80;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── LOGIN SCREEN ── */
+    #login-screen {
+      width: 100%;
+      max-width: 400px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .login-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .login-logo .by {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .login-logo svg {
+      height: 22px;
+      color: var(--text);
+    }
+
+    .login-title {
+      font-family: 'Grandspan Wide', sans-serif;
+      font-size: 2.5rem;
+      line-height: 1;
+      color: var(--text);
+    }
+
+    .login-subtitle {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .input-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .input-wrap label {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .input-wrap input {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.88rem;
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    .input-wrap input:focus { border-color: var(--accent); }
+
+    .login-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.9rem 1.5rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      width: 100%;
+    }
+
+    .login-btn:hover { opacity: 0.85; }
+
+    .login-error {
+      font-size: 0.75rem;
+      color: var(--danger);
+      display: none;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid rgba(255,94,94,0.2);
+      background: rgba(255,94,94,0.05);
+    }
+
+    .login-hint {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ── ADMIN PANEL ── */
+    #admin-panel {
+      display: none;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+    }
+
+    /* Top bar */
+    .admin-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0.9rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .admin-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .admin-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+
+    .admin-logo svg { height: 18px; color: var(--text); }
+    .admin-logo .by { font-size: 0.65rem; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; }
+
+    .admin-title {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-left: 1.5rem;
+      border-left: 1px solid var(--border);
+    }
+
+    .admin-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .bar-btn {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 0.5rem 1.2rem;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .bar-btn:hover { opacity: 0.8; }
+    .bar-btn.primary { background: var(--accent); color: white; }
+    .bar-btn.ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+    .bar-btn.danger-btn { background: transparent; color: var(--danger); border: 1px solid rgba(255,94,94,0.2); }
+
+    .save-status {
+      font-size: 0.7rem;
+      color: var(--success);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .save-status.show { opacity: 1; }
+
+    /* Main layout */
+    .admin-body {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    .admin-sidebar {
+      width: 260px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar-section {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-section-title {
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 1rem 1.2rem 0.5rem;
+    }
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.7rem 1.2rem;
+      cursor: pointer;
+      font-size: 0.78rem;
+      color: var(--muted);
+      transition: background 0.15s, color 0.15s;
+      border: none;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+    }
+
+    .sidebar-item:hover { background: var(--surface2); color: var(--text); }
+    .sidebar-item.active { background: var(--surface2); color: var(--text); }
+    .sidebar-item .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Editor main area */
+    .admin-main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .editor-section {
+      display: none;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .editor-section.active { display: flex; }
+
+    .editor-section-title {
+      font-family: 'Grandspan Wide', sans-serif;
+      font-size: 1.6rem;
+      color: var(--text);
+    }
+
+    .editor-section-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: -1rem;
+    }
+
+    /* Control groups */
+    .control-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .control-group-title {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .control-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .control-label {
+      font-size: 0.8rem;
+      color: var(--text);
+      flex: 1;
+    }
+
+    .control-hint {
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    /* Color picker */
+    .color-control {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .color-swatch {
+      width: 36px; height: 36px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .color-swatch input[type="color"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%; height: 100%;
+      padding: 0; border: none;
+    }
+
+    .color-hex {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Poppins', monospace;
+      font-size: 0.75rem;
+      padding: 0.4rem 0.6rem;
+      width: 90px;
+      outline: none;
+    }
+
+    /* Slider */
+    .slider-control {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 140px;
+      height: 3px;
+      background: var(--surface2);
+      outline: none;
+      border-radius: 2px;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+    }
+
+    .slider-value {
+      font-size: 0.75rem;
+      color: var(--muted);
+      width: 40px;
+      text-align: right;
+    }
+
+    /* Select */
+    .admin-select {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.78rem;
+      padding: 0.5rem 0.8rem;
+      outline: none;
+      cursor: pointer;
+      min-width: 160px;
+    }
+
+    /* Toggle */
+    .toggle {
+      position: relative;
+      width: 40px; height: 22px;
+      flex-shrink: 0;
+    }
+
+    .toggle input { opacity: 0; width: 0; height: 0; }
+
+    .toggle-slider {
+      position: absolute;
+      inset: 0;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.2s;
+      border-radius: 11px;
+    }
+
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      width: 14px; height: 14px;
+      left: 3px; top: 3px;
+      background: var(--muted);
+      border-radius: 50%;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .toggle input:checked + .toggle-slider { background: var(--accent); border-color: var(--accent); }
+    .toggle input:checked + .toggle-slider::before { transform: translateX(18px); background: white; }
+
+    /* Text input */
+    .admin-input {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.78rem;
+      padding: 0.5rem 0.8rem;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s;
+    }
+    .admin-input:focus { border-color: var(--accent); }
+
+    /* Preview pane */
+    .preview-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 0.7rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .preview-bar span {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .preview-links {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .preview-link {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .preview-link:hover { color: var(--text); border-color: var(--text); }
+
+    /* CSS Output */
+    .css-output-wrap {
+      position: relative;
+    }
+
+    .css-output {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: #a89fff;
+      font-family: 'Courier New', monospace;
+      font-size: 0.72rem;
+      line-height: 1.7;
+      padding: 1.2rem;
+      white-space: pre;
+      overflow-x: auto;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 0.6rem; right: 0.6rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.8rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .copy-btn:hover { color: var(--text); }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+  <!-- ── LOGIN ── -->
+  <div id="login-screen">
+    <div class="login-logo">
+      <span class="by">By</span>
+      <svg viewBox="0 0 230 129" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M67.3774 25.5906C66.9412 26.7938 67.0982 28.492 67.9965 29.4036C80.3886 41.9787 72.8632 64.0433 53.8878 64.0433H2C0.89543 64.0433 0 63.1478 0 62.0433V2C0 0.895427 0.895431 0 2 0H48.8559C70.1111 0 69.8018 18.9032 67.3774 25.5906ZM48.3069 14.7299H25.4216C24.317 14.7299 23.4216 15.6254 23.4216 16.7299V21.5135C23.4216 22.618 24.317 23.5135 25.4216 23.5135H48.1239C50.3197 23.5135 52.424 21.7747 52.6069 19.579C52.7899 17.0173 50.7772 14.7299 48.3069 14.7299ZM58.3708 44.7391C58.6454 41.4454 56.3581 39.1583 53.2474 39.1583H25.4216C24.317 39.1583 23.4216 40.0537 23.4216 41.1583V47.496C23.4216 48.6006 24.317 49.496 25.4216 49.496H52.973C55.5347 49.496 58.0964 47.6664 58.3708 44.7391ZM147.189 22.1403C147.189 29.993 143.094 36.9677 136.931 40.842C135.82 41.54 135.478 43.0707 136.281 44.1076C140.394 49.4201 143.746 55.2699 146.803 61.1479C147.49 62.4707 146.524 64.0433 145.033 64.0433H127.091C126.391 64.0433 125.743 63.6759 125.374 63.081C120.472 55.1864 114.677 48.5273 106.69 44.4803C106.671 44.4706 106.659 44.451 106.659 44.4295C106.659 44.3981 106.633 44.3726 106.602 44.3726H98.1374C97.0328 44.3726 96.1374 45.2681 96.1374 46.3726V62.0433C96.1374 63.1478 95.242 64.0433 94.1374 64.0433H72.6241V2C72.6241 0.895427 73.5195 0 74.6241 0H127.335C138.589 0 147.189 10.8874 147.189 22.1403ZM96.1374 24.6235C96.1374 25.7281 97.0328 26.6235 98.1374 26.6235H124.865C127.518 26.6235 129.622 24.8857 129.622 22.1403C129.622 19.6704 127.518 17.8406 124.865 17.8406H98.1374C97.0328 17.8406 96.1374 18.736 96.1374 19.8406V24.6235ZM202.593 32.5793C203.477 34.5447 206.417 33.9139 206.417 31.7587V2C206.417 0.895433 207.312 0 208.417 0H227.747C228.851 0 229.747 0.895431 229.747 2V64.0433H192.423C191.64 64.0433 190.929 63.5863 190.604 62.8739L174.28 27.1211C173.388 25.1662 170.461 25.8027 170.461 27.9517V62.0433C170.461 63.1478 169.566 64.0433 168.461 64.0433H146.856V2C146.856 0.895427 147.752 0 148.856 0H186.642C187.429 0 188.143 0.461643 188.466 1.17943L202.593 32.5793Z" fill="currentColor"/>
+        <path d="M72.6241 64.0433H116.331C133.989 64.0433 148.353 78.4987 148.353 96.2476C148.353 113.906 133.989 128.087 116.331 128.087H74.6241C73.5195 128.087 72.6241 127.191 72.6241 126.087V64.0433ZM96.1374 106.508C96.1374 107.612 97.0328 108.508 98.1374 108.508H116.331C123.011 108.508 128.682 103.018 128.682 96.2476C128.682 89.3864 123.011 83.7137 116.331 83.7137H98.1374C97.0328 83.7137 96.1374 84.6091 96.1374 85.7137V106.508ZM202.593 96.6226C203.477 98.588 206.417 97.9571 206.417 95.802V66.0433C206.417 64.9387 207.312 64.0433 208.417 64.0433H229.747V126.087C229.747 127.191 228.851 128.087 227.747 128.087H192.423C191.64 128.087 190.929 127.63 190.604 126.917L174.28 91.1644C173.388 89.2094 170.461 89.8459 170.461 91.995V126.087C170.461 127.191 169.566 128.087 168.461 128.087H148.856C147.752 128.087 146.856 127.191 146.856 126.087V64.0433H186.642C187.429 64.0433 188.143 64.5049 188.466 65.2227L202.593 96.6226Z" fill="currentColor"/>
+      </svg>
+    </div>
+    <div>
+      <h1 class="login-title">ADMIN</h1>
+      <p class="login-subtitle">Site control panel — authorized access only.</p>
+    </div>
+    <div class="login-form">
+      <div class="input-wrap">
+        <label>Password</label>
+        <input type="password" id="password-input" placeholder="Enter your password" onkeydown="if(event.key==='Enter') login()" />
+      </div>
+      <div class="login-error" id="login-error">Incorrect password. Try again.</div>
+      <button class="login-btn" onclick="login()">Enter Admin Panel →</button>
+    </div>
+    <p class="login-hint">Changes generate CSS you copy into style.css</p>
+  </div>
+
+  <!-- ── ADMIN PANEL ── -->
+  <div id="admin-panel">
+
+    <!-- Top bar -->
+    <div class="admin-bar">
+      <div class="admin-bar-left">
+        <a class="admin-logo" href="index.html" target="_blank">
+          <span class="by">By</span>
+          <svg viewBox="0 0 230 129" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M67.3774 25.5906C66.9412 26.7938 67.0982 28.492 67.9965 29.4036C80.3886 41.9787 72.8632 64.0433 53.8878 64.0433H2C0.89543 64.0433 0 63.1478 0 62.0433V2C0 0.895427 0.895431 0 2 0H48.8559C70.1111 0 69.8018 18.9032 67.3774 25.5906ZM48.3069 14.7299H25.4216C24.317 14.7299 23.4216 15.6254 23.4216 16.7299V21.5135C23.4216 22.618 24.317 23.5135 25.4216 23.5135H48.1239C50.3197 23.5135 52.424 21.7747 52.6069 19.579C52.7899 17.0173 50.7772 14.7299 48.3069 14.7299ZM58.3708 44.7391C58.6454 41.4454 56.3581 39.1583 53.2474 39.1583H25.4216C24.317 39.1583 23.4216 40.0537 23.4216 41.1583V47.496C23.4216 48.6006 24.317 49.496 25.4216 49.496H52.973C55.5347 49.496 58.0964 47.6664 58.3708 44.7391ZM147.189 22.1403C147.189 29.993 143.094 36.9677 136.931 40.842C135.82 41.54 135.478 43.0707 136.281 44.1076C140.394 49.4201 143.746 55.2699 146.803 61.1479C147.49 62.4707 146.524 64.0433 145.033 64.0433H127.091C126.391 64.0433 125.743 63.6759 125.374 63.081C120.472 55.1864 114.677 48.5273 106.69 44.4803C106.671 44.4706 106.659 44.451 106.659 44.4295C106.659 44.3981 106.633 44.3726 106.602 44.3726H98.1374C97.0328 44.3726 96.1374 45.2681 96.1374 46.3726V62.0433C96.1374 63.1478 95.242 64.0433 94.1374 64.0433H72.6241V2C72.6241 0.895427 73.5195 0 74.6241 0H127.335C138.589 0 147.189 10.8874 147.189 22.1403ZM96.1374 24.6235C96.1374 25.7281 97.0328 26.6235 98.1374 26.6235H124.865C127.518 26.6235 129.622 24.8857 129.622 22.1403C129.622 19.6704 127.518 17.8406 124.865 17.8406H98.1374C97.0328 17.8406 96.1374 18.736 96.1374 19.8406V24.6235ZM202.593 32.5793C203.477 34.5447 206.417 33.9139 206.417 31.7587V2C206.417 0.895433 207.312 0 208.417 0H227.747C228.851 0 229.747 0.895431 229.747 2V64.0433H192.423C191.64 64.0433 190.929 63.5863 190.604 62.8739L174.28 27.1211C173.388 25.1662 170.461 25.8027 170.461 27.9517V62.0433C170.461 63.1478 169.566 64.0433 168.461 64.0433H146.856V2C146.856 0.895427 147.752 0 148.856 0H186.642C187.429 0 188.143 0.461643 188.466 1.17943L202.593 32.5793Z" fill="currentColor"/>
+            <path d="M72.6241 64.0433H116.331C133.989 64.0433 148.353 78.4987 148.353 96.2476C148.353 113.906 133.989 128.087 116.331 128.087H74.6241C73.5195 128.087 72.6241 127.191 72.6241 126.087V64.0433ZM96.1374 106.508C96.1374 107.612 97.0328 108.508 98.1374 108.508H116.331C123.011 108.508 128.682 103.018 128.682 96.2476C128.682 89.3864 123.011 83.7137 116.331 83.7137H98.1374C97.0328 83.7137 96.1374 84.6091 96.1374 85.7137V106.508ZM202.593 96.6226C203.477 98.588 206.417 97.9571 206.417 95.802V66.0433C206.417 64.9387 207.312 64.0433 208.417 64.0433H229.747V126.087C229.747 127.191 228.851 128.087 227.747 128.087H192.423C191.64 128.087 190.929 127.63 190.604 126.917L174.28 91.1644C173.388 89.2094 170.461 89.8459 170.461 91.995V126.087C170.461 127.191 169.566 128.087 168.461 128.087H148.856C147.752 128.087 146.856 127.191 146.856 126.087V64.0433H186.642C187.429 64.0433 188.143 64.5049 188.466 65.2227L202.593 96.6226Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <span class="admin-title">Style Editor</span>
+      </div>
+      <div class="admin-bar-right">
+        <span class="save-status" id="save-status">✓ Copied to clipboard</span>
+        <button class="bar-btn ghost" onclick="resetDefaults()">Reset Defaults</button>
+        <button class="bar-btn primary" onclick="generateAndCopy()">Copy CSS →</button>
+        <button class="bar-btn danger-btn" onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="admin-body">
+
+      <!-- Sidebar -->
+      <div class="admin-sidebar">
+        <div class="sidebar-section">
+          <p class="sidebar-section-title">Sections</p>
+          <button class="sidebar-item active" onclick="showSection('colors', this)">
+            <span class="dot" style="background:#7c6fff"></span> Colors
+          </button>
+          <button class="sidebar-item" onclick="showSection('typography', this)">
+            <span class="dot" style="background:#4ade80"></span> Typography
+          </button>
+          <button class="sidebar-item" onclick="showSection('layout', this)">
+            <span class="dot" style="background:#fb923c"></span> Layout & Spacing
+          </button>
+          <button class="sidebar-item" onclick="showSection('nav', this)">
+            <span class="dot" style="background:#38bdf8"></span> Navigation
+          </button>
+          <button class="sidebar-item" onclick="showSection('effects', this)">
+            <span class="dot" style="background:#f472b6"></span> Effects
+          </button>
+          <button class="sidebar-item" onclick="showSection('output', this)">
+            <span class="dot" style="background:#a89fff"></span> CSS Output
+          </button>
+        </div>
+        <div class="sidebar-section" style="padding: 1rem 1.2rem;">
+          <p class="sidebar-section-title" style="padding: 0 0 0.5rem;">Quick Preview</p>
+          <a href="index.html" target="_blank" class="preview-link" style="display:block; margin-bottom:0.4rem; text-align:center;">Home ↗</a>
+          <a href="about.html" target="_blank" class="preview-link" style="display:block; margin-bottom:0.4rem; text-align:center;">About ↗</a>
+          <a href="work.html" target="_blank" class="preview-link" style="display:block; margin-bottom:0.4rem; text-align:center;">Work ↗</a>
+          <a href="contact.html" target="_blank" class="preview-link" style="display:block; text-align:center;">Contact ↗</a>
+        </div>
+      </div>
+
+      <!-- Main editor -->
+      <div class="admin-main">
+
+        <!-- COLORS -->
+        <div class="editor-section active" id="section-colors">
+          <h2 class="editor-section-title">COLORS</h2>
+          <p class="editor-section-desc">These control the main palette across all pages.</p>
+
+          <div class="control-group">
+            <p class="control-group-title">Backgrounds</p>
+            <div class="control-row">
+              <div>
+                <div class="control-label">Main Background</div>
+                <div class="control-hint">Dark page background</div>
+              </div>
+              <div class="color-control">
+                <div class="color-swatch" id="swatch-bg"><input type="color" id="color-bg" value="#15171e" oninput="syncColor('bg', this.value)" /></div>
+                <input class="color-hex" id="hex-bg" value="#15171e" oninput="syncHex('bg', this.value)" maxlength="7" />
+              </div>
+            </div>
+            <div class="control-row">
+              <div>
+                <div class="control-label">Secondary Background</div>
+                <div class="control-hint">Cards, work grid cells</div>
+              </div>
+              <div class="color-control">
+                <div class="color-swatch" id="swatch-bg2"><input type="color" id="color-bg2" value="#1c1f28" oninput="syncColor('bg2', this.value)" /></div>
+                <input class="color-hex" id="hex-bg2" value="#1c1f28" oninput="syncHex('bg2', this.value)" maxlength="7" />
+              </div>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <p class="control-group-title">Light Card</p>
+            <div class="control-row">
+              <div>
+                <div class="control-label">Card Background</div>
+                <div class="control-hint">Hero card, contact section, about section</div>
+              </div>
+              <div class="color-control">
+                <div class="color-swatch" id="swatch-card"><input type="color" id="color-card" value="#eceef2" oninput="syncColor('card', this.value)" /></div>
+                <input class="color-hex" id="hex-card" value="#eceef2" oninput="syncHex('card', this.value)" maxlength="7" />
+              </div>
+            </div>
+            <div class="control-row">
+              <div>
+                <div class="control-label">Dark Text (on card)</div>
+                <div class="control-hint">Headings and body on light backgrounds</div>
+              </div>
+              <div class="color-control">
+                <div class="color-swatch" id="swatch-dark"><input type="color" id="color-dark" value="#111318" oninput="syncColor('dark', this.value)" /></div>
+                <input class="color-hex" id="hex-dark" value="#111318" oninput="syncHex('dark', this.value)" maxlength="7" />
+              </div>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <p class="control-group-title">Text</p>
+            <div class="control-row">
+              <div>
+                <div class="control-label">Light Text</div>
+                <div class="control-hint">Main text on dark backgrounds</div>
+              </div>
+              <div class="color-control">
+                <div class="color-swatch" id="swatch-text-light"><input type="color" id="color-text-light" value="#eceef2" oninput="syncColor('text-light', this.value)" /></div>
+                <input class="color-hex" id="hex-text-light" value="#eceef2" oninput="syncHex('text-light', this.value)" maxlength="7" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TYPOGRAPHY -->
+        <div class="editor-section" id="section-typography">
+          <h2 class="editor-section-title">TYPOGRAPHY</h2>
+          <p class="editor-section-desc">Font sizes and weights across the site.</p>
+
+          <div class="control-group">
+            <p class="control-group-title">Hero Title Size</p>
+            <div class="control-row">
+              <div>
+                <div class="control-label">Max font size (desktop)</div>
+                <div class="control-hint">The "I'M BRANDEN" heading</div>
+              </div>
+              <div class="slider-control">
+                <input type="range" id="hero-size" min="40" max="120" value="65" oninput="updateSlider('hero-size', this.value, 'px')" />
+                <span class="slider-value" id="val-hero-size">65px</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <p class="control-group-title">Nav Link Style</p>
+            <div class="control-row">
+              <div>
+                <div class="control-label">Letter Spacing</div>
+                <div class="control-hint">Nav link tracking</div>
+              </div>
+              <div class="slider-control">
+                <input type="range" id="nav-spacing" min="0" max="30" value="12" oninput="updateSlider('nav-spacing', this.value, '%')" />
+                <span class="slider-value" id="val-nav-spacing">0.12em</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <p class="control-group-title">Body Font Size</p>
+            <div class="control-row">
+              <div>
+                <div class="control-label">Paragraph font size</div>
+                <div class="control-hint">Subtext and descriptions</div>
+              </div>
+              <div class="slider-control">
+                <input type="range" id="body-size" min="12" max="20" value="14" oninput="updateSlider('body-size', this.value, 'px')" />
+                <span class="slider-value" id="val-body-size">14px</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAYOUT -->
+        <div class="editor-section" id="section-layout">
+          <h2 class="editor-section-title">LAYOUT & SPACING</h2>
+          <p class="editor-section-desc">Padding, gaps, and section spacing.</p>
+
+          <div class="control-group">
+            <p class="control-group-title">Section Padding</p>
+            <div class="control-row">
+              <div>
+                <div class="control-label">Horizontal padding</div>
+                <div class="control-hint">Side padding on all pages (vw units)</div>
+              </div>
+              <div class="slider-control">
+                <input type="range" id="h-padding" min="2" max="15" value="5" oninput="updateSlider('h-padding', this.value, 'vw')" />
+                <span class="slider-value" id="val-h-padding">5vw</span>
+              </div>
+            </div>
+            <div class="control-row">
+              <div>
+                <div class="control-label">Vertical section padding</div>
+                <div class="control-hint">Top/bottom padding for main sections</div>
+              </div>
+              <div class="slider-control">
+                <input type="range" id="v-padding" min="2" max="12" value="6" oninput="updateSlider('v-padding', this.value, 'rem')" />
+                <span class="slider-value" id="val-v-padding">6rem</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <p class="control-group-title">Nav Height</p>
+            <div class="control-row">
+              <div>
+                <div class="control-label">Nav padding (top/bottom)</div>
+              </div>
+              <div class="slider-control">
+                <input type="range" id="nav-pad" min="8" max="32" value="16" oninput="updateSlider('nav-pad', this.value, 'px')" />
+                <span class="slider-value" id="val-nav-pad">16px</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NAV -->
+        <div class="editor-section" id="section-nav">
+          <h2 class="editor-section-title">NAVIGATION</h2>
+          <p class="editor-section-desc">Navbar appearance and behaviour.</p>
+
+          <div class="control-group">
+            <p class="control-group-title">Nav Background</p>
+            <div class="control-row">
+              <div>
+                <div class="control-label">Nav blur amount</div>
+                <div class="control-hint">Backdrop blur on scroll</div>
+              </div>
+              <div class="slider-control">
+                <input type="range" id="nav-blur" min="0" max="30" value="14" oninput="updateSlider('nav-blur', this.value, 'px')" />
+                <span class="slider-value" id="val-nav-blur">14px</span>
+              </div>
+            </div>
+            <div class="control-row">
+              <div>
+                <div class="control-label">Nav background opacity</div>
+                <div class="control-hint">0 = transparent, 100 = solid</div>
+              </div>
+              <div class="slider-control">
+                <input type="range" id="nav-opacity" min="0" max="100" value="85" oninput="updateSlider('nav-opacity', this.value, '%')" />
+                <span class="slider-value" id="val-nav-opacity">85%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <p class="control-group-title">Active Link Indicator</p>
+            <div class="control-row">
+              <div class="control-label">Show underline on active page</div>
+              <label class="toggle">
+                <input type="checkbox" id="toggle-underline" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- EFFECTS -->
+        <div class="editor-section" id="section-effects">
+          <h2 class="editor-section-title">EFFECTS</h2>
+          <p class="editor-section-desc">Scroll animations and transitions.</p>
+
+          <div class="control-group">
+            <p class="control-group-title">Scroll Reveal</p>
+            <div class="control-row">
+              <div class="control-label">Enable scroll reveal animations</div>
+              <label class="toggle">
+                <input type="checkbox" id="toggle-reveal" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="control-row">
+              <div>
+                <div class="control-label">Reveal distance</div>
+                <div class="control-hint">How far elements slide up on reveal</div>
+              </div>
+              <div class="slider-control">
+                <input type="range" id="reveal-dist" min="8" max="80" value="32" oninput="updateSlider('reveal-dist', this.value, 'px')" />
+                <span class="slider-value" id="val-reveal-dist">32px</span>
+              </div>
+            </div>
+            <div class="control-row">
+              <div>
+                <div class="control-label">Reveal duration</div>
+                <div class="control-hint">Animation speed in milliseconds</div>
+              </div>
+              <div class="slider-control">
+                <input type="range" id="reveal-dur" min="200" max="1200" value="700" step="50" oninput="updateSlider('reveal-dur', this.value, 'ms')" />
+                <span class="slider-value" id="val-reveal-dur">700ms</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <p class="control-group-title">Button Hover</p>
+            <div class="control-row">
+              <div>
+                <div class="control-label">Button transition speed</div>
+              </div>
+              <div class="slider-control">
+                <input type="range" id="btn-trans" min="100" max="600" value="200" step="50" oninput="updateSlider('btn-trans', this.value, 'ms')" />
+                <span class="slider-value" id="val-btn-trans">200ms</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CSS OUTPUT -->
+        <div class="editor-section" id="section-output">
+          <h2 class="editor-section-title">CSS OUTPUT</h2>
+          <p class="editor-section-desc">Copy this and paste it into your <code style="color:var(--accent2); font-size:0.78rem;">style.css</code> to apply your changes.</p>
+
+          <div class="control-group">
+            <p class="control-group-title">Generated :root variables</p>
+            <div class="css-output-wrap">
+              <pre class="css-output" id="css-output">/* Click "Copy CSS" to generate */</pre>
+              <button class="copy-btn" onclick="generateAndCopy()">Copy</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <p class="control-group-title">How to apply</p>
+            <ol style="font-size:0.78rem; color:var(--muted); line-height:2; padding-left:1.2rem;">
+              <li>Click <strong style="color:var(--text)">Copy CSS →</strong> in the top bar</li>
+              <li>Open <strong style="color:var(--text)">style.css</strong> in your GitHub repo</li>
+              <li>Click the <strong style="color:var(--text)">pencil ✏️ icon</strong> to edit</li>
+              <li>Replace the <strong style="color:var(--text)">:root { ... }</strong> block with the copied code</li>
+              <li>Click <strong style="color:var(--text)">Commit changes</strong></li>
+              <li>Your site updates in ~30 seconds ✓</li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="preview-bar">
+      <span>BRNDN Admin — Style Editor</span>
+      <div class="preview-links">
+        <a href="index.html" target="_blank" class="preview-link">Home</a>
+        <a href="about.html" target="_blank" class="preview-link">About</a>
+        <a href="work.html" target="_blank" class="preview-link">Work</a>
+        <a href="contact.html" target="_blank" class="preview-link">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── PASSWORD ──
+    // Change this to whatever you want your password to be
+    const ADMIN_PASSWORD = 'brndn2026';
+
+    function login() {
+      const val = document.getElementById('password-input').value;
+      if (val === ADMIN_PASSWORD) {
+        document.getElementById('login-screen').style.display = 'none';
+        const panel = document.getElementById('admin-panel');
+        panel.style.display = 'flex';
+        updateSwatches();
+        generateCSS();
+      } else {
+        const err = document.getElementById('login-error');
+        err.style.display = 'block';
+        document.getElementById('password-input').value = '';
+        document.getElementById('password-input').focus();
+      }
+    }
+
+    function logout() {
+      document.getElementById('admin-panel').style.display = 'none';
+      document.getElementById('login-screen').style.display = 'flex';
+      document.getElementById('password-input').value = '';
+    }
+
+    // ── SECTIONS ──
+    function showSection(name, btn) {
+      document.querySelectorAll('.editor-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.sidebar-item').forEach(b => b.classList.remove('active'));
+      document.getElementById('section-' + name).classList.add('active');
+      btn.classList.add('active');
+      generateCSS();
+    }
+
+    // ── COLOR SYNC ──
+    function syncColor(id, val) {
+      document.getElementById('hex-' + id).value = val;
+      document.getElementById('swatch-' + id).style.background = val;
+      generateCSS();
+    }
+
+    function syncHex(id, val) {
+      if (/^#[0-9A-Fa-f]{6}$/.test(val)) {
+        document.getElementById('color-' + id).value = val;
+        document.getElementById('swatch-' + id).style.background = val;
+        generateCSS();
+      }
+    }
+
+    function updateSwatches() {
+      ['bg','bg2','card','dark','text-light'].forEach(id => {
+        const val = document.getElementById('color-' + id).value;
+        document.getElementById('swatch-' + id).style.background = val;
+      });
+    }
+
+    // ── SLIDERS ──
+    function updateSlider(id, val, unit) {
+      const el = document.getElementById('val-' + id);
+      if (id === 'nav-spacing') el.textContent = (val / 100).toFixed(2) + 'em';
+      else el.textContent = val + unit;
+      generateCSS();
+    }
+
+    // ── CSS GENERATION ──
+    function generateCSS() {
+      const bg = document.getElementById('color-bg').value;
+      const bg2 = document.getElementById('color-bg2').value;
+      const card = document.getElementById('color-card').value;
+      const dark = document.getElementById('color-dark').value;
+      const textLight = document.getElementById('color-text-light').value;
+      const heroSize = document.getElementById('hero-size').value;
+      const revealDist = document.getElementById('reveal-dist').value;
+      const revealDur = document.getElementById('reveal-dur').value;
+      const btnTrans = document.getElementById('btn-trans').value;
+      const navBlur = document.getElementById('nav-blur').value;
+      const navOpacity = (document.getElementById('nav-opacity').value / 100).toFixed(2);
+      const hPad = document.getElementById('h-padding').value;
+      const vPad = document.getElementById('v-padding').value;
+      const navPad = document.getElementById('nav-pad').value;
+      const navSpacing = (document.getElementById('nav-spacing').value / 100).toFixed(2);
+      const revealOn = document.getElementById('toggle-reveal').checked;
+      const underlineOn = document.getElementById('toggle-underline').checked;
+
+      // Convert hex to rgb for rgba usage
+      const bgRgb = hexToRgb(bg);
+
+      const css = `:root {
+  --bg: ${bg};
+  --bg2: ${bg2};
+  --card: ${card};
+  --card2: ${adjustBrightness(card, -8)};
+  --dark: ${dark};
+  --text-light: ${textLight};
+  --text-dark: ${dark};
+  --muted-light: rgba(236,238,242,0.45);
+  --muted-dark: #666;
+  --border-light: rgba(236,238,242,0.08);
+  --border-dark: rgba(0,0,0,0.08);
+  --accent: ${textLight};
+}
+
+/* Hero title size */
+.hero-title {
+  font-size: clamp(3rem, 5.5vw, ${heroSize}px);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(${revealDist}px);
+  transition: opacity ${revealDur}ms ease, transform ${revealDur}ms ease;
+}
+${revealOn ? '' : '.reveal { opacity: 1; transform: none; }'}
+
+/* Nav */
+nav {
+  backdrop-filter: blur(${navBlur}px);
+  -webkit-backdrop-filter: blur(${navBlur}px);
+  background: rgba(${bgRgb}, ${navOpacity});
+  padding: ${navPad}px ${hPad}vw;
+}
+
+/* Nav links */
+.nav-links a {
+  letter-spacing: ${navSpacing}em;
+}
+${underlineOn ? '' : '.nav-links a::after { display: none; }'}
+
+/* Section padding */
+.section {
+  padding: ${vPad}rem ${hPad}vw;
+}
+.hero, .work-header, .contact-grid, .contact-hero {
+  padding-left: ${hPad}vw;
+  padding-right: ${hPad}vw;
+}
+
+/* Buttons */
+.btn {
+  transition: gap ${btnTrans}ms, opacity ${btnTrans}ms, background ${btnTrans}ms, color ${btnTrans}ms;
+}`;
+
+      document.getElementById('css-output').textContent = css;
+      return css;
+    }
+
+    function hexToRgb(hex) {
+      const r = parseInt(hex.slice(1,3),16);
+      const g = parseInt(hex.slice(3,5),16);
+      const b = parseInt(hex.slice(5,7),16);
+      return `${r},${g},${b}`;
+    }
+
+    function adjustBrightness(hex, amount) {
+      let r = parseInt(hex.slice(1,3),16);
+      let g = parseInt(hex.slice(3,5),16);
+      let b = parseInt(hex.slice(5,7),16);
+      r = Math.max(0, Math.min(255, r + amount));
+      g = Math.max(0, Math.min(255, g + amount));
+      b = Math.max(0, Math.min(255, b + amount));
+      return '#' + [r,g,b].map(v => v.toString(16).padStart(2,'0')).join('');
+    }
+
+    function generateAndCopy() {
+      const css = generateCSS();
+      navigator.clipboard.writeText(css).then(() => {
+        const status = document.getElementById('save-status');
+        status.classList.add('show');
+        setTimeout(() => status.classList.remove('show'), 2500);
+        showSection('output', document.querySelector('.sidebar-item:last-of-type'));
+      });
+    }
+
+    function resetDefaults() {
+      if (!confirm('Reset all settings to defaults?')) return;
+      document.getElementById('color-bg').value = '#15171e';
+      document.getElementById('color-bg2').value = '#1c1f28';
+      document.getElementById('color-card').value = '#eceef2';
+      document.getElementById('color-dark').value = '#111318';
+      document.getElementById('color-text-light').value = '#eceef2';
+      document.getElementById('hero-size').value = 65;
+      document.getElementById('nav-spacing').value = 12;
+      document.getElementById('body-size').value = 14;
+      document.getElementById('h-padding').value = 5;
+      document.getElementById('v-padding').value = 6;
+      document.getElementById('nav-pad').value = 16;
+      document.getElementById('nav-blur').value = 14;
+      document.getElementById('nav-opacity').value = 85;
+      document.getElementById('reveal-dist').value = 32;
+      document.getElementById('reveal-dur').value = 700;
+      document.getElementById('btn-trans').value = 200;
+      document.getElementById('toggle-reveal').checked = true;
+      document.getElementById('toggle-underline').checked = true;
+      ['hero-size','nav-spacing','body-size','h-padding','v-padding','nav-pad','nav-blur','nav-opacity','reveal-dist','reveal-dur','btn-trans'].forEach(id => {
+        const el = document.getElementById(id);
+        const valEl = document.getElementById('val-' + id);
+        if (id === 'nav-spacing') valEl.textContent = '0.12em';
+        else if (id === 'nav-opacity') valEl.textContent = '85%';
+        else valEl.textContent = el.value + (id.includes('dur') || id.includes('trans') ? 'ms' : id.includes('pad') || id.includes('dist') || id.includes('size') || id.includes('blur') ? 'px' : id.includes('padding') && !id.includes('nav') ? (id === 'h-padding' ? 'vw' : 'rem') : 'px');
+      });
+      updateSwatches();
+      generateCSS();
+    }
+  </script>
+</body>
+</html>
