@@ -56,17 +56,20 @@ if (cursor && ring) {
   let mx = 0, my = 0, rx = 0, ry = 0;
   let moved = false;
 
-  // Hide until first mouse movement
+  // Both hidden until first move
   cursor.style.opacity = '0';
   ring.style.opacity = '0';
 
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
+
+    // Small dot snaps instantly
     cursor.style.left = mx + 'px';
     cursor.style.top = my + 'px';
+
     if (!moved) {
       moved = true;
-      // Snap ring to mouse position immediately on first move
+      // Snap ring immediately on first move — no trail from corner
       rx = mx; ry = my;
       ring.style.left = rx + 'px';
       ring.style.top = ry + 'px';
@@ -77,6 +80,7 @@ if (cursor && ring) {
 
   function lerp(a, b, t) { return a + (b - a) * t; }
 
+  // Ring lags smoothly behind
   (function animRing() {
     rx = lerp(rx, mx, 0.1);
     ry = lerp(ry, my, 0.1);
