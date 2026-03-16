@@ -57,10 +57,10 @@
       max-width: 1100px;
       margin: 0 auto;
       padding: 5vw 3.5vw 6vw;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: flex-end;
-      gap: 4vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 1.5rem;
     }
 
     .project-back {
@@ -82,7 +82,7 @@
 
     .project-title {
       font-family: 'Grandspan Wide', sans-serif;
-      font-size: clamp(3.5rem, 8vw, 9rem);
+      font-size: clamp(2.5rem, 5.5vw, 6rem);
       line-height: 0.88;
       letter-spacing: -0.02em;
       color: var(--ink);
