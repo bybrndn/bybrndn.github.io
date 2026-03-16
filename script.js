@@ -1,9 +1,7 @@
 // ── MODULAR NAV ──
-// Edit the nav here and it updates across every page
 function injectNav() {
   const nav = document.getElementById('navbar');
   if (!nav) return;
-
   nav.innerHTML = `
     <div class="nav-inner">
       <a class="nav-logo" href="/index.html">
@@ -19,8 +17,6 @@ function injectNav() {
       </button>
     </div>
   `;
-
-  // Auto highlight active link based on current page
   const path = window.location.pathname;
   nav.querySelectorAll('.nav-links a').forEach(link => {
     const href = link.getAttribute('href');
@@ -29,56 +25,43 @@ function injectNav() {
     }
   });
 }
-
-// Run immediately since script is at end of body
 injectNav();
 
-
 // ── PROJECT REGISTRY ──
-// Add new projects here in order — the next project link updates automatically
 const PROJECTS = [
-  { slug: 'itsmejagz',    title: 'ITSME\nJAGZ',       path: '/projects/itsmejagz/itsmejagz.html' },
-  { slug: 'xtrovert',     title: 'XTRO\nVERT',         path: '/projects/xtrovert/xtrovert.html' },
-  { slug: 'conversations',title: 'CONVER\nSATIONS',    path: '/projects/conversations/conversations.html' },
-  { slug: 'conflict',     title: 'CONFLICT\nAR',       path: '/projects/conflict/conflict.html' },
-  { slug: 'movemedia',    title: 'MOVE\nMEDIA NZ',     path: '/projects/movemedia/movemedia.html' },
+  { slug: 'itsmejagz',     title: 'ITSME<br>JAGZ',        path: '/projects/itsmejagz/itsmejagz.html' },
+  { slug: 'xtrovert',      title: 'XTRO<br>VERT',          path: '/projects/xtrovert/xtrovert.html' },
+  { slug: 'conversations', title: 'CONVER<br>SATIONS',     path: '/projects/conversations/conversations.html' },
+  { slug: 'conflict',      title: 'CONFLICT<br>AR',        path: '/projects/conflict/conflict.html' },
+  { slug: 'movemedia',     title: 'MOVE<br>MEDIA NZ',      path: '/projects/movemedia/movemedia.html' },
 ];
 
-// Auto-populate the next project link based on current page
 (function() {
   const nextEl = document.querySelector('.next-project');
   if (!nextEl) return;
-
   const currentPath = window.location.pathname;
   const currentIndex = PROJECTS.findIndex(p => currentPath.includes(p.slug));
   if (currentIndex === -1) return;
-
   const next = PROJECTS[(currentIndex + 1) % PROJECTS.length];
   nextEl.href = next.path;
-
   const titleEl = nextEl.querySelector('.next-title');
-  if (titleEl) titleEl.innerHTML = next.title.replace('\n', '<br>');
+  if (titleEl) titleEl.innerHTML = next.title;
 })();
 
-// ── PAGE TRANSITION OVERLAY ──
+// ── PAGE TRANSITIONS ──
 const overlay = document.createElement('div');
 overlay.className = 'page-transition enter';
 document.body.appendChild(overlay);
 
-// Fade in on load
 window.addEventListener('load', () => {
-  requestAnimationFrame(() => {
-    overlay.classList.remove('enter');
-  });
+  setTimeout(() => overlay.classList.remove('enter'), 50);
 });
 
-// Intercept internal links — fade out then navigate
 document.addEventListener('click', e => {
   const link = e.target.closest('a');
   if (!link) return;
   const href = link.getAttribute('href');
   if (!href || href.startsWith('#') || href.startsWith('mailto') || href.startsWith('tel') || link.target === '_blank') return;
-
   e.preventDefault();
   overlay.classList.add('enter');
   setTimeout(() => { window.location.href = href; }, 380);
@@ -92,20 +75,15 @@ if (cursor && ring) {
   let mx = 0, my = 0, rx = 0, ry = 0;
   let moved = false;
 
-  // Both hidden until first move
   cursor.style.opacity = '0';
   ring.style.opacity = '0';
 
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
-
-    // Small dot snaps instantly
     cursor.style.left = mx + 'px';
     cursor.style.top = my + 'px';
-
     if (!moved) {
       moved = true;
-      // Snap ring immediately on first move — no trail from corner
       rx = mx; ry = my;
       ring.style.left = rx + 'px';
       ring.style.top = ry + 'px';
@@ -115,8 +93,6 @@ if (cursor && ring) {
   });
 
   function lerp(a, b, t) { return a + (b - a) * t; }
-
-  // Ring lags smoothly behind
   (function animRing() {
     rx = lerp(rx, mx, 0.1);
     ry = lerp(ry, my, 0.1);
@@ -155,6 +131,7 @@ window.addEventListener('load', () =>
 // ── MOBILE MENU ──
 function toggleMenu() {
   const links = document.querySelector('.nav-links');
+  if (!links) return;
   const open = links.style.display === 'flex';
   links.style.display = open ? 'none' : 'flex';
   if (!open) Object.assign(links.style, {
@@ -166,6 +143,7 @@ function toggleMenu() {
     padding: '1.5rem 2rem',
     gap: '1.4rem',
     border: '1px solid rgba(236,244,249,0.08)',
-    backdropFilter: 'blur(8px)'
+    backdropFilter: 'blur(8px)',
+    zIndex: '99'
   });
 }
