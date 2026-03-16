@@ -21,6 +21,9 @@
 
     /* ── HERO ── */
     .project-hero {
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      width: 100vw;
       position: relative;
       min-height: 100vh;
       display: flex;
@@ -31,7 +34,7 @@
     .project-hero-bg {
       position: absolute;
       inset: -15%;
-      background-image: url('https://static.wixstatic.com/media/64ccbb_075be4b059da403c9a0a074b1f653508~mv2.png');
+      background-image: url('/projects/conversations/conversationsbackground.png');
       background-size: cover;
       background-position: center 30%;
       filter: sepia(20%) contrast(1.05) brightness(0.55);
@@ -51,6 +54,8 @@
       position: relative;
       z-index: 2;
       width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
       padding: 5vw 3.5vw 6vw;
       display: grid;
       grid-template-columns: 1fr auto;
@@ -89,8 +94,9 @@
       line-height: 1.95;
       color: var(--ink-mid);
       font-weight: 500;
-      max-width: 320px;
-      text-align: right;
+      max-width: 420px;
+      text-align: left;
+      align-self: flex-end;
     }
 
     .project-meta {
@@ -144,6 +150,7 @@
   <nav id="navbar"></nav>
 
   <div class="page">
+    </div><!-- close .page for full-width hero -->
     <section class="project-hero">
       <div class="project-hero-bg" id="parallaxBg"></div>
       <div class="project-hero-fade"></div>
@@ -172,6 +179,7 @@
       </div>
     </section>
 
+    <div class="page">
     <div class="project-section reveal">
       <span class="ps-label">Overview</span>
       <div class="ps-content">
