@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BY BRNDN — Conversations</title>
+  <link rel="icon" href="/images/smallBRNDN light.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    :root {
+      --bg: #0d0a07;
+      --bg-dark: #080603;
+      --ink: #f5ede0;
+      --ink-mid: rgba(245,237,224,0.45);
+      --ink-faint: rgba(245,237,224,0.05);
+      --white: #f5ede0;
+      --rule: rgba(245,237,224,0.07);
+      --accent: #c4a06a;
+    }
+
+    .project-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(80vh - 80px); border-bottom: 1px solid var(--rule); }
+    .project-hero-left { padding: 5vw 4vw 5vw 3.5vw; border-right: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: space-between; }
+    .project-back { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; transition: color 0.2s, gap 0.25s; }
+    .project-back:hover { color: var(--ink); gap: 0.9rem; }
+    .project-title { font-family: 'Grandspan Wide', sans-serif; font-size: clamp(2.8rem, 5vw, 6rem); line-height: 0.9; letter-spacing: -0.02em; color: var(--ink); }
+    .project-title span { color: var(--accent); }
+    .project-meta { display: flex; flex-direction: column; gap: 1.2rem; }
+    .project-meta-row { display: flex; flex-direction: column; gap: 0.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule); }
+    .project-meta-row:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .project-meta-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+    .project-meta-value { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
+    .project-hero-right { padding: 5vw 3.5vw 5vw 4vw; display: flex; flex-direction: column; justify-content: flex-end; gap: 2rem; }
+    .project-cover { width: 100%; flex: 1; min-height: 0; overflow: hidden; max-height: 60vh; }
+    .project-cover img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 1s var(--ease); filter: sepia(20%) contrast(1.05); }
+    .project-cover:hover img { transform: scale(1.03); }
+    .project-desc { font-size: 0.82rem; line-height: 1.95; color: var(--ink-mid); font-weight: 500; }
+    .project-section { display: grid; grid-template-columns: 18rem 1fr; padding: 5vw 3.5vw; border-top: 1px solid var(--rule); }
+    .ps-label { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 600; padding-top: 0.2rem; padding-right: 4vw; }
+    .ps-content { padding-left: 4vw; display: flex; flex-direction: column; gap: 2rem; }
+    .ps-text { font-size: 0.85rem; line-height: 2; color: var(--ink-mid); font-weight: 500; max-width: 640px; }
+    .img-grid { display: grid; gap: 1rem; }
+    .img-grid.cols-1 { grid-template-columns: 1fr; }
+    .img-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+    .img-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .img-grid img { width: 100%; display: block; object-fit: cover; transition: transform 0.6s var(--ease); filter: sepia(15%) contrast(1.04); }
+    .img-grid img:hover { transform: scale(1.02); }
+    .img-caption { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mid); margin-top: 0.5rem; }
+    .next-project { display: flex; justify-content: space-between; align-items: center; padding: 3.5rem 3.5vw; text-decoration: none; border-top: 1px solid var(--rule); transition: padding-left 0.35s var(--ease); }
+    .next-project:hover { padding-left: 5vw; }
+    .next-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-mid); font-weight: 600; margin-bottom: 0.5rem; }
+    .next-title { font-family: 'Grandspan Wide', sans-serif; font-size: clamp(1.5rem, 3vw, 3rem); color: var(--ink); line-height: 1; }
+    .next-arrow { font-size: 1.5rem; color: var(--ink-mid); transition: transform 0.3s var(--ease), color 0.2s; }
+    .next-project:hover .next-arrow { transform: translate(6px, -6px); color: var(--ink); }
+
+    @media (max-width: 860px) {
+      .project-hero { grid-template-columns: 1fr; }
+      .project-hero-left { border-right: none; padding-right: 3.5vw; padding-bottom: 4vw; border-bottom: 1px solid var(--rule); }
+      .project-hero-right { padding-left: 3.5vw; }
+      .project-cover { max-height: 55vw; }
+      .project-section { grid-template-columns: 1fr; }
+      .ps-label { padding-right: 0; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); margin-bottom: 0; }
+      .ps-content { padding-left: 0; padding-top: 2rem; }
+      .img-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+      .img-grid.cols-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+  <nav id="navbar">
+    <a class="nav-logo" href="/index.html"><span class="by">By</span><img src="/images/BRNDN light.png" alt="BRNDN" style="height:28px; width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/work.html" class="active">Work</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="page">
+    <section class="project-hero">
+      <div class="project-hero-left">
+        <a class="project-back reveal" href="/work.html">← Back to Work</a>
+        <h1 class="project-title reveal d1">CONVER<br><span>SATIONS</span></h1>
+        <div class="project-meta reveal d2">
+          <div class="project-meta-row">
+            <span class="project-meta-label">Type</span>
+            <span class="project-meta-value">Videography & Editing</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">Year</span>
+            <span class="project-meta-value">2023</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">By</span>
+            <span class="project-meta-value">Branden Hall, Varish Nair, Denzel Pereiea</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">Tools</span>
+            <span class="project-meta-value">Premiere Pro, After Effects</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-hero-right">
+        <div class="project-cover reveal">
+          <img src="https://static.wixstatic.com/media/64ccbb_075be4b059da403c9a0a074b1f653508~mv2.png" alt="Conversations Music Video" />
+        </div>
+        <p class="project-desc reveal d2">A music video shot and edited through Auckland City at night — handheld, grainy, and vintage. A dreamy old-school aesthetic brought to life through filmmaking and After Effects.</p>
+      </div>
+    </section>
+
+    <div class="project-section reveal">
+      <span class="ps-label">Overview</span>
+      <div class="ps-content">
+        <p class="ps-text">My friends wanted me to shoot and edit their music video. They gave me some inspiration and a theme they were going for. Although informal, this project showcases my videography and editing skills in a real creative context.</p>
+        <p class="ps-text">The theme they wanted was a dreamy, vintage aesthetic — handheld footage with a grainy filter. That "Old Skool" vibe of a music video. We took to the streets of Auckland City at night and captured the scenes as we roamed.</p>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <span class="ps-label">Filming</span>
+      <div class="ps-content">
+        <p class="ps-text">I independently filmed each scene for this music video. We knew we wanted it to take place within the city — Auckland at night gave us the atmosphere we needed. Most scenes were improvised on the spot as we moved through the streets.</p>
+        <div class="img-grid cols-3">
+          <div>
+            <img src="https://static.wixstatic.com/media/64ccbb_c18bfcb6dc0947829c8f37a85899bc38~mv2.jpg" alt="Auckland City filming" />
+            <p class="img-caption">Auckland City</p>
+          </div>
+          <div>
+            <img src="https://static.wixstatic.com/media/64ccbb_490d6b900c0444bebc9e58d665563f03~mv2.jpg" alt="On location" />
+            <p class="img-caption">On location</p>
+          </div>
+          <div>
+            <img src="https://static.wixstatic.com/media/64ccbb_5d88370073484740819c54b96b81dc55~mv2.jpg" alt="Night scene" />
+            <p class="img-caption">Night scene</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <span class="ps-label">Editing & VFX</span>
+      <div class="ps-content">
+        <p class="ps-text">Several After Effects VFX shots were used throughout the video — including a VHS intro and outro effect with cinemascope bars, and a climax sequence where camera motion tracks between the two artists going bar for bar. This was the one planned scene in the whole video.</p>
+        <div class="img-grid cols-3">
+          <div>
+            <img src="https://static.wixstatic.com/media/64ccbb_1dcb466fe37a438abe72587983f66624~mv2.png" alt="Video screenshot 1" />
+            <p class="img-caption">VHS intro effect</p>
+          </div>
+          <div>
+            <img src="https://static.wixstatic.com/media/64ccbb_9b3710a210ac40ba995672519cd6a4a4~mv2.png" alt="Video screenshot 2" />
+            <p class="img-caption">Street scene</p>
+          </div>
+          <div>
+            <img src="https://static.wixstatic.com/media/64ccbb_ff8878bf5f5341dd8c9bd7cb2952fd22~mv2.png" alt="Video screenshot 3" />
+            <p class="img-caption">Climax sequence</p>
+          </div>
+        </div>
+        <div class="img-grid cols-2">
+          <div>
+            <img src="https://static.wixstatic.com/media/64ccbb_79ae42756b344a7da786864fdb281e29~mv2.gif" alt="VFX animation 1" />
+            <p class="img-caption">After Effects VFX</p>
+          </div>
+          <div>
+            <img src="https://static.wixstatic.com/media/64ccbb_a4d6bbaee3e24df3ae72cc899567c904~mv2.gif" alt="VFX animation 2" />
+            <p class="img-caption">Motion tracking</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <span class="ps-label">Reflection</span>
+      <div class="ps-content">
+        <p class="ps-text">Since this was one of my first proper uses of After Effects and videography skills together, looking back I feel like I could've spent a bit more time on the edit and pushed the VFX further. My skills have grown a lot since 2023 — but this project was a solid foundation and a real-world test of what I'd been learning.</p>
+      </div>
+    </div>
+
+    <a class="next-project reveal" href="conflict.html">
+      <div>
+        <p class="next-label">Next Project</p>
+        <p class="next-title">CONFLICT<br>AR</p>
+      </div>
+      <span class="next-arrow">↗</span>
+    </a>
+
+    <footer><span>© 2026 Branden Hall</span><span>Auckland, NZ</span></footer>
+  </div>
+  <script src="/script.js"></script>
+</body>
+</html>
