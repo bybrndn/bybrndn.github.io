@@ -65,10 +65,10 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 2rem 3.5vw;
-  background: rgba(245,244,240,0.9);
+  background: rgba(17,18,16,0.92);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid rgba(245,244,240,0.08);
 }
 
 .nav-logo {
@@ -80,13 +80,13 @@ nav {
 .nav-logo .by {
   font-size: 0.6rem;
   letter-spacing: 0.4em;
-  color: var(--ink-mid);
+  color: rgba(245,244,240,0.45);
   text-transform: uppercase;
   font-weight: 300;
 }
 .nav-logo svg {
   height: 18px;
-  color: var(--ink);
+  color: var(--white);
   transition: opacity 0.2s;
 }
 .nav-logo:hover svg { opacity: 0.4; }
@@ -101,19 +101,19 @@ nav {
   font-weight: 400;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ink-mid);
+  color: rgba(245,244,240,0.45);
   text-decoration: none;
   transition: color 0.2s;
   position: relative;
 }
 .nav-links a:hover,
-.nav-links a.active { color: var(--ink); }
+.nav-links a.active { color: var(--white); }
 .nav-links a.active::after {
   content: '';
   position: absolute;
   bottom: -3px; left: 0; right: 0;
   height: 1px;
-  background: var(--ink);
+  background: var(--white);
 }
 
 .page { padding-top: 80px; }
