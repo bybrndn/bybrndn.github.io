@@ -749,33 +749,135 @@ footer span {
 @media (max-width: 860px) {
   body { cursor: auto; }
   .cursor, .cursor-ring { display: none; }
+
+  /* ── NAV MOBILE ── */
   .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 99;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+  .nav-links.open a {
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+  }
   .hamburger { display: flex; }
 
-  .home-hero,
-  .about-hero,
-  .contact-page { grid-template-columns: 1fr; }
+  /* ── PAGE ── */
+  .page { padding-top: 64px; }
 
-  .home-left,
-  .about-left { border-right: none; padding-right: 3.5vw; border-bottom: 1px solid transparent; padding-bottom: 4vw; }
+  /* ── HOME ── */
+  .home-hero {
+    grid-template-columns: 1fr;
+    min-height: unset;
+  }
+  .home-left {
+    border-right: none;
+    padding: 8vw 6vw 6vw;
+    border-bottom: 1px solid var(--rule);
+    gap: 1.5rem;
+  }
+  .home-title {
+    font-size: clamp(3rem, 12vw, 5rem);
+  }
+  .home-desc { max-width: 100%; }
+  .home-right { padding: 0; }
+  .home-photo {
+    width: 100%;
+    max-height: unset;
+  }
+  .home-photo img {
+    height: 70vw;
+    object-position: center 20%;
+  }
 
-  .home-right,
-  .about-right { padding-left: 3.5vw; }
+  /* ── TICKER ── */
+  .ticker-wrap { padding: 0.7rem 0; }
 
-  .home-photo, .about-photo { max-height: 50vw; }
+  /* ── CONTACT STRIP ── */
+  .contact-strip { grid-template-columns: 1fr; }
+  .cs-cell {
+    border-right: none;
+    border-bottom: 1px solid rgba(21,24,30,0.12);
+    padding: 2rem 6vw;
+  }
+  .cs-cell:last-child { border-bottom: none; }
+  .cs-value { font-size: clamp(1.1rem, 5vw, 1.3rem); }
 
-  .work-header { grid-template-columns: 1fr; }
-  .work-big { border-right: none; padding-right: 0; border-bottom: 1px solid transparent; padding-bottom: 3vw; margin-bottom: 3vw; }
-  .work-header-right { padding-left: 0; }
+  /* ── ABOUT ── */
+  .about-hero {
+    grid-template-columns: 1fr;
+    min-height: unset;
+  }
+  .about-left {
+    border-right: none;
+    padding: 8vw 6vw 6vw;
+    border-bottom: 1px solid var(--rule);
+  }
+  .about-big { font-size: clamp(2.8rem, 10vw, 5rem); }
+  .about-right { padding: 6vw; }
+  .about-photo { max-height: 60vw; }
 
-  .about-row { grid-template-columns: 1fr; }
-  .ar-label { border-right: none; padding-right: 0; border-bottom: 1px solid transparent; padding-bottom: 1rem; margin-bottom: 0; }
+  .about-row {
+    grid-template-columns: 1fr;
+    padding: 6vw;
+  }
+  .ar-label {
+    border-right: none;
+    padding-right: 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 0;
+  }
   .ar-content { padding-left: 0; padding-top: 2rem; }
 
-  .contact-left { border-right: none; border-bottom: 1px solid transparent; }
-  .contact-right { padding-left: 3.5vw; }
+  /* ── WORK ── */
+  .work-header {
+    grid-template-columns: 1fr;
+    padding: 8vw 6vw 5vw;
+  }
+  .work-big {
+    border-right: none;
+    padding-right: 0;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 4vw;
+    margin-bottom: 3vw;
+    font-size: clamp(3rem, 10vw, 5rem);
+  }
+  .work-header-right { padding-left: 0; }
+  .work-item {
+    grid-template-columns: 2.5rem 1fr auto;
+    padding: 1.8rem 6vw;
+  }
+  .wi-title { font-size: clamp(1.4rem, 6vw, 2.5rem); }
 
-  .contact-strip { grid-template-columns: 1fr; }
-  .cs-cell { border-right: none; border-bottom: 1px solid transparent; }
-  .cs-cell:last-child { border-bottom: none; }
+  /* ── CONTACT ── */
+  .contact-page {
+    grid-template-columns: 1fr;
+    min-height: unset;
+  }
+  .contact-left {
+    border-right: none;
+    border-bottom: 1px solid var(--rule);
+    padding: 8vw 6vw 6vw;
+  }
+  .contact-big { font-size: clamp(3.5rem, 12vw, 7rem); }
+  .contact-right { padding: 6vw; }
+  .cl-value { font-size: clamp(1rem, 5vw, 1.5rem); }
+
+  /* ── FOOTER ── */
+  footer { padding: 1.4rem 6vw; flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+
+/* ── SMALL PHONES ── */
+@media (max-width: 400px) {
+  .home-title { font-size: 11vw; }
+  .work-big, .about-big, .contact-big { font-size: 10vw; }
+  .wi-title { font-size: 7vw; }
 }
