@@ -70,7 +70,7 @@ nav {
   justify-content: flex-end;
   align-items: center;
   padding: 2rem 3.5vw;
-  background: rgba(21,24,30,0.92);
+  background: rgba(21,24,30,0.45);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(245,244,240,0.08);
