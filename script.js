@@ -4,13 +4,13 @@ function injectNav() {
   if (!nav) return;
   nav.innerHTML = `
     <div class="nav-inner">
-      <a class="nav-logo" href="/index.html">
+      <a class="nav-logo" href="/">
         <span class="by">By</span>
         <img src="/images/BRNDN light.png" alt="BRNDN" style="height:28px; width:auto;" />
       </a>
       <ul class="nav-links">
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/work.html">Work</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/work">Work</a></li>
       </ul>
       <button class="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
@@ -20,7 +20,7 @@ function injectNav() {
   const path = window.location.pathname;
   nav.querySelectorAll('.nav-links a').forEach(link => {
     const href = link.getAttribute('href');
-    if (path === href || path.endsWith(href) || (href === '/work.html' && path.includes('/projects/'))) {
+    if (path === href || path === href + '/' || (href === '/work' && path.includes('/projects/'))) {
       link.classList.add('active');
     }
   });
@@ -28,30 +28,56 @@ function injectNav() {
 
 // ── PROJECT REGISTRY ──
 const PROJECTS = [
-  { slug: 'itsmejagz',     title: 'ITSME<br>JAGZ',       path: '/projects/itsmejagz/itsmejagz.html' },
-  { slug: 'xtrovert',      title: 'XTRO<br>VERT',         path: '/projects/xtrovert/xtrovert.html' },
-  { slug: 'conversations', title: 'CONVER<br>SATIONS',    path: '/projects/conversations/conversations.html' },
-  { slug: 'conflict',      title: 'CONFLICT<br>AR',       path: '/projects/conflict/conflict.html' },
-  { slug: 'movemedia',     title: 'MOVE<br>MEDIA NZ',     path: '/projects/movemedia/movemedia.html' },
+  { slug: 'itsmejagz',     title: 'ITSME<br>JAGZ',       path: '/projects/itsmejagz/itsmejagz' },
+  { slug: 'xtrovert',      title: 'XTRO<br>VERT',         path: '/projects/xtrovert/xtrovert' },
+  { slug: 'conversations', title: 'CONVER<br>SATIONS',    path: '/projects/conversations/conversations' },
+  { slug: 'conflict',      title: 'CONFLICT<br>AR',       path: '/projects/conflict/conflict' },
+  { slug: 'movemedia',     title: 'MOVE<br>MEDIA NZ',     path: '/projects/movemedia/movemedia' },
 ];
 
 // ── MOBILE MENU ──
 function toggleMenu() {
   const links = document.querySelector('.nav-links');
   if (!links) return;
-  const open = links.style.display === 'flex';
-  links.style.display = open ? 'none' : 'flex';
-  if (!open) Object.assign(links.style, {
-    flexDirection: 'column',
-    position: 'fixed',
-    top: '72px',
-    right: '3.5vw',
-    background: 'rgba(21,24,30,0.97)',
-    padding: '1.5rem 2rem',
-    gap: '1.4rem',
-    border: '1px solid rgba(236,244,249,0.08)',
-    backdropFilter: 'blur(8px)',
-    zIndex: '99'
+  links.classList.toggle('open');
+}
+
+// ── PAGE TRANSITIONS ──
+function initTransitions() {
+  // Create overlay element
+  const overlay = document.createElement('div');
+  overlay.className = 'page-transition';
+  document.body.appendChild(overlay);
+
+  // Fade in on arrival
+  requestAnimationFrame(() => {
+    overlay.classList.add('enter');
+    requestAnimationFrame(() => {
+      overlay.classList.remove('enter');
+      overlay.classList.add('exit');
+    });
+  });
+
+  // Intercept all internal link clicks
+  document.addEventListener('click', e => {
+    const link = e.target.closest('a');
+    if (!link) return;
+
+    const href = link.getAttribute('href');
+    if (!href) return;
+
+    // Skip external links, anchors, and mailto/tel
+    if (href.startsWith('http') || href.startsWith('#') ||
+        href.startsWith('mailto') || href.startsWith('tel')) return;
+
+    e.preventDefault();
+
+    overlay.classList.remove('exit');
+    overlay.classList.add('enter');
+
+    setTimeout(() => {
+      window.location.href = href;
+    }, 400);
   });
 }
 
@@ -59,6 +85,7 @@ function toggleMenu() {
 document.addEventListener('DOMContentLoaded', () => {
 
   injectNav();
+  initTransitions();
 
   // Next project
   const nextEl = document.querySelector('.next-project');
