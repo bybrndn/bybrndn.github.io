@@ -66,6 +66,10 @@ if (cursor && ring) {
     cursor.style.top = my + 'px';
     if (!moved) {
       moved = true;
+      // Snap ring to mouse position immediately on first move
+      rx = mx; ry = my;
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
       cursor.style.opacity = '1';
       ring.style.opacity = '1';
     }
