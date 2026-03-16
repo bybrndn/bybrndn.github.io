@@ -14,7 +14,7 @@
 
 /* ── RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
 
 :root {
   --bg: #15181e;
@@ -230,6 +230,7 @@ nav {
   line-height: 0.9;
   letter-spacing: -0.02em;
   color: var(--ink);
+  word-break: break-word;
 }
 .home-title em {
   display: block;
@@ -414,6 +415,7 @@ nav {
 .about-big {
   font-family: 'Grandspan Wide', sans-serif;
   font-size: clamp(3rem, 6vw, 7rem);
+  word-break: break-word;
   line-height: 0.88;
   letter-spacing: -0.025em;
   color: var(--ink);
@@ -547,6 +549,7 @@ nav {
 .work-big {
   font-family: 'Grandspan Wide', sans-serif;
   font-size: clamp(3rem, 6.5vw, 7.5rem);
+  word-break: break-word;
   line-height: 0.88;
   letter-spacing: -0.025em;
   color: var(--ink);
@@ -657,6 +660,7 @@ nav {
 .contact-big {
   font-family: 'Grandspan Wide', sans-serif;
   font-size: clamp(4.5rem, 9vw, 10rem);
+  word-break: break-word;
   line-height: 0.87;
   letter-spacing: -0.025em;
   color: var(--ink);
@@ -747,7 +751,8 @@ footer span {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 860px) {
-  body { cursor: auto; }
+  body { cursor: auto; overflow-x: hidden; }
+  *, *::before, *::after { max-width: 100%; }
   .cursor, .cursor-ring { display: none; }
 
   /* ── NAV MOBILE ── */
@@ -784,7 +789,8 @@ footer span {
     gap: 1.5rem;
   }
   .home-title {
-    font-size: clamp(3rem, 12vw, 5rem);
+    font-size: clamp(2rem, 9vw, 4rem);
+    word-break: break-word;
   }
   .home-desc { max-width: 100%; }
   .home-right { padding: 0; }
