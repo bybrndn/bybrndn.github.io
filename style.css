@@ -1,13 +1,13 @@
 @font-face {
   font-family: 'Overdrive';
-  src: url('fonts/Overdrive.otf') format('opentype');
+  src: url('/fonts/Overdrive.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Grandspan Wide';
-  src: url('fonts/Grandspan-Wide.otf') format('opentype');
+  src: url('/fonts/Grandspan-Wide.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -58,7 +58,14 @@ body {
 
 /* ── CURSOR ── */
 .cursor {
-  display: none;
+  position: fixed;
+  width: 6px; height: 6px;
+  background: #ffffff;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  opacity: 0;
 }
 
 .cursor-ring {
