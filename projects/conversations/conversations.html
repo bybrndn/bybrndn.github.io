@@ -19,22 +19,93 @@
       --accent: #c4a06a;
     }
 
-    .project-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(80vh - 80px); border-bottom: 1px solid var(--rule); }
-    .project-hero-left { padding: 5vw 4vw 5vw 3.5vw; border-right: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: space-between; }
-    .project-back { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; transition: color 0.2s, gap 0.25s; }
+    /* ── HERO ── */
+    .project-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .project-hero-bg {
+      position: absolute;
+      inset: -15%;
+      background-image: url('https://static.wixstatic.com/media/64ccbb_075be4b059da403c9a0a074b1f653508~mv2.png');
+      background-size: cover;
+      background-position: center 30%;
+      filter: sepia(20%) contrast(1.05) brightness(0.55);
+      will-change: transform;
+    }
+
+    .project-hero-fade {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 65%;
+      background: linear-gradient(to bottom, transparent, var(--bg) 90%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .project-hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 5vw 3.5vw 6vw;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: flex-end;
+      gap: 4vw;
+    }
+
+    .project-back {
+      position: absolute;
+      top: 0; left: 3.5vw;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      transition: color 0.2s, gap 0.25s;
+      padding-top: 2rem;
+    }
     .project-back:hover { color: var(--ink); gap: 0.9rem; }
-    .project-title { font-family: 'Grandspan Wide', sans-serif; font-size: clamp(2.8rem, 5vw, 6rem); line-height: 0.9; letter-spacing: -0.02em; color: var(--ink); }
+
+    .project-title {
+      font-family: 'Grandspan Wide', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 9rem);
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
     .project-title span { color: var(--accent); }
-    .project-meta { display: flex; flex-direction: column; gap: 1.2rem; }
-    .project-meta-row { display: flex; flex-direction: column; gap: 0.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule); }
-    .project-meta-row:last-of-type { border-bottom: none; padding-bottom: 0; }
+
+    .project-desc {
+      font-size: 0.82rem;
+      line-height: 1.95;
+      color: var(--ink-mid);
+      font-weight: 500;
+      max-width: 320px;
+      text-align: right;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--rule);
+      margin-top: 2rem;
+      grid-column: 1 / -1;
+    }
+    .project-meta-row { display: flex; flex-direction: column; gap: 0.3rem; }
     .project-meta-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
-    .project-meta-value { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
-    .project-hero-right { padding: 5vw 3.5vw 5vw 4vw; display: flex; flex-direction: column; justify-content: flex-end; gap: 2rem; }
-    .project-cover { width: 100%; flex: 1; min-height: 0; overflow: hidden; max-height: 60vh; }
-    .project-cover img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 1s var(--ease); filter: sepia(20%) contrast(1.05); }
-    .project-cover:hover img { transform: scale(1.03); }
-    .project-desc { font-size: 0.82rem; line-height: 1.95; color: var(--ink-mid); font-weight: 500; }
+    .project-meta-value { font-size: 0.78rem; font-weight: 600; color: var(--ink); }
+
+    /* ── SECTIONS ── */
     .project-section { display: grid; grid-template-columns: 18rem 1fr; padding: 5vw 3.5vw; border-top: 1px solid var(--rule); }
     .ps-label { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 600; padding-top: 0.2rem; padding-right: 4vw; }
     .ps-content { padding-left: 4vw; display: flex; flex-direction: column; gap: 2rem; }
@@ -46,6 +117,8 @@
     .img-grid img { width: 100%; display: block; object-fit: cover; transition: transform 0.6s var(--ease); filter: sepia(15%) contrast(1.04); }
     .img-grid img:hover { transform: scale(1.02); }
     .img-caption { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mid); margin-top: 0.5rem; }
+
+    /* ── NEXT ── */
     .next-project { display: flex; justify-content: space-between; align-items: center; padding: 3.5rem 3.5vw; text-decoration: none; border-top: 1px solid var(--rule); transition: padding-left 0.35s var(--ease); }
     .next-project:hover { padding-left: 5vw; }
     .next-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-mid); font-weight: 600; margin-bottom: 0.5rem; }
@@ -54,10 +127,9 @@
     .next-project:hover .next-arrow { transform: translate(6px, -6px); color: var(--ink); }
 
     @media (max-width: 860px) {
-      .project-hero { grid-template-columns: 1fr; }
-      .project-hero-left { border-right: none; padding-right: 3.5vw; padding-bottom: 4vw; border-bottom: 1px solid var(--rule); }
-      .project-hero-right { padding-left: 3.5vw; }
-      .project-cover { max-height: 55vw; }
+      .project-hero-content { grid-template-columns: 1fr; }
+      .project-desc { text-align: left; max-width: 100%; }
+      .project-meta { flex-wrap: wrap; gap: 1.5rem; }
       .project-section { grid-template-columns: 1fr; }
       .ps-label { padding-right: 0; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); margin-bottom: 0; }
       .ps-content { padding-left: 0; padding-top: 2rem; }
@@ -69,14 +141,17 @@
 <body>
   <div class="cursor"></div>
   <div class="cursor-ring"></div>
-    <nav id="navbar"></nav>
+  <nav id="navbar"></nav>
 
   <div class="page">
     <section class="project-hero">
-      <div class="project-hero-left">
+      <div class="project-hero-bg" id="parallaxBg"></div>
+      <div class="project-hero-fade"></div>
+      <div class="project-hero-content">
         <a class="project-back reveal" href="/work.html">← Back to Work</a>
         <h1 class="project-title reveal d1">CONVER<br><span>SATIONS</span></h1>
-        <div class="project-meta reveal d2">
+        <p class="project-desc reveal d2">A music video shot and edited through Auckland City at night — handheld, grainy, and vintage. A dreamy old-school aesthetic brought to life through filmmaking and After Effects.</p>
+        <div class="project-meta reveal d3">
           <div class="project-meta-row">
             <span class="project-meta-label">Type</span>
             <span class="project-meta-value">Videography & Editing</span>
@@ -94,12 +169,6 @@
             <span class="project-meta-value">Premiere Pro, After Effects</span>
           </div>
         </div>
-      </div>
-      <div class="project-hero-right">
-        <div class="project-cover reveal">
-          <img src="https://static.wixstatic.com/media/64ccbb_075be4b059da403c9a0a074b1f653508~mv2.png" alt="Conversations Music Video" />
-        </div>
-        <p class="project-desc reveal d2">A music video shot and edited through Auckland City at night — handheld, grainy, and vintage. A dreamy old-school aesthetic brought to life through filmmaking and After Effects.</p>
       </div>
     </section>
 
@@ -180,6 +249,15 @@
 
     <footer><span>© 2026 Branden Hall</span><span>Auckland, NZ</span></footer>
   </div>
+
   <script src="/script.js"></script>
+  <script>
+    // Parallax on scroll
+    const bg = document.getElementById('parallaxBg');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      bg.style.transform = `translateY(${scrolled * 0.35}px)`;
+    }, { passive: true });
+  </script>
 </body>
 </html>
