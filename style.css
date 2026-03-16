@@ -88,14 +88,21 @@ nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 2rem 3.5vw;
+  padding: 0 3.5vw;
   background: rgba(21,24,30,0.45);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(245,244,240,0.08);
+}
+
+.nav-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2rem 0;
+  position: relative;
 }
 
 .nav-logo {
@@ -147,7 +154,13 @@ nav {
   background: var(--white);
 }
 
-.page { padding-top: 80px; }
+.page {
+  padding-top: 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+
 
 /* ── REVEAL ── */
 .reveal {
