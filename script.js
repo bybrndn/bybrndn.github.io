@@ -1,3 +1,36 @@
+// ── MODULAR NAV ──
+// Edit the nav here and it updates across every page
+(function() {
+  const nav = document.getElementById('navbar');
+  if (!nav) return;
+
+  nav.innerHTML = `
+    <div class="nav-inner">
+      <a class="nav-logo" href="/index.html">
+        <span class="by">By</span>
+        <img src="/images/BRNDN light.png" alt="BRNDN" style="height:28px; width:auto;" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/work.html">Work</a></li>
+      </ul>
+      <button class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  `;
+
+  // Auto highlight active link based on current page
+  const path = window.location.pathname;
+  nav.querySelectorAll('.nav-links a').forEach(link => {
+    const href = link.getAttribute('href');
+    if (path === href || path.endsWith(href) || (href === '/work.html' && path.includes('/projects/'))) {
+      link.classList.add('active');
+    }
+  });
+})();
+
+
 // ── PROJECT REGISTRY ──
 // Add new projects here in order — the next project link updates automatically
 const PROJECTS = [
