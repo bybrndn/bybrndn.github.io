@@ -23,6 +23,61 @@
 
     .accent { color: var(--accent); }
 
+    /* ── PARALLAX HERO ── */
+    .project-hero-bg {
+      transition: filter 1.2s ease;
+    }
+    .project-hero-bg.loading {
+      filter: brightness(0.45) blur(20px);
+    }
+    .project-hero-bg.loaded {
+      filter: brightness(0.45) blur(0px);
+    }
+
+    .project-hero {
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      width: 100vw;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      border-bottom: none;
+    }
+
+    .project-hero-bg {
+      position: absolute;
+      inset: -15%;
+      background-image: url('/projects/itsmejagz/jagzbackground.png');
+      background-size: cover;
+      background-position: center 30%;
+      will-change: transform;
+    }
+
+    .project-hero-fade {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 65%;
+      background: linear-gradient(to bottom, transparent, var(--bg) 90%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .project-hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5vw 3.5vw 6vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+      min-height: 100vh;
+    }
+
     .project-hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -151,34 +206,36 @@
 
     <nav id="navbar"></nav>
 
-  <div class="page">
-    <section class="project-hero">
-      <div class="project-hero-left">
-        <a class="project-back reveal" href="/work">← Back to Work</a>
+  </div><!-- close .page for full-width hero -->
+  <section class="project-hero">
+    <div class="project-hero-bg" id="parallaxBg"></div>
+    <div class="project-hero-fade"></div>
+    <div class="project-hero-content">
+      <a class="project-back reveal" href="/work">← Back to Work</a>
+      <div>
         <h1 class="project-title reveal d1">ITSME<br><span>JAGZ</span></h1>
-        <div class="project-meta reveal d2">
-          <div class="project-meta-row">
-            <span class="project-meta-label">Type</span>
-            <span class="project-meta-value">Personal Branding & Visual Identity</span>
-          </div>
-          <div class="project-meta-row">
-            <span class="project-meta-label">Year</span>
-            <span class="project-meta-value">2026</span>
-          </div>
-          <div class="project-meta-row">
-            <span class="project-meta-label">Tools</span>
-            <span class="project-meta-value">Photoshop, Illustrator, Figma</span>
-          </div>
+        <p class="project-desc reveal d2">A full visual identity system built for JAGZ — an IRL streamer from New Zealand making his presence known on the streets and on screen.</p>
+      </div>
+      <div class="project-meta reveal d3">
+        <div class="project-meta-row">
+          <span class="project-meta-label">Type</span>
+          <span class="project-meta-value">Personal Branding & Visual Identity</span>
+        </div>
+        <div class="project-meta-row">
+          <span class="project-meta-label">Year</span>
+          <span class="project-meta-value">2026</span>
+        </div>
+        <div class="project-meta-row">
+          <span class="project-meta-label">Tools</span>
+          <span class="project-meta-value">Photoshop, Illustrator, Figma</span>
+        </div>
+        <div class="project-meta-row">
           <a href="https://c770f7a1-c0a1-4d47-9df7-610a5c2148fe.filesusr.com/ugd/64ccbb_1a7e6fb05aca418ca5e5840d7456d5ce.pdf" class="link-arrow" target="_blank">View Guidelines PDF <span>→</span></a>
         </div>
       </div>
-      <div class="project-hero-right">
-        <div class="project-cover reveal">
-          <img src="https://static.wixstatic.com/media/64ccbb_0d8d4369ca3842188376101a32b736a4~mv2.png/v1/fill/w_600,h_454,al_c,lg_1,q_85,enc_avif,quality_auto/64ccbb_0d8d4369ca3842188376101a32b736a4~mv2.png" alt="JAGZ Visual Identity" />
-        </div>
-        <p class="project-desc reveal d2">A full visual identity system built for JAGZ — an IRL streamer from New Zealand making his presence known on the streets and on screen.</p>
-      </div>
-    </section>
+    </div>
+  </section>
+  <div class="page">
 
     <div class="project-section reveal">
       <span class="ps-label">Overview</span>
@@ -298,5 +355,18 @@
   </div>
 
   <script src="/script.js"></script>
+  <script>
+    const bg = document.getElementById('parallaxBg');
+    bg.classList.add('loading');
+    const bgImg = new Image();
+    bgImg.src = '/projects/itsmejagz/jagzbackground.png';
+    bgImg.onload = () => {
+      bg.classList.remove('loading');
+      bg.classList.add('loaded');
+    };
+    window.addEventListener('scroll', () => {
+      bg.style.transform = `translateY(${window.scrollY * 0.35}px)`;
+    }, { passive: true });
+  </script>
 </body>
 </html>
