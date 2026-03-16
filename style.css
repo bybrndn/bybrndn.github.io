@@ -67,7 +67,7 @@ nav {
   top: 0; left: 0; right: 0;
   z-index: 100;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 2rem 3.5vw;
   background: rgba(21,24,30,0.92);
@@ -77,9 +77,11 @@ nav {
 }
 
 .nav-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 0.55rem;
   text-decoration: none;
 }
