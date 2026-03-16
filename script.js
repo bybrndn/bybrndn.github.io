@@ -155,22 +155,7 @@ function initSmoothAnchors() {
   });
 }
 
-// ── DARK MODE TOGGLE ──
-function initDarkMode() {
-  const darkToggle = document.createElement('button');
-  darkToggle.className = 'dark-mode-toggle';
-  darkToggle.textContent = '🌙';
-  darkToggle.setAttribute('aria-label', 'Toggle dark mode');
-  document.querySelector('.nav-inner')?.appendChild(darkToggle);
 
-  const isDark = localStorage.getItem('dark') === 'true';
-  if (isDark) document.documentElement.classList.add('dark');
-
-  darkToggle.addEventListener('click', () => {
-    const nowDark = !document.documentElement.classList.toggle('dark');
-    localStorage.setItem('dark', nowDark);
-  });
-}
 
 // ── ALL DOM-DEPENDENT LOGIC ──
 document.addEventListener('DOMContentLoaded', () => {
@@ -183,7 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initProgressBar();
   initActiveSectionTracking();
   initSmoothAnchors();
-  initDarkMode();
 
   // Next project
   const nextEl = document.querySelector('.next-project');
