@@ -42,23 +42,24 @@ body {
 .cursor {
   position: fixed;
   width: 7px; height: 7px;
-  background: var(--ink);
+  background: #ffffff;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
   transition: width 0.3s var(--ease), height 0.3s var(--ease);
-  mix-blend-mode: normal;
+  mix-blend-mode: difference;
 }
 .cursor.grow { width: 44px; height: 44px; }
 
 .cursor-ring {
   position: fixed;
   width: 32px; height: 32px;
-  border: 1px solid rgba(236,244,249,0.3);
+  border: 1px solid #ffffff;
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%, -50%);
   transition: transform 0.15s var(--ease), width 0.35s var(--ease), height 0.35s var(--ease);
+  mix-blend-mode: difference;
 }
 
 /* ── NAV ── */
