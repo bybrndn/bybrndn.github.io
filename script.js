@@ -50,11 +50,15 @@ const PROJECTS = [
 
 // ── PAGE TRANSITIONS ──
 const overlay = document.createElement('div');
-overlay.className = 'page-transition enter';
+overlay.className = 'page-transition';
+overlay.style.cssText = 'position:fixed;inset:0;background:#15181e;z-index:9990;pointer-events:none;opacity:1;transition:opacity 0.4s ease;';
 document.body.appendChild(overlay);
 
-window.addEventListener('load', () => {
-  setTimeout(() => overlay.classList.remove('enter'), 50);
+// Fade in on load
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    overlay.style.opacity = '0';
+  });
 });
 
 document.addEventListener('click', e => {
@@ -63,7 +67,8 @@ document.addEventListener('click', e => {
   const href = link.getAttribute('href');
   if (!href || href.startsWith('#') || href.startsWith('mailto') || href.startsWith('tel') || link.target === '_blank') return;
   e.preventDefault();
-  overlay.classList.add('enter');
+  overlay.style.opacity = '1';
+  overlay.style.pointerEvents = 'all';
   setTimeout(() => { window.location.href = href; }, 380);
 });
 
