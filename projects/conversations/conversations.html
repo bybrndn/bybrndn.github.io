@@ -20,6 +20,16 @@
     }
 
     /* ── HERO ── */
+    .project-hero-bg.loading {
+      filter: sepia(20%) contrast(1.05) brightness(0.55) blur(12px);
+      transform: scale(1.05); /* hide blur edges */
+      transition: filter 1.2s ease, transform 1.2s ease;
+    }
+    .project-hero-bg.loaded {
+      filter: sepia(20%) contrast(1.05) brightness(0.55) blur(0px);
+      transform: scale(1);
+    }
+
     .project-hero {
       margin-left: calc(-50vw + 50%);
       margin-right: calc(-50vw + 50%);
@@ -260,11 +270,25 @@
 
   <script src="/script.js"></script>
   <script>
-    // Parallax on scroll
     const bg = document.getElementById('parallaxBg');
+
+    // Blur-up: start blurred, fade sharp once image loads
+    bg.classList.add('loading');
+    const img = new Image();
+    img.src = bg.style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
+    img.onload = () => {
+      bg.classList.remove('loading');
+      bg.classList.add('loaded');
+    };
+
+    // Parallax on scroll
     window.addEventListener('scroll', () => {
       const scrolled = window.scrollY;
-      bg.style.transform = `translateY(${scrolled * 0.35}px)`;
+      if (!bg.classList.contains('loading')) {
+        bg.style.transform = `translateY(${scrolled * 0.35}px)`;
+      } else {
+        bg.style.transform = `scale(1.05) translateY(${scrolled * 0.35}px)`;
+      }
     }, { passive: true });
   </script>
 </body>
