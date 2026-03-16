@@ -81,6 +81,14 @@ function initTransitions() {
   });
 }
 
+// ── ANIMATED LOGO ──
+function initAnimatedLogo() {
+  const logoImg = document.querySelector('.nav-logo img');
+  if (logoImg) {
+    logoImg.style.animation = 'logoFadeIn 0.8s ease-out forwards';
+  }
+}
+
 // ── PREFETCH PAGES ──
 function initPrefetch() {
   document.querySelectorAll('a[href^="/"]').forEach(link => {
@@ -155,6 +163,121 @@ function initSmoothAnchors() {
   });
 }
 
+// ── GOOGLE ANALYTICS EVENT TRACKING ──
+function initAnalyticsTracking() {
+  // Track PDF downloads
+  document.querySelectorAll('a[href*=".pdf"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const fileName = link.href.split('/').pop() || 'PDF';
+      const buttonText = link.textContent.trim();
+      
+      if (window.gtag) {
+        gtag('event', 'file_download', {
+          'file_name': fileName,
+          'button_text': buttonText,
+          'file_type': 'pdf'
+        });
+      }
+    });
+  });
+
+  // Track YouTube video plays
+  document.querySelectorAll('iframe[src*="youtube.com"]').forEach(iframe => {
+    iframe.addEventListener('click', () => {
+      const videoUrl = iframe.src;
+      const videoId = videoUrl.split('embed/')[1]?.split('?')[0] || 'unknown';
+      
+      if (window.gtag) {
+        gtag('event', 'video_play', {
+          'video_id': videoId,
+          'video_platform': 'YouTube',
+          'video_url': videoUrl
+        });
+      }
+    }, { once: true });
+  });
+
+  // Track project clicks
+  document.querySelectorAll('.work-item, a[href*="/projects/"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const projectName = link.textContent.trim() || link.href;
+      
+      if (window.gtag) {
+        gtag('event', 'project_click', {
+          'project_name': projectName,
+          'project_url': link.href
+        });
+      }
+    });
+  });
+
+  // Track external link clicks
+  document.querySelectorAll('a[href^="http"]').forEach(link => {
+    // Skip YouTube embeds since we track those separately
+    if (link.href.includes('youtube.com') && link.target === '_blank') {
+      link.addEventListener('click', () => {
+        const url = link.href;
+        const linkText = link.textContent.trim();
+        
+        if (window.gtag) {
+          gtag('event', 'external_link_click', {
+            'url': url,
+            'link_text': linkText
+          });
+        }
+      });
+    }
+  });
+}
+
+// ── GOOGLE ANALYTICS EVENT TRACKING ──
+function initAnalyticsTracking() {
+  // Track PDF downloads
+  document.querySelectorAll('a[href*=".pdf"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const fileName = link.href.split('/').pop() || 'PDF';
+      const buttonText = link.textContent.trim();
+      
+      // Send event to Google Analytics
+      if (window.gtag) {
+        gtag('event', 'file_download', {
+          'file_name': fileName,
+          'button_text': buttonText,
+          'file_type': 'pdf'
+        });
+      }
+    });
+  });
+
+  // Track external link clicks (optional - see who clicks socials, etc)
+  document.querySelectorAll('a[href^="http"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const url = link.href;
+      const linkText = link.textContent.trim();
+      
+      if (window.gtag) {
+        gtag('event', 'external_link_click', {
+          'url': url,
+          'link_text': linkText
+        });
+      }
+    });
+  });
+
+  // Track project clicks
+  document.querySelectorAll('.work-item, a[href*="/projects/"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const projectName = link.textContent.trim() || link.href;
+      
+      if (window.gtag) {
+        gtag('event', 'project_viewed', {
+          'project_name': projectName
+        });
+      }
+    });
+  });
+}
+
 
 
 // ── ALL DOM-DEPENDENT LOGIC ──
@@ -162,12 +285,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   injectNav();
   initTransitions();
+  initAnimatedLogo();
   initPrefetch();
   initKeyboardNav();
   initScrollToTop();
   initProgressBar();
   initActiveSectionTracking();
   initSmoothAnchors();
+  initAnalyticsTracking();
 
   // Next project
   const nextEl = document.querySelector('.next-project');
