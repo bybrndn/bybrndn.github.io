@@ -16,13 +16,11 @@
   <nav id="navbar">
     <a class="nav-logo" href="index.html">
       <span class="by">By</span>
-      <img src="images/smallBRNDN light.png" alt="BRNDN" style="height:20px;">
+      <img src="images/smallBRNDN light.png" alt="BRNDN" style="height:20px;" />
     </a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="about.html">About</a></li>
       <li><a href="work.html">Work</a></li>
-      <li><a href="contact.html">Contact</a></li>
     </ul>
     <button class="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
@@ -31,24 +29,20 @@
 
   <div class="page">
 
-    <!-- HERO -->
     <section class="home-hero">
-
       <div class="home-left">
         <p class="home-overline reveal">Auckland, NZ — 2026</p>
-
         <h1 class="home-title reveal d1">
           <em>Branden Hall</em>
           GRAPHIC<br>DESIGNER
         </h1>
-
         <div class="home-bottom">
           <p class="home-desc reveal d2">
             Recent graduate working across UI/UX, motion, and digital design. I take ideas and shape them into clear, considered work.
           </p>
           <div class="home-cta reveal d3">
             <a href="work.html" class="link-arrow">View Work <span>→</span></a>
-            <a href="about.html" class="link-muted">About me</a>
+            <a href="mailto:hallbranden04@gmail.com" class="link-muted">Get in touch</a>
           </div>
         </div>
       </div>
@@ -60,7 +54,6 @@
             alt="Branden Hall"
           />
         </div>
-
         <div class="home-index reveal d2">
           <span class="home-index-num">01</span>
           <div class="home-index-tags">
@@ -70,11 +63,9 @@
           </div>
         </div>
       </div>
-
     </section>
 
-    <!-- TICKER -->
-    <div class="ticker-wrap reveal">
+    <div class="ticker-wrap">
       <div class="ticker">
         <span class="ticker-item">UI / UX Design</span>
         <span class="ticker-item">Graphic Design</span>
@@ -97,7 +88,6 @@
       </div>
     </div>
 
-    <!-- CONTACT STRIP -->
     <div class="contact-strip">
       <div class="cs-cell reveal">
         <span class="cs-label">Phone</span>
@@ -105,7 +95,7 @@
       </div>
       <div class="cs-cell reveal d1">
         <span class="cs-label">Email</span>
-        <a class="cs-value" href="/cdn-cgi/l/email-protection#caa2aba6a6a8b8aba4aeafa4fafe8aada7aba3a6e4a9a5a7"><span class="__cf_email__" data-cfemail="8ae2ebe6e6e8f8ebe4eeefe4babecaede7ebe3e6a4e9e5e7">[email&#160;protected]</span></a>
+        <a class="cs-value" href="mailto:hallbranden04@gmail.com">hallbranden04@gmail.com</a>
       </div>
       <div class="cs-cell reveal d2">
         <span class="cs-label">Socials</span>
@@ -120,44 +110,8 @@
       <span>© 2026 Branden Hall</span>
       <span>Auckland, NZ</span>
     </footer>
-
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    const cursor = document.querySelector(".cursor");
-    const ring = document.querySelector(".cursor-ring");
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener("mousemove", e => {
-      mx = e.clientX; my = e.clientY;
-      cursor.style.left = mx + "px"; cursor.style.top = my + "px";
-    });
-    function lerp(a, b, t) { return a + (b - a) * t; }
-    (function animRing() {
-      rx = lerp(rx, mx, 0.12); ry = lerp(ry, my, 0.12);
-      ring.style.left = rx + "px"; ring.style.top = ry + "px";
-      requestAnimationFrame(animRing);
-    })();
-    document.querySelectorAll("a, button").forEach(el => {
-      el.addEventListener("mouseenter", () => cursor.classList.add("grow"));
-      el.addEventListener("mouseleave", () => cursor.classList.remove("grow"));
-    });
-
-    window.addEventListener("scroll", () =>
-      document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 20)
-    );
-
-    const reveals = document.querySelectorAll(".reveal");
-    const obs = new IntersectionObserver(entries =>
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); }), { threshold: 0.08 }
-    );
-    reveals.forEach(el => obs.observe(el));
-    window.addEventListener("load", () =>
-      reveals.forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add("visible"); })
-    );
-
-    function toggleMenu() {
-      const links = document.querySelector(".nav-links");
-      const open = links.style.display === "flex";
-      links.style.display = open ? "none" : "flex";
-      if (!open) Object.assign(links.style, {
-        flexDirection: "column", po
+  <script src="script.js"></script>
+</body>
+</html>
