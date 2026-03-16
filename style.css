@@ -309,6 +309,7 @@ nav {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   background: #ecf4f9;
+  color: #15181e;
 }
 
 .cs-cell {
@@ -317,6 +318,7 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
+  color: #15181e;
 }
 .cs-cell:last-child { border-right: none; }
 
@@ -325,7 +327,8 @@ nav {
   font-weight: 600;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--ink-mid);
+  color: #15181e !important;
+  opacity: 0.5;
 }
 .cs-value {
   font-family: 'Poppins', sans-serif;
@@ -339,6 +342,7 @@ nav {
 .cs-value:hover { opacity: 0.4; }
 
 .cs-socials { display: flex; gap: 1.5rem; margin-top: 0.2rem; }
+.contact-strip * { color: inherit; }
 .cs-social {
   font-size: 0.58rem;
   letter-spacing: 0.18em;
