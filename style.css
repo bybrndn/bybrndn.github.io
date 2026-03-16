@@ -1,4 +1,11 @@
 @font-face {
+  font-family: 'Overdrive';
+  src: url('fonts/Overdrive.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Grandspan Wide';
   src: url('fonts/Grandspan-Wide.otf') format('opentype');
   font-weight: normal;
@@ -72,15 +79,17 @@ nav {
 .nav-logo {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.55rem;
   text-decoration: none;
 }
 .nav-logo .by {
-  font-size: 0.6rem;
-  letter-spacing: 0.4em;
-  color: rgba(245,244,240,0.45);
+  font-family: 'Overdrive', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: rgba(236,244,249,0.6);
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: normal;
 }
 .nav-logo svg {
   height: 18px;
