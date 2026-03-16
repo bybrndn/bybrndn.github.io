@@ -155,9 +155,10 @@ nav {
 /* ── HOME ── */
 .home-hero {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 0.8fr;
   min-height: calc(100vh - 80px);
   border-bottom: 1px solid var(--rule);
+  overflow: hidden;
 }
 
 .home-left {
@@ -177,7 +178,7 @@ nav {
 
 .home-title {
   font-family: 'Grandspan Wide', sans-serif;
-  font-size: clamp(2.8rem, 5.5vw, 6rem);
+  font-size: clamp(2rem, 3.8vw, 4.2rem);
   line-height: 0.87;
   letter-spacing: -0.02em;
   color: var(--ink);
