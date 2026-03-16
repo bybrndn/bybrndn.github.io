@@ -48,17 +48,7 @@ const PROJECTS = [
   if (titleEl) titleEl.innerHTML = next.title;
 })();
 
-// ── PAGE TRANSITIONS ──
-const overlay = document.createElement('div');
-overlay.className = 'page-transition';
-overlay.style.cssText = 'position:fixed;inset:0;background:#15181e;z-index:9990;pointer-events:none;opacity:1;transition:opacity 0.4s ease;';
-document.body.appendChild(overlay);
-
-// Fade in on load
-requestAnimationFrame(() => {
-  requestAnimationFrame(() => {
-    overlay.style.opacity = '0';
-  });
+// ── PAGE TRANSITIONS ── (disabled)
 });
 
 document.addEventListener('click', e => {
