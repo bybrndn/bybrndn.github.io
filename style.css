@@ -10,13 +10,13 @@
 html { scroll-behavior: smooth; font-size: 16px; }
 
 :root {
-  --bg: #0f1117;
-  --bg-dark: #090b10;
-  --ink: #eceef2;
-  --ink-mid: rgba(236,238,242,0.45);
-  --ink-faint: rgba(236,238,242,0.06);
-  --white: #eceef2;
-  --rule: rgba(236,238,242,0.08);
+  --bg: #15181e;
+  --bg-dark: #0f1117;
+  --ink: #ecf4f9;
+  --ink-mid: rgba(236,244,249,0.45);
+  --ink-faint: rgba(236,244,249,0.06);
+  --white: #ecf4f9;
+  --rule: rgba(236,244,249,0.08);
   --speed: 0.55s;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -47,7 +47,7 @@ body {
 .cursor-ring {
   position: fixed;
   width: 32px; height: 32px;
-  border: 1px solid rgba(236,238,242,0.3);
+  border: 1px solid rgba(236,244,249,0.3);
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%, -50%);
@@ -63,7 +63,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 2rem 3.5vw;
-  background: rgba(15,17,23,0.92);
+  background: rgba(21,24,30,0.92);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(245,244,240,0.08);
