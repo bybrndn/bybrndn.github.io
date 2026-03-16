@@ -20,14 +20,14 @@
     }
 
     /* ── HERO ── */
+    .project-hero-bg {
+      transition: filter 1.2s ease;
+    }
     .project-hero-bg.loading {
-      filter: sepia(20%) contrast(1.05) brightness(0.55) blur(12px);
-      transform: scale(1.05); /* hide blur edges */
-      transition: filter 1.2s ease, transform 1.2s ease;
+      filter: sepia(20%) contrast(1.05) brightness(0.55) blur(20px);
     }
     .project-hero-bg.loaded {
       filter: sepia(20%) contrast(1.05) brightness(0.55) blur(0px);
-      transform: scale(1);
     }
 
     .project-hero {
@@ -47,7 +47,6 @@
       background-image: url('/projects/conversations/conversationsbackground.png');
       background-size: cover;
       background-position: center 30%;
-      filter: sepia(20%) contrast(1.05) brightness(0.55);
       will-change: transform;
     }
 
@@ -272,23 +271,19 @@
   <script>
     const bg = document.getElementById('parallaxBg');
 
-    // Blur-up: start blurred, fade sharp once image loads
+    // Blur-up: start blurred, read src from CSS, fade sharp once loaded
     bg.classList.add('loading');
+    const bgUrl = '/projects/conversations/conversationsbackground.png';
     const img = new Image();
-    img.src = bg.style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
+    img.src = bgUrl;
     img.onload = () => {
       bg.classList.remove('loading');
       bg.classList.add('loaded');
     };
 
-    // Parallax on scroll
+    // Parallax — direct transform on scroll, no smoothing
     window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
-      if (!bg.classList.contains('loading')) {
-        bg.style.transform = `translateY(${scrolled * 0.35}px)`;
-      } else {
-        bg.style.transform = `scale(1.05) translateY(${scrolled * 0.35}px)`;
-      }
+      bg.style.transform = `translateY(${window.scrollY * 0.35}px)`;
     }, { passive: true });
   </script>
 </body>
