@@ -81,11 +81,109 @@ function initTransitions() {
   });
 }
 
+// ── PREFETCH PAGES ──
+function initPrefetch() {
+  document.querySelectorAll('a[href^="/"]').forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      const linkEl = document.createElement('link');
+      linkEl.rel = 'prefetch';
+      linkEl.href = link.getAttribute('href');
+      document.head.appendChild(linkEl);
+    });
+  });
+}
+
+// ── KEYBOARD NAVIGATION ──
+function initKeyboardNav() {
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') {
+      const nextLink = document.querySelector('.next-project');
+      if (nextLink) nextLink.click();
+    }
+  });
+}
+
+// ── SCROLL-TO-TOP ──
+function initScrollToTop() {
+  const navLogo = document.querySelector('.nav-logo');
+  if (navLogo) {
+    navLogo.addEventListener('click', e => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+}
+
+// ── PROGRESS BAR ──
+function initProgressBar() {
+  const progress = document.createElement('div');
+  progress.className = 'progress-bar';
+  document.body.appendChild(progress);
+
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    progress.style.width = scrolled + '%';
+  });
+}
+
+// ── ACTIVE SECTION TRACKING ──
+function initActiveSectionTracking() {
+  const sections = document.querySelectorAll('[data-section]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  if (sections.length === 0) return;
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (s.offsetTop <= window.scrollY) current = s.getAttribute('data-section');
+    });
+    navLinks.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href').includes(current));
+    });
+  });
+}
+
+// ── SMOOTH ANCHOR SCROLLING ──
+function initSmoothAnchors() {
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+}
+
+// ── DARK MODE TOGGLE ──
+function initDarkMode() {
+  const darkToggle = document.createElement('button');
+  darkToggle.className = 'dark-mode-toggle';
+  darkToggle.textContent = '🌙';
+  darkToggle.setAttribute('aria-label', 'Toggle dark mode');
+  document.querySelector('.nav-inner')?.appendChild(darkToggle);
+
+  const isDark = localStorage.getItem('dark') === 'true';
+  if (isDark) document.documentElement.classList.add('dark');
+
+  darkToggle.addEventListener('click', () => {
+    const nowDark = !document.documentElement.classList.toggle('dark');
+    localStorage.setItem('dark', nowDark);
+  });
+}
+
 // ── ALL DOM-DEPENDENT LOGIC ──
 document.addEventListener('DOMContentLoaded', () => {
 
   injectNav();
   initTransitions();
+  initPrefetch();
+  initKeyboardNav();
+  initScrollToTop();
+  initProgressBar();
+  initActiveSectionTracking();
+  initSmoothAnchors();
+  initDarkMode();
 
   // Next project
   const nextEl = document.querySelector('.next-project');
