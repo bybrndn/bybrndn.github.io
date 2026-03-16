@@ -230,7 +230,6 @@ nav {
   line-height: 0.9;
   letter-spacing: -0.02em;
   color: var(--ink);
-  word-break: break-word;
 }
 .home-title em {
   display: block;
@@ -415,7 +414,6 @@ nav {
 .about-big {
   font-family: 'Grandspan Wide', sans-serif;
   font-size: clamp(3rem, 6vw, 7rem);
-  word-break: break-word;
   line-height: 0.88;
   letter-spacing: -0.025em;
   color: var(--ink);
@@ -549,7 +547,6 @@ nav {
 .work-big {
   font-family: 'Grandspan Wide', sans-serif;
   font-size: clamp(3rem, 6.5vw, 7.5rem);
-  word-break: break-word;
   line-height: 0.88;
   letter-spacing: -0.025em;
   color: var(--ink);
@@ -660,7 +657,6 @@ nav {
 .contact-big {
   font-family: 'Grandspan Wide', sans-serif;
   font-size: clamp(4.5rem, 9vw, 10rem);
-  word-break: break-word;
   line-height: 0.87;
   letter-spacing: -0.025em;
   color: var(--ink);
@@ -788,9 +784,12 @@ footer span {
     border-bottom: 1px solid var(--rule);
     gap: 1.5rem;
   }
+  .home-title, .work-big, .about-big, .contact-big, .wi-title {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
   .home-title {
     font-size: clamp(2rem, 9vw, 4rem);
-    word-break: break-word;
   }
   .home-desc { max-width: 100%; }
   .home-right { padding: 0; }
