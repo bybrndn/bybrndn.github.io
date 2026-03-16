@@ -54,11 +54,21 @@ const ring = document.querySelector('.cursor-ring');
 
 if (cursor && ring) {
   let mx = 0, my = 0, rx = 0, ry = 0;
+  let moved = false;
+
+  // Hide until first mouse movement
+  cursor.style.opacity = '0';
+  ring.style.opacity = '0';
 
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
     cursor.style.left = mx + 'px';
     cursor.style.top = my + 'px';
+    if (!moved) {
+      moved = true;
+      cursor.style.opacity = '1';
+      ring.style.opacity = '1';
+    }
   });
 
   function lerp(a, b, t) { return a + (b - a) * t; }
