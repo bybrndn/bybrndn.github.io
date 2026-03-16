@@ -784,9 +784,13 @@ footer span {
     border-bottom: 1px solid var(--rule);
     gap: 1.5rem;
   }
-  .home-title, .work-big, .about-big, .contact-big, .wi-title {
+  .home-title, .about-big, .contact-big {
     word-break: break-word;
     overflow-wrap: break-word;
+  }
+  .wi-title {
+    font-size: clamp(1rem, 5.5vw, 2rem);
+    word-break: normal;
   }
   .home-title {
     font-size: clamp(2rem, 9vw, 4rem);
