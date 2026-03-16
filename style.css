@@ -179,7 +179,8 @@ nav {
   border-right: 1px solid var(--rule);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .home-overline {
@@ -192,7 +193,7 @@ nav {
 
 .home-title {
   font-family: 'Grandspan Wide', sans-serif;
-  font-size: clamp(2.2rem, 3.6vw, 4rem);
+  font-size: clamp(2.8rem, 4.8vw, 5.5rem);
   line-height: 0.9;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -209,7 +210,7 @@ nav {
 .home-bottom {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .home-desc {
