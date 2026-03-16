@@ -1,49 +1,179 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BY BRNDN — Move Media NZ</title>
-  <link rel="icon" href="/images/smallBRNDN light.png" type="image/png" />
+  <link rel="icon" href="/images/BRNDN favicon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style.css" />
   <style>
     :root {
-      --bg: #0f0f0f;
-      --bg-dark: #080808;
-      --ink: #f0f0f0;
-      --ink-mid: rgba(240,240,240,0.45);
-      --ink-faint: rgba(240,240,240,0.05);
-      --white: #f0f0f0;
-      --rule: rgba(240,240,240,0.07);
-      --accent: #f0f0f0;
+      --bg: #222932;
+      --bg-dark: #181d23;
+      --ink: #ECF5F4;
+      --ink-mid: rgba(236,245,244,0.45);
+      --ink-faint: rgba(236,245,244,0.05);
+      --white: #ECF5F4;
+      --rule: rgba(236,245,244,0.08);
+      --accent: #2ABBB2;
     }
 
-    .project-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(80vh - 80px); border-bottom: 1px solid var(--rule); }
-    .project-hero-left { padding: 5vw 4vw 5vw 3.5vw; border-right: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: space-between; }
-    .project-back { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; transition: color 0.2s, gap 0.25s; }
-    .project-back:hover { color: var(--ink); gap: 0.9rem; }
-    .project-title { font-family: 'Grandspan Wide', sans-serif; font-size: clamp(2.8rem, 5vw, 6rem); line-height: 0.9; letter-spacing: -0.02em; color: var(--ink); }
-    .project-meta { display: flex; flex-direction: column; gap: 1.2rem; }
-    .project-meta-row { display: flex; flex-direction: column; gap: 0.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule); }
-    .project-meta-row:last-of-type { border-bottom: none; padding-bottom: 0; }
-    .project-meta-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-mid); font-weight: 600; }
-    .project-meta-value { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
-    .project-hero-right { padding: 5vw 3.5vw 5vw 4vw; display: flex; flex-direction: column; justify-content: center; gap: 2rem; }
-    .project-desc { font-size: 0.82rem; line-height: 1.95; color: var(--ink-mid); font-weight: 500; }
-
-    .wip-block {
+    /* ── HERO ── */
+    .project-hero-bg {
+      transition: filter 1.2s ease;
+    }
+    .project-hero-bg.loading {
+      filter: brightness(0.4) blur(20px);
+    }
+    .project-hero-bg.loaded {
+      filter: brightness(0.4) blur(0px);
+    }
+    .project-hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .project-hero-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url('/projects/movemedia/movemediabg.png');
+      background-size: cover;
+      background-position: center center;
+      will-change: transform;
+    }
+    .project-hero-fade {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 65%;
+      background: linear-gradient(to bottom, transparent, var(--bg) 90%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .project-hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 3.5vw 6vw;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      gap: 1.2rem;
-      padding: 3rem;
-      border: 1px solid var(--rule);
+      justify-content: space-between;
+      gap: 1.5rem;
+      min-height: 100vh;
     }
-    .wip-tag { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-mid); font-weight: 600; }
-    .wip-title { font-family: 'Grandspan Wide', sans-serif; font-size: clamp(2rem, 4vw, 4.5rem); color: var(--ink); line-height: 0.9; }
-    .wip-text { font-size: 0.82rem; line-height: 1.9; color: var(--ink-mid); font-weight: 500; max-width: 420px; }
+    .project-back {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      transition: color 0.2s, gap 0.25s;
+      align-self: flex-start;
+    }
+    .project-back:hover { color: var(--ink); gap: 0.9rem; }
+    .project-title {
+      font-family: 'Grandspan Wide', sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 6rem);
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .project-title span { color: var(--accent); }
+    .project-desc {
+      font-size: 0.82rem;
+      line-height: 1.95;
+      color: var(--ink-mid);
+      font-weight: 500;
+      max-width: 520px;
+      margin-top: 1rem;
+    }
+    .project-meta {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+    .project-meta-row { display: flex; flex-direction: column; gap: 0.3rem; }
+    .project-meta-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+    .project-meta-value { font-size: 0.78rem; font-weight: 600; color: var(--ink); }
 
+    /* ── SECTIONS ── */
+    .project-section { display: grid; grid-template-columns: 18rem 1fr; padding: 5vw 3.5vw; border-top: 1px solid var(--rule); }
+    .ps-label { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 600; padding-top: 0.2rem; padding-right: 4vw; }
+    .ps-content { padding-left: 4vw; display: flex; flex-direction: column; gap: 2rem; }
+    .ps-text { font-size: 0.85rem; line-height: 2; color: var(--ink-mid); font-weight: 500; max-width: 640px; }
+    .img-grid { display: grid; gap: 1rem; }
+    .img-grid.cols-1 { grid-template-columns: 1fr; }
+    .img-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+    .img-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .img-grid img { width: 100%; display: block; object-fit: cover; transition: transform 0.6s var(--ease); }
+    .img-grid img:hover { transform: scale(1.02); }
+    .img-caption { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mid); margin-top: 0.5rem; }
+
+    /* ── LOGO DISPLAY ── */
+    .logo-display {
+      background: #000;
+      padding: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-display img {
+      max-height: 120px;
+      width: auto;
+      display: block;
+    }
+    .logo-display.light {
+      background: var(--ink);
+    }
+
+    /* ── BRAND VALUES ── */
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+    }
+    .value-item {
+      background: var(--bg);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .value-name {
+      font-family: 'Grandspan Wide', sans-serif;
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      color: var(--accent);
+      line-height: 1;
+    }
+    .value-desc {
+      font-size: 0.78rem;
+      line-height: 1.8;
+      color: var(--ink-mid);
+    }
+
+    /* ── PALETTE ── */
+    .palette-section { display: grid; grid-template-columns: 18rem 1fr; padding: 5vw 3.5vw; border-top: 1px solid var(--rule); }
+    .palette-swatches { display: flex; gap: 1.5rem; flex-wrap: wrap; padding-left: 4vw; align-items: flex-start; }
+    .palette-swatch { display: flex; flex-direction: column; gap: 0.8rem; }
+    .palette-swatch-color { width: 100px; height: 100px; border-radius: 2px; }
+    .palette-swatch-name { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.05em; color: var(--ink); }
+    .palette-swatch-hex { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mid); }
+
+    /* ── NEXT ── */
     .next-project { display: flex; justify-content: space-between; align-items: center; padding: 3.5rem 3.5vw; text-decoration: none; border-top: 1px solid var(--rule); transition: padding-left 0.35s var(--ease); }
     .next-project:hover { padding-left: 5vw; }
     .next-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-mid); font-weight: 600; margin-bottom: 0.5rem; }
@@ -52,57 +182,165 @@
     .next-project:hover .next-arrow { transform: translate(6px, -6px); color: var(--ink); }
 
     @media (max-width: 860px) {
-      .project-hero { grid-template-columns: 1fr; }
-      .project-hero-left { border-right: none; padding-right: 3.5vw; padding-bottom: 4vw; border-bottom: 1px solid var(--rule); }
-      .project-hero-right { padding-left: 3.5vw; }
+      .project-section { grid-template-columns: 1fr; }
+      .ps-label { padding-right: 0; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+      .ps-content { padding-left: 0; padding-top: 2rem; }
+      .img-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+      .img-grid.cols-2 { grid-template-columns: 1fr; }
+      .palette-section { grid-template-columns: 1fr; }
+      .palette-swatches { padding-left: 0; padding-top: 2rem; }
+      .palette-swatch-color { width: 72px; height: 72px; }
+      .values-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="cursor"></div>
   <div class="cursor-ring"></div>
-  <nav id="navbar">
-    <a class="nav-logo" href="/index.html"><span class="by">By</span><img src="/images/BRNDN light.png" alt="BRNDN" style="height:28px; width:auto;" /></a>
-    <ul class="nav-links">
-      <li><a href="/index.html">Home</a></li>
-      <li><a href="/work.html" class="active">Work</a></li>
-    </ul>
-    <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
-  </nav>
+  <nav id="navbar"></nav>
+
+  <section class="project-hero">
+    <div class="project-hero-bg" id="parallaxBg"></div>
+    <div class="project-hero-fade"></div>
+    <div class="project-hero-content">
+      <a class="project-back reveal" href="/work">← Back to Work</a>
+      <div>
+        <h1 class="project-title reveal d1">MOVE<br><span>MEDIA NZ</span></h1>
+        <p class="project-desc reveal d2">An Auckland-based boutique video production house — crafting cinematic, authentic stories that emotionally move people and elevate brands.</p>
+      </div>
+      <div class="project-meta reveal d3">
+        <div class="project-meta-row">
+          <span class="project-meta-label">Type</span>
+          <span class="project-meta-value">Brand Design</span>
+        </div>
+        <div class="project-meta-row">
+          <span class="project-meta-label">Tools</span>
+          <span class="project-meta-value">Photoshop, Illustrator</span>
+        </div>
+        <div class="project-meta-row">
+          <span class="project-meta-label">Status</span>
+          <span class="project-meta-value">Work in Progress</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <div class="page">
-    <section class="project-hero">
-      <div class="project-hero-left">
-        <a class="project-back reveal" href="/work.html">← Back to Work</a>
-        <h1 class="project-title reveal d1">MOVE<br>MEDIA NZ</h1>
-        <div class="project-meta reveal d2">
-          <div class="project-meta-row">
-            <span class="project-meta-label">Type</span>
-            <span class="project-meta-value">Brand Design</span>
+
+    <div class="project-section reveal">
+      <span class="ps-label">Overview</span>
+      <div class="ps-content">
+        <p class="ps-text">Move Media is an Auckland-based boutique video production house specialising in event films, corporate videos, social media content, videography, photography, and post-production. With over 20 years in the industry, they create beautiful, meaningful visuals that capture moments and tell compelling stories.</p>
+        <p class="ps-text">The brief was to build a brand identity that reflected their vision — to be Aotearoa's trusted creative partner for storytelling videos that emotionally move people and elevate brands worldwide. The result is a clean, confident system built around the values of storytelling, excellence, true collaboration, and real impact.</p>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <span class="ps-label">Logomark</span>
+      <div class="ps-content">
+        <p class="ps-text">The logomark is a minimalist "M" formed by three geometric elements — a small upward-angled triangle symbolising picking yourself up, a gentle angled line for smooth transition and flow, and a tall solid vertical beam representing stability, strength, and forward momentum.</p>
+        <div class="img-grid cols-2">
+          <div>
+            <div class="logo-display">
+              <img src="/projects/movemedia/MoveMediaLogo.png" alt="Move Media Logomark" />
+            </div>
+            <p class="img-caption">Logomark — dark</p>
           </div>
-          <div class="project-meta-row">
-            <span class="project-meta-label">Status</span>
-            <span class="project-meta-value">Work in Progress</span>
-          </div>
-          <div class="project-meta-row">
-            <span class="project-meta-label">Tools</span>
-            <span class="project-meta-value">Photoshop, Illustrator</span>
+          <div>
+            <div class="logo-display light">
+              <img src="/projects/movemedia/MoveMediaLogo.png" alt="Move Media Logomark light" />
+            </div>
+            <p class="img-caption">Logomark — light</p>
           </div>
         </div>
       </div>
-      <div class="project-hero-right">
-        <div class="wip-block reveal">
-          <span class="wip-tag">Coming Soon</span>
-          <h2 class="wip-title">WORK IN<br>PROGRESS</h2>
-          <p class="wip-text">This project is currently being built out. Check back soon — full case study and visuals on the way.</p>
-          <a href="/cdn-cgi/l/email-protection#d9b1b8b5b5bbabb8b7bdbcb7e9ed99beb4b8b0b5f7bab6b4" class="link-arrow">Get in touch <span>→</span></a>
+    </div>
+
+    <div class="project-section reveal">
+      <span class="ps-label">Logo System</span>
+      <div class="ps-content">
+        <p class="ps-text">Three logo configurations were developed to cover every use case — from compact icon-only applications to full horizontal and stacked lockups for formal branded materials.</p>
+        <div class="img-grid cols-1">
+          <div>
+            <div class="logo-display">
+              <img src="/projects/movemedia/MoveMediaFull.png" alt="Move Media wordmark" style="max-height:80px;" />
+            </div>
+            <p class="img-caption">Wordmark — standalone</p>
+          </div>
+        </div>
+        <div class="img-grid cols-2">
+          <div>
+            <div class="logo-display">
+              <img src="/projects/movemedia/MoveMediaFull2.png" alt="Move Media horizontal lockup" />
+            </div>
+            <p class="img-caption">Horizontal lockup</p>
+          </div>
+          <div>
+            <div class="logo-display">
+              <img src="/projects/movemedia/MoveMediaStacked.png" alt="Move Media stacked lockup" />
+            </div>
+            <p class="img-caption">Stacked lockup</p>
+          </div>
+        </div>
+        <div class="img-grid cols-1">
+          <div>
+            <div class="logo-display">
+              <img src="/projects/movemedia/MoveMediaStacked2.png" alt="Move Media stacked variation" />
+            </div>
+            <p class="img-caption">Stacked variation</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+
+    <div class="project-section reveal">
+      <span class="ps-label">Brand Values</span>
+      <div class="ps-content">
+        <div class="values-grid">
+          <div class="value-item">
+            <span class="value-name">Storytelling</span>
+            <p class="value-desc">We craft cinematic, authentic narratives full of emotional depth and top-tier quality.</p>
+          </div>
+          <div class="value-item">
+            <span class="value-name">Excellence</span>
+            <p class="value-desc">We deliver powerful video that inspires hearts, forges genuine connections, and drives meaningful results.</p>
+          </div>
+          <div class="value-item">
+            <span class="value-name">Collaboration</span>
+            <p class="value-desc">We listen deeply, partner closely, and tailor every project to perfectly match your vision.</p>
+          </div>
+          <div class="value-item">
+            <span class="value-name">Real Impact</span>
+            <p class="value-desc">We communicate with purpose, emphasising emotion, connection, and results that matter.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="palette-section reveal">
+      <span class="ps-label">Colour Palette</span>
+      <div class="palette-swatches">
+        <div class="palette-swatch">
+          <div class="palette-swatch-color" style="background:#2ABBB2;"></div>
+          <span class="palette-swatch-name">Teal</span>
+          <span class="palette-swatch-hex">#2ABBB2</span>
+        </div>
+        <div class="palette-swatch">
+          <div class="palette-swatch-color" style="background:#222932;border:1px solid rgba(236,245,244,0.1);"></div>
+          <span class="palette-swatch-name">Dark</span>
+          <span class="palette-swatch-hex">#222932</span>
+        </div>
+        <div class="palette-swatch">
+          <div class="palette-swatch-color" style="background:#ECF5F4;"></div>
+          <span class="palette-swatch-name">Light</span>
+          <span class="palette-swatch-hex">#ECF5F4</span>
+        </div>
+      </div>
+    </div>
 
     <a class="next-project reveal" href="#">
       <div>
-        <p class="next-label">Back to Start</p>
+        <p class="next-label">Next Project</p>
         <p class="next-title">—</p>
       </div>
       <span class="next-arrow">↗</span>
@@ -110,4 +348,20 @@
 
     <footer><span>© 2026 Branden Hall</span><span>Auckland, NZ</span></footer>
   </div>
-  <scri
+
+  <script src="/script.js"></script>
+  <script>
+    const bg = document.getElementById('parallaxBg');
+    bg.classList.add('loading');
+    const bgImg = new Image();
+    bgImg.src = '/projects/movemedia/movemediabg.png';
+    bgImg.onload = () => {
+      bg.classList.remove('loading');
+      bg.classList.add('loaded');
+    };
+    window.addEventListener('scroll', () => {
+      bg.style.transform = `translateY(${window.scrollY * 0.35}px)`;
+    }, { passive: true });
+  </script>
+</body>
+</html>
