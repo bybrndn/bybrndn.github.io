@@ -81,56 +81,11 @@ function initTransitions() {
   });
 }
 
-// ── SMOOTH SCROLL ──
-function initSmoothScroll() {
-  let current = window.scrollY;
-  let target = window.scrollY;
-  let ease = 0.08;
-  let running = false;
-
-  window.addEventListener('wheel', e => {
-    e.preventDefault();
-    target += e.deltaY;
-    target = Math.max(0, Math.min(target, document.body.scrollHeight - window.innerHeight));
-    if (!running) {
-      running = true;
-      animate();
-    }
-  }, { passive: false });
-
-  window.addEventListener('touchstart', e => {
-    touchStartY = e.touches[0].clientY;
-  }, { passive: true });
-
-  let touchStartY = 0;
-  window.addEventListener('touchmove', e => {
-    const delta = touchStartY - e.touches[0].clientY;
-    target += delta * 1.5;
-    target = Math.max(0, Math.min(target, document.body.scrollHeight - window.innerHeight));
-    touchStartY = e.touches[0].clientY;
-    if (!running) {
-      running = true;
-      animate();
-    }
-  }, { passive: true });
-
-  function animate() {
-    current += (target - current) * ease;
-    if (Math.abs(target - current) < 0.5) {
-      current = target;
-      running = false;
-    }
-    window.scrollTo(0, current);
-    if (running) requestAnimationFrame(animate);
-  }
-}
-
 // ── ALL DOM-DEPENDENT LOGIC ──
 document.addEventListener('DOMContentLoaded', () => {
 
   injectNav();
   initTransitions();
-  initSmoothScroll();
 
   // Next project
   const nextEl = document.querySelector('.next-project');
