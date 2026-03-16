@@ -264,24 +264,23 @@ nav {
   padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   position: relative;
 }
 
 .home-photo {
-  width: 100%;
-  overflow: hidden;
   position: relative;
+  width: 85%;
+  overflow: hidden;
   display: block;
   line-height: 0;
 }
 
-
 .home-photo img {
   width: 100%;
-  height: auto;
-  max-height: 75vh;
+  height: 70vh;
   object-fit: cover;
   object-position: center top;
   filter: grayscale(10%) contrast(1.06);
