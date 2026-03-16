@@ -22,33 +22,107 @@
       --accent2: #327C83;
     }
 
-    .project-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(80vh - 80px); border-bottom: 1px solid var(--rule); }
-    .project-hero-left { padding: 5vw 4vw 5vw 3.5vw; border-right: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; }
-    .project-back { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; transition: color 0.2s, gap 0.25s; margin-bottom: 0; align-self: flex-start; }
+    /* ── HERO WITH PARALLAX ── */
+    .project-hero-bg {
+      transition: filter 1.2s ease;
+    }
+    .project-hero-bg.loading {
+      filter: brightness(0.4) blur(20px);
+    }
+    .project-hero-bg.loaded {
+      filter: brightness(0.4) blur(0px);
+    }
+    .project-hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .project-hero-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url('https://static.wixstatic.com/media/64ccbb_385481646238455faa4470646d16c0bc~mv2.png');
+      background-size: cover;
+      background-position: center center;
+      will-change: transform;
+    }
+    .project-hero-fade {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 65%;
+      background: linear-gradient(to bottom, transparent, var(--bg) 90%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .project-hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 3.5vw 6vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+      min-height: 100vh;
+    }
+    .project-back {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      transition: color 0.2s, gap 0.25s;
+      align-self: flex-start;
+    }
     .project-back:hover { color: var(--ink); gap: 0.9rem; }
-    .project-title { font-family: 'Grandspan Wide', sans-serif; font-size: clamp(2.8rem, 5vw, 6rem); line-height: 0.9; letter-spacing: -0.02em; color: var(--ink); }
+    .project-title {
+      font-family: 'Grandspan Wide', sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 6rem);
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
     .project-title span { color: var(--accent); }
-    .project-meta { display: flex; flex-direction: column; gap: 1.2rem; }
-    .project-meta-row { display: flex; flex-direction: column; gap: 0.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule); }
-    .project-meta-row:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .project-desc {
+      font-size: 0.82rem;
+      line-height: 1.95;
+      color: var(--ink-mid);
+      font-weight: 500;
+      max-width: 520px;
+      margin-top: 1rem;
+    }
+    .project-meta {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+    .project-meta-row { display: flex; flex-direction: column; gap: 0.3rem; }
     .project-meta-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
-    .project-meta-value { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
-    .project-hero-right { padding: 5vw 3.5vw 5vw 4vw; display: flex; flex-direction: column; justify-content: flex-end; gap: 2rem; }
-    .project-cover { width: 100%; flex: 1; min-height: 0; overflow: hidden; max-height: 60vh; }
-    .project-cover img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 1s var(--ease); }
-    .project-cover:hover img { transform: scale(1.03); }
-    .project-desc { font-size: 0.82rem; line-height: 1.95; color: var(--ink-mid); font-weight: 500; }
-    .project-section { display: grid; grid-template-columns: 18rem 1fr; padding: 5vw 3.5vw; border-top: 1px solid var(--rule); }
+    .project-meta-value { font-size: 0.78rem; font-weight: 600; color: var(--ink); }
+
+    /* ── SECTIONS ── */
+    .project-section { display: grid; grid-template-columns: 18rem 1fr; padding: 5vw 3.5vw; border-top: 1px solid var(--rule); overflow: hidden; }
     .ps-label { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 600; padding-top: 0.2rem; padding-right: 4vw; }
-    .ps-content { padding-left: 4vw; display: flex; flex-direction: column; gap: 2rem; }
+    .ps-content { padding-left: 4vw; display: flex; flex-direction: column; gap: 2rem; min-width: 0; overflow: hidden; }
     .ps-text { font-size: 0.85rem; line-height: 2; color: var(--ink-mid); font-weight: 500; max-width: 640px; }
-    .img-grid { display: grid; gap: 1rem; }
+    .img-grid { display: grid; gap: 1rem; width: 100%; overflow: hidden; }
     .img-grid.cols-1 { grid-template-columns: 1fr; }
     .img-grid.cols-2 { grid-template-columns: 1fr 1fr; }
     .img-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
-    .img-grid img { width: 100%; display: block; object-fit: cover; transition: transform 0.6s var(--ease); }
+    .img-grid img { width: 100%; display: block; object-fit: cover; transition: transform 0.6s var(--ease); max-height: 500px; }
     .img-grid img:hover { transform: scale(1.02); }
     .img-caption { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mid); margin-top: 0.5rem; }
+
     /* ── COLOUR PALETTE ── */
     .palette-section { display: grid; grid-template-columns: 18rem 1fr; padding: 5vw 3.5vw; border-top: 1px solid var(--rule); }
     .palette-swatches { display: flex; gap: 1.5rem; flex-wrap: wrap; padding-left: 4vw; align-items: flex-start; }
@@ -74,12 +148,8 @@
       text-transform: uppercase;
       color: var(--ink-mid);
     }
-    @media (max-width: 860px) {
-      .palette-section { grid-template-columns: 1fr; }
-      .palette-swatches { padding-left: 0; padding-top: 2rem; }
-      .palette-swatch-color { width: 72px; height: 72px; }
-    }
 
+    /* ── NEXT ── */
     .next-project { display: flex; justify-content: space-between; align-items: center; padding: 3.5rem 3.5vw; text-decoration: none; border-top: 1px solid var(--rule); transition: padding-left 0.35s var(--ease); }
     .next-project:hover { padding-left: 5vw; }
     .next-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-mid); font-weight: 600; margin-bottom: 0.5rem; }
@@ -88,15 +158,21 @@
     .next-project:hover .next-arrow { transform: translate(6px, -6px); color: var(--ink); }
 
     @media (max-width: 860px) {
-      .project-hero { grid-template-columns: 1fr; }
-      .project-hero-left { border-right: none; padding-right: 3.5vw; padding-bottom: 4vw; border-bottom: 1px solid var(--rule); }
-      .project-hero-right { padding-left: 3.5vw; }
-      .project-cover { max-height: 55vw; }
       .project-section { grid-template-columns: 1fr; }
-      .ps-label { padding-right: 0; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); margin-bottom: 0; }
+      .ps-label { padding-right: 0; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
       .ps-content { padding-left: 0; padding-top: 2rem; }
       .img-grid.cols-3 { grid-template-columns: 1fr 1fr; }
       .img-grid.cols-2 { grid-template-columns: 1fr; }
+      .img-grid img { max-height: 350px; }
+      .palette-section { grid-template-columns: 1fr; }
+      .palette-swatches { padding-left: 0; padding-top: 2rem; }
+      .palette-swatch-color { width: 72px; height: 72px; }
+      .project-title { font-size: clamp(2rem, 10vw, 3.5rem); word-break: break-word; }
+      .project-desc { font-size: 0.78rem; max-width: 100%; }
+      .project-meta { gap: 1.2rem; }
+      .project-meta-value { font-size: 0.72rem; }
+      .project-hero-content { padding: 80px 6vw 5vw; }
+      .ps-text { font-size: 0.8rem; }
     }
   </style>
 </head>
@@ -105,37 +181,37 @@
   <div class="cursor-ring"></div>
   <nav id="navbar"></nav>
 
-  <div class="page">
-    <section class="project-hero">
-      <div class="project-hero-left">
-        <a class="project-back reveal" href="/work">← Back to Work</a>
+  <section class="project-hero">
+    <div class="project-hero-bg" id="parallaxBg"></div>
+    <div class="project-hero-fade"></div>
+    <div class="project-hero-content">
+      <a class="project-back reveal" href="/work">← Back to Work</a>
+      <div>
         <h1 class="project-title reveal d1">CON<br>FLICT <span>AR</span></h1>
-        <div class="project-meta reveal d2">
-          <div class="project-meta-row">
-            <span class="project-meta-label">Type</span>
-            <span class="project-meta-value">Branding, UI/UX, AR Game Design</span>
-          </div>
-          <div class="project-meta-row">
-            <span class="project-meta-label">Year</span>
-            <span class="project-meta-value">2024</span>
-          </div>
-          <div class="project-meta-row">
-            <span class="project-meta-label">By</span>
-            <span class="project-meta-value">Branden Hall & Kavish Kuver</span>
-          </div>
-          <div class="project-meta-row">
-            <span class="project-meta-label">Tools</span>
-            <span class="project-meta-value">Figma, Photoshop, Unity</span>
-          </div>
-        </div>
-      </div>
-      <div class="project-hero-right">
-        <div class="project-cover reveal">
-          <img src="https://static.wixstatic.com/media/64ccbb_385481646238455faa4470646d16c0bc~mv2.png" alt="Conflict AR Game" />
-        </div>
         <p class="project-desc reveal d2">An augmented reality mobile game built to feel physical and active — not something you play in isolation. Bold branding, AR gameplay, and a full UI/UX system designed in Figma.</p>
       </div>
-    </section>
+      <div class="project-meta reveal d3">
+        <div class="project-meta-row">
+          <span class="project-meta-label">Type</span>
+          <span class="project-meta-value">Branding, UI/UX, AR Game Design</span>
+        </div>
+        <div class="project-meta-row">
+          <span class="project-meta-label">Year</span>
+          <span class="project-meta-value">2024</span>
+        </div>
+        <div class="project-meta-row">
+          <span class="project-meta-label">By</span>
+          <span class="project-meta-value">Branden Hall & Kavish Kuver</span>
+        </div>
+        <div class="project-meta-row">
+          <span class="project-meta-label">Tools</span>
+          <span class="project-meta-value">Figma, Photoshop, Unity</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="page">
 
     <div class="project-section reveal">
       <span class="ps-label">Overview</span>
@@ -222,6 +298,20 @@
 
     <footer><span>© 2026 Branden Hall</span><span>Auckland, NZ</span></footer>
   </div>
+
   <script src="/script.js"></script>
+  <script>
+    const bg = document.getElementById('parallaxBg');
+    bg.classList.add('loading');
+    const bgImg = new Image();
+    bgImg.src = 'https://static.wixstatic.com/media/64ccbb_385481646238455faa4470646d16c0bc~mv2.png';
+    bgImg.onload = () => {
+      bg.classList.remove('loading');
+      bg.classList.add('loaded');
+    };
+    window.addEventListener('scroll', () => {
+      bg.style.transform = `translateY(${window.scrollY * 0.35}px)`;
+    }, { passive: true });
+  </script>
 </body>
 </html>
