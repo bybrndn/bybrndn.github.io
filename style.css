@@ -280,11 +280,11 @@ nav {
   position: relative;
 }
 
-/* ── FIX: removed min-height that forced full viewport height ── */
+
 .home-photo img {
   width: 100%;
-  height: auto;
-  max-height: 480px;
+  height: 100%;
+  max-height: 75vh;
   object-fit: cover;
   object-position: center top;
   filter: grayscale(10%) contrast(1.06);
