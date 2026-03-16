@@ -28,11 +28,11 @@ function injectNav() {
 
 // ── PROJECT REGISTRY ──
 const PROJECTS = [
-  { slug: 'itsmejagz',     title: 'ITSME<br>JAGZ',       path: '/projects/itsmejagz/' },
-  { slug: 'xtrovert',      title: 'XTRO<br>VERT',         path: '/projects/xtrovert/' },
-  { slug: 'conversations', title: 'CONVER<br>SATIONS',    path: '/projects/conversations/' },
-  { slug: 'conflict',      title: 'CONFLICT<br>AR',       path: '/projects/conflict/' },
-  { slug: 'movemedia',     title: 'MOVE<br>MEDIA NZ',     path: '/projects/movemedia/' },
+  { slug: 'itsmejagz',     title: 'ITSME<br>JAGZ',       path: '/projects/itsmejagz/itsmejagz/' },
+  { slug: 'xtrovert',      title: 'XTRO<br>VERT',         path: '/projects/xtrovert/xtrovert/' },
+  { slug: 'conversations', title: 'CONVER<br>SATIONS',    path: '/projects/conversations/conversations/' },
+  { slug: 'conflict',      title: 'CONFLICT<br>AR',       path: '/projects/conflict/conflict/' },
+  { slug: 'movemedia',     title: 'MOVE<br>MEDIA NZ',     path: '/projects/movemedia/movemedia/' },
 ];
 
 // ── MOBILE MENU ──
