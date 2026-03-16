@@ -140,6 +140,37 @@
       background: #ECF5F4;
     }
 
+    /* ── LOGO GRID (NEW) ── */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem 2rem;
+      width: 100%;
+    }
+    .logo-item {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+    .logo-item img {
+      max-height: 100px;
+      width: auto;
+      max-width: 100%;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .logo-item:hover img {
+      transform: scale(1.05);
+    }
+    .logo-item-caption {
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      text-align: center;
+    }
+
     /* ── BRAND VALUES ── */
     .values-grid {
       display: grid;
@@ -193,6 +224,7 @@
       .ps-content { padding-left: 0; padding-top: 2rem; }
       .img-grid.cols-3 { grid-template-columns: 1fr 1fr; }
       .img-grid.cols-2 { grid-template-columns: 1fr; }
+      .logo-grid { grid-template-columns: 1fr; gap: 2rem; }
       .palette-section { grid-template-columns: 1fr; }
       .palette-swatches { padding-left: 0; padding-top: 2rem; }
       .palette-swatch-color { width: 72px; height: 72px; }
@@ -276,34 +308,22 @@
       <span class="ps-label">Logo System</span>
       <div class="ps-content">
         <p class="ps-text">Three logo configurations were developed to cover every use case — from compact icon-only applications to full horizontal and stacked lockups for formal branded materials.</p>
-        <div class="img-grid cols-1">
-          <div>
-            <div class="logo-display">
-              <img src="/projects/movemedia/MoveMediaFull.png" alt="Move Media wordmark" style="max-height:80px;" />
-            </div>
-            <p class="img-caption">Wordmark — standalone</p>
+        <div class="logo-grid">
+          <div class="logo-item">
+            <img src="/projects/movemedia/MoveMediaFull.png" alt="Move Media wordmark" />
+            <p class="logo-item-caption">Wordmark</p>
           </div>
-        </div>
-        <div class="img-grid cols-2">
-          <div>
-            <div class="logo-display">
-              <img src="/projects/movemedia/MoveMediaFull2.png" alt="Move Media horizontal lockup" />
-            </div>
-            <p class="img-caption">Horizontal lockup</p>
+          <div class="logo-item">
+            <img src="/projects/movemedia/MoveMediaFull2.png" alt="Move Media horizontal lockup" />
+            <p class="logo-item-caption">Horizontal lockup</p>
           </div>
-          <div>
-            <div class="logo-display">
-              <img src="/projects/movemedia/MoveMediaStacked.png" alt="Move Media stacked lockup" />
-            </div>
-            <p class="img-caption">Stacked lockup</p>
+          <div class="logo-item">
+            <img src="/projects/movemedia/MoveMediaStacked.png" alt="Move Media stacked lockup" />
+            <p class="logo-item-caption">Stacked lockup</p>
           </div>
-        </div>
-        <div class="img-grid cols-1">
-          <div>
-            <div class="logo-display">
-              <img src="/projects/movemedia/MoveMediaStacked2.png" alt="Move Media stacked variation" />
-            </div>
-            <p class="img-caption">Stacked variation</p>
+          <div class="logo-item">
+            <img src="/projects/movemedia/MoveMediaStacked2.png" alt="Move Media stacked variation" />
+            <p class="logo-item-caption">Stacked variation</p>
           </div>
         </div>
       </div>
