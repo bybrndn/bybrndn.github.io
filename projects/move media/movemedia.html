@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BY BRNDN — Move Media NZ</title>
+  <link rel="icon" href="/images/smallBRNDN light.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --bg-dark: #080808;
+      --ink: #f0f0f0;
+      --ink-mid: rgba(240,240,240,0.45);
+      --ink-faint: rgba(240,240,240,0.05);
+      --white: #f0f0f0;
+      --rule: rgba(240,240,240,0.07);
+      --accent: #f0f0f0;
+    }
+
+    .project-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(80vh - 80px); border-bottom: 1px solid var(--rule); }
+    .project-hero-left { padding: 5vw 4vw 5vw 3.5vw; border-right: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: space-between; }
+    .project-back { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; transition: color 0.2s, gap 0.25s; }
+    .project-back:hover { color: var(--ink); gap: 0.9rem; }
+    .project-title { font-family: 'Grandspan Wide', sans-serif; font-size: clamp(2.8rem, 5vw, 6rem); line-height: 0.9; letter-spacing: -0.02em; color: var(--ink); }
+    .project-meta { display: flex; flex-direction: column; gap: 1.2rem; }
+    .project-meta-row { display: flex; flex-direction: column; gap: 0.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule); }
+    .project-meta-row:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .project-meta-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-mid); font-weight: 600; }
+    .project-meta-value { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
+    .project-hero-right { padding: 5vw 3.5vw 5vw 4vw; display: flex; flex-direction: column; justify-content: center; gap: 2rem; }
+    .project-desc { font-size: 0.82rem; line-height: 1.95; color: var(--ink-mid); font-weight: 500; }
+
+    .wip-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.2rem;
+      padding: 3rem;
+      border: 1px solid var(--rule);
+    }
+    .wip-tag { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-mid); font-weight: 600; }
+    .wip-title { font-family: 'Grandspan Wide', sans-serif; font-size: clamp(2rem, 4vw, 4.5rem); color: var(--ink); line-height: 0.9; }
+    .wip-text { font-size: 0.82rem; line-height: 1.9; color: var(--ink-mid); font-weight: 500; max-width: 420px; }
+
+    .next-project { display: flex; justify-content: space-between; align-items: center; padding: 3.5rem 3.5vw; text-decoration: none; border-top: 1px solid var(--rule); transition: padding-left 0.35s var(--ease); }
+    .next-project:hover { padding-left: 5vw; }
+    .next-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-mid); font-weight: 600; margin-bottom: 0.5rem; }
+    .next-title { font-family: 'Grandspan Wide', sans-serif; font-size: clamp(1.5rem, 3vw, 3rem); color: var(--ink); line-height: 1; }
+    .next-arrow { font-size: 1.5rem; color: var(--ink-mid); transition: transform 0.3s var(--ease), color 0.2s; }
+    .next-project:hover .next-arrow { transform: translate(6px, -6px); color: var(--ink); }
+
+    @media (max-width: 860px) {
+      .project-hero { grid-template-columns: 1fr; }
+      .project-hero-left { border-right: none; padding-right: 3.5vw; padding-bottom: 4vw; border-bottom: 1px solid var(--rule); }
+      .project-hero-right { padding-left: 3.5vw; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+  <nav id="navbar">
+    <a class="nav-logo" href="/index.html"><span class="by">By</span><img src="/images/BRNDN light.png" alt="BRNDN" style="height:28px; width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/work.html" class="active">Work</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="page">
+    <section class="project-hero">
+      <div class="project-hero-left">
+        <a class="project-back reveal" href="/work.html">← Back to Work</a>
+        <h1 class="project-title reveal d1">MOVE<br>MEDIA NZ</h1>
+        <div class="project-meta reveal d2">
+          <div class="project-meta-row">
+            <span class="project-meta-label">Type</span>
+            <span class="project-meta-value">Brand Design</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">Status</span>
+            <span class="project-meta-value">Work in Progress</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">Tools</span>
+            <span class="project-meta-value">Photoshop, Illustrator</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-hero-right">
+        <div class="wip-block reveal">
+          <span class="wip-tag">Coming Soon</span>
+          <h2 class="wip-title">WORK IN<br>PROGRESS</h2>
+          <p class="wip-text">This project is currently being built out. Check back soon — full case study and visuals on the way.</p>
+          <a href="/cdn-cgi/l/email-protection#d9b1b8b5b5bbabb8b7bdbcb7e9ed99beb4b8b0b5f7bab6b4" class="link-arrow">Get in touch <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <a class="next-project reveal" href="#">
+      <div>
+        <p class="next-label">Back to Start</p>
+        <p class="next-title">—</p>
+      </div>
+      <span class="next-arrow">↗</span>
+    </a>
+
+    <footer><span>© 2026 Branden Hall</span><span>Auckland, NZ</span></footer>
+  </div>
+  <scri

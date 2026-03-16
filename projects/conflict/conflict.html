@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BY BRNDN — Conflict AR</title>
+  <link rel="icon" href="/images/smallBRNDN light.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    :root {
+      --bg: #080d17;
+      --bg-dark: #04080f;
+      --ink: #e8f0ff;
+      --ink-mid: rgba(232,240,255,0.45);
+      --ink-faint: rgba(232,240,255,0.05);
+      --white: #e8f0ff;
+      --rule: rgba(232,240,255,0.07);
+      --accent: #2d6fff;
+    }
+
+    .project-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(80vh - 80px); border-bottom: 1px solid var(--rule); }
+    .project-hero-left { padding: 5vw 4vw 5vw 3.5vw; border-right: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: space-between; }
+    .project-back { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; transition: color 0.2s, gap 0.25s; }
+    .project-back:hover { color: var(--ink); gap: 0.9rem; }
+    .project-title { font-family: 'Grandspan Wide', sans-serif; font-size: clamp(2.8rem, 5vw, 6rem); line-height: 0.9; letter-spacing: -0.02em; color: var(--ink); }
+    .project-title span { color: var(--accent); }
+    .project-meta { display: flex; flex-direction: column; gap: 1.2rem; }
+    .project-meta-row { display: flex; flex-direction: column; gap: 0.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule); }
+    .project-meta-row:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .project-meta-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+    .project-meta-value { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
+    .project-hero-right { padding: 5vw 3.5vw 5vw 4vw; display: flex; flex-direction: column; justify-content: flex-end; gap: 2rem; }
+    .project-cover { width: 100%; flex: 1; min-height: 0; overflow: hidden; max-height: 60vh; }
+    .project-cover img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 1s var(--ease); }
+    .project-cover:hover img { transform: scale(1.03); }
+    .project-desc { font-size: 0.82rem; line-height: 1.95; color: var(--ink-mid); font-weight: 500; }
+    .project-section { display: grid; grid-template-columns: 18rem 1fr; padding: 5vw 3.5vw; border-top: 1px solid var(--rule); }
+    .ps-label { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 600; padding-top: 0.2rem; padding-right: 4vw; }
+    .ps-content { padding-left: 4vw; display: flex; flex-direction: column; gap: 2rem; }
+    .ps-text { font-size: 0.85rem; line-height: 2; color: var(--ink-mid); font-weight: 500; max-width: 640px; }
+    .img-grid { display: grid; gap: 1rem; }
+    .img-grid.cols-1 { grid-template-columns: 1fr; }
+    .img-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+    .img-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .img-grid img { width: 100%; display: block; object-fit: cover; transition: transform 0.6s var(--ease); }
+    .img-grid img:hover { transform: scale(1.02); }
+    .img-caption { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mid); margin-top: 0.5rem; }
+    .next-project { display: flex; justify-content: space-between; align-items: center; padding: 3.5rem 3.5vw; text-decoration: none; border-top: 1px solid var(--rule); transition: padding-left 0.35s var(--ease); }
+    .next-project:hover { padding-left: 5vw; }
+    .next-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-mid); font-weight: 600; margin-bottom: 0.5rem; }
+    .next-title { font-family: 'Grandspan Wide', sans-serif; font-size: clamp(1.5rem, 3vw, 3rem); color: var(--ink); line-height: 1; }
+    .next-arrow { font-size: 1.5rem; color: var(--ink-mid); transition: transform 0.3s var(--ease), color 0.2s; }
+    .next-project:hover .next-arrow { transform: translate(6px, -6px); color: var(--ink); }
+
+    @media (max-width: 860px) {
+      .project-hero { grid-template-columns: 1fr; }
+      .project-hero-left { border-right: none; padding-right: 3.5vw; padding-bottom: 4vw; border-bottom: 1px solid var(--rule); }
+      .project-hero-right { padding-left: 3.5vw; }
+      .project-cover { max-height: 55vw; }
+      .project-section { grid-template-columns: 1fr; }
+      .ps-label { padding-right: 0; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); margin-bottom: 0; }
+      .ps-content { padding-left: 0; padding-top: 2rem; }
+      .img-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+      .img-grid.cols-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+  <nav id="navbar">
+    <a class="nav-logo" href="/index.html"><span class="by">By</span><img src="/images/BRNDN light.png" alt="BRNDN" style="height:28px; width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/work.html" class="active">Work</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="page">
+    <section class="project-hero">
+      <div class="project-hero-left">
+        <a class="project-back reveal" href="/work.html">← Back to Work</a>
+        <h1 class="project-title reveal d1">CON<br>FLICT <span>AR</span></h1>
+        <div class="project-meta reveal d2">
+          <div class="project-meta-row">
+            <span class="project-meta-label">Type</span>
+            <span class="project-meta-value">Branding, UI/UX, AR Game Design</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">Year</span>
+            <span class="project-meta-value">2024</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">By</span>
+            <span class="project-meta-value">Branden Hall & Kavish Kuver</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">Tools</span>
+            <span class="project-meta-value">Figma, Photoshop, Unity</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-hero-right">
+        <div class="project-cover reveal">
+          <img src="https://static.wixstatic.com/media/64ccbb_385481646238455faa4470646d16c0bc~mv2.png" alt="Conflict AR Game" />
+        </div>
+        <p class="project-desc reveal d2">An augmented reality mobile game built to feel physical and active — not something you play in isolation. Bold branding, AR gameplay, and a full UI/UX system designed in Figma.</p>
+      </div>
+    </section>
+
+    <div class="project-section reveal">
+      <span class="ps-label">Overview</span>
+      <div class="ps-content">
+        <p class="ps-text">During university, a friend and I began developing an augmented reality mobile game called CONFLICT. We set out to make a game that feels physical and active — not something you play in isolation. The visual direction needed to feel bold, energetic, and fresh.</p>
+        <p class="ps-text">AR is familiar tech, but we wanted to use it in a way that feels more purposeful and engaging. The brand uses sharp, drop-shadowed squares as its main visual element — representing the tile system in the game and tying the branding directly back to core gameplay.</p>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <span class="ps-label">Branding</span>
+      <div class="ps-content">
+        <div class="img-grid cols-1">
+          <div>
+            <img src="https://static.wixstatic.com/media/64ccbb_2e44b6f0805b4821bded4a5650ae6e04~mv2.png" alt="Conflict title logo" />
+            <p class="img-caption">Game logo</p>
+          </div>
+        </div>
+        <div class="img-grid cols-1">
+          <div>
+            <img src="https://static.wixstatic.com/media/64ccbb_d643ac0c234a432ca9b97a53e16aab46~mv2.png" alt="Conflict in hand" />
+            <p class="img-caption">Brand in context</p>
+          </div>
+        </div>
+        <div class="img-grid cols-1">
+          <div>
+            <img src="https://static.wixstatic.com/media/64ccbb_93a7d98d7ad54b30bc7d35c6de5fd857~mv2.png" alt="Conflict charts" />
+            <p class="img-caption">Design system</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <span class="ps-label">UI / UX</span>
+      <div class="ps-content">
+        <p class="ps-text">Designing for augmented reality meant thinking carefully about what lives on screen versus in the real world. Previous experiments with AR and app development gave me a foundation to iterate from — studying what worked on a small mobile screen and what pulled focus away from the gameplay.</p>
+        <div class="img-grid cols-2">
+          <div>
+            <img src="https://static.wixstatic.com/media/64ccbb_09f75ccba6474027b0d0ffc1b7ee86a2~mv2.png" alt="HUD Concept in Figma" />
+            <p class="img-caption">HUD concept — Figma</p>
+          </div>
+          <div>
+            <img src="https://static.wixstatic.com/media/64ccbb_a5bfcc64b8c5450c9f978a1c2056e3b8~mv2.png" alt="HUD in-game" />
+            <p class="img-caption">HUD in-game</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a class="next-project reveal" href="#">
+      <div>
+        <p class="next-label">Next Project</p>
+        <p class="next-title">—</p>
+      </div>
+      <span class="next-arrow">↗</span>
+    </a>
+
+    <footer><span>© 2026 Branden Hall</span><span>Auckland, NZ</span></footer>
+  </div>
+  <script src="/script.js"></script>
+</body>
+</html>
