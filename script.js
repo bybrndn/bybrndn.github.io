@@ -1,3 +1,29 @@
+// ── PROJECT REGISTRY ──
+// Add new projects here in order — the next project link updates automatically
+const PROJECTS = [
+  { slug: 'itsmejagz',    title: 'ITSME\nJAGZ',       path: '/projects/itsmejagz/itsmejagz.html' },
+  { slug: 'xtrovert',     title: 'XTRO\nVERT',         path: '/projects/xtrovert/xtrovert.html' },
+  { slug: 'conversations',title: 'CONVER\nSATIONS',    path: '/projects/conversations/conversations.html' },
+  { slug: 'conflict',     title: 'CONFLICT\nAR',       path: '/projects/conflict/conflict.html' },
+  { slug: 'movemedia',    title: 'MOVE\nMEDIA NZ',     path: '/projects/movemedia/movemedia.html' },
+];
+
+// Auto-populate the next project link based on current page
+(function() {
+  const nextEl = document.querySelector('.next-project');
+  if (!nextEl) return;
+
+  const currentPath = window.location.pathname;
+  const currentIndex = PROJECTS.findIndex(p => currentPath.includes(p.slug));
+  if (currentIndex === -1) return;
+
+  const next = PROJECTS[(currentIndex + 1) % PROJECTS.length];
+  nextEl.href = next.path;
+
+  const titleEl = nextEl.querySelector('.next-title');
+  if (titleEl) titleEl.innerHTML = next.title.replace('\n', '<br>');
+})();
+
 // ── PAGE TRANSITION OVERLAY ──
 const overlay = document.createElement('div');
 overlay.className = 'page-transition enter';
