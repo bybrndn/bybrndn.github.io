@@ -22,8 +22,8 @@ if (cursor && ring) {
   })();
 
   document.querySelectorAll("a, button").forEach(el => {
-    el.addEventListener("mouseenter", () => cursor.classList.add("grow"));
-    el.addEventListener("mouseleave", () => cursor.classList.remove("grow"));
+    el.addEventListener("mouseenter", () => ring.classList.add("grow"));
+    el.addEventListener("mouseleave", () => ring.classList.remove("grow"));
   });
 }
 
