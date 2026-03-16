@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BY BRNDN — 404</title>
+  <link rel="icon" href="/images/smallBRNDN light.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .not-found {
+      min-height: calc(100vh - 80px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+
+    .nf-left {
+      padding: 5vw 4vw 5vw 3.5vw;
+      border-right: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .nf-tag {
+      font-size: 0.58rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      font-weight: 600;
+    }
+
+    .nf-title {
+      font-family: 'Grandspan Wide', sans-serif;
+      font-size: clamp(6rem, 18vw, 18rem);
+      line-height: 0.85;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+
+    .nf-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .nf-desc {
+      font-size: 0.82rem;
+      line-height: 1.9;
+      color: var(--ink-mid);
+      font-weight: 500;
+      max-width: 320px;
+    }
+
+    .nf-actions {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .nf-right {
+      padding: 5vw 3.5vw 5vw 4vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 0;
+    }
+
+    .nf-suggestions {
+      width: 100%;
+    }
+
+    .nf-suggestion {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      transition: padding-left 0.3s var(--ease);
+    }
+    .nf-suggestion:first-child { border-top: 1px solid var(--rule); }
+    .nf-suggestion:hover { padding-left: 1rem; }
+
+    .ns-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .ns-title {
+      font-family: 'Grandspan Wide', sans-serif;
+      font-size: clamp(1.2rem, 2.2vw, 2rem);
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .ns-arrow {
+      font-size: 1rem;
+      color: var(--ink-mid);
+      transition: transform 0.25s var(--ease), color 0.2s;
+    }
+    .nf-suggestion:hover .ns-arrow { transform: translate(4px, -4px); color: var(--ink); }
+
+    @media (max-width: 860px) {
+      .not-found { grid-template-columns: 1fr; }
+      .nf-left { border-right: none; border-bottom: 1px solid var(--rule); padding-right: 3.5vw; padding-bottom: 4vw; }
+      .nf-right { padding-left: 3.5vw; }
+      .nf-title { font-size: clamp(5rem, 22vw, 10rem); }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+
+  <nav id="navbar">
+    <a class="nav-logo" href="/index.html">
+      <span class="by">By</span>
+      <img src="/images/BRNDN light.png" alt="BRNDN" style="height:28px; width:auto;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/work.html">Work</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="page">
+    <section class="not-found">
+      <div class="nf-left">
+        <span class="nf-tag reveal">Page not found</span>
+        <h1 class="nf-title reveal d1">4<br>0<br>4</h1>
+        <div class="nf-bottom reveal d2">
+          <p class="nf-desc">Looks like this page doesn't exist — it may have moved or never been here.</p>
+          <div class="nf-actions">
+            <a href="/index.html" class="link-arrow">Go Home <span>→</span></a>
+            <a href="/work.html" class="link-muted">View Work</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nf-right">
+        <div class="nf-suggestions reveal d2">
+          <a class="nf-suggestion" href="/index.html">
+            <div>
+              <p class="ns-label">Home</p>
+              <p class="ns-title">BRANDEN<br>HALL</p>
+            </div>
+            <span class="ns-arrow">↗</span>
+          </a>
+          <a class="nf-suggestion" href="/work.html">
+            <div>
+              <p class="ns-label">Portfolio</p>
+              <p class="ns-title">WORK &<br>PROJECTS</p>
+            </div>
+            <span class="ns-arrow">↗</span>
+          </a>
+          <a class="nf-suggestion" href="mailto:hallbranden04@gmail.com">
+            <div>
+              <p class="ns-label">Get in touch</p>
+              <p class="ns-title">SEND AN<br>EMAIL</p>
+            </div>
+            <span class="ns-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 Branden Hall</span>
+      <span>Auckland, NZ</span>
+    </footer>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
+</html>
