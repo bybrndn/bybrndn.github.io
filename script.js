@@ -1,6 +1,6 @@
 // ── MODULAR NAV ──
 // Edit the nav here and it updates across every page
-(function() {
+function injectNav() {
   const nav = document.getElementById('navbar');
   if (!nav) return;
 
@@ -28,7 +28,10 @@
       link.classList.add('active');
     }
   });
-})();
+}
+
+// Run immediately since script is at end of body
+injectNav();
 
 
 // ── PROJECT REGISTRY ──
