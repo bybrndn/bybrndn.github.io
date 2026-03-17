@@ -207,7 +207,7 @@ nav {
 
 .page {
   padding-top: 80px;
-  max-width: 1600px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -829,7 +829,8 @@ footer span {
 
   /* ── HOME ── */
   .home-hero {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     min-height: unset;
     position: relative;
   }
