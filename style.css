@@ -66,7 +66,7 @@ html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; scroll-padd
 .page-transition.exit  { opacity: 0; pointer-events: none; }
 
 body, a, button, input, [role="button"] {
-  cursor: none;
+  cursor: none !important;
 }
 
 body {
@@ -76,7 +76,7 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  cursor: none;
+  cursor: none !important;
   max-width: 100vw;
 }
 
