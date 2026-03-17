@@ -261,7 +261,7 @@ nav {
 
 .home-left {
   padding: 5vw 4vw 5vw 3.5vw;
-  border-right: 1px solid var(--rule);
+  border-right: 1px solid transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -271,20 +271,20 @@ nav {
 }
 
 .home-right {
-  position: relative;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
   z-index: 1;
-  min-width: 0;
+  margin-left: -120px;
 }
 
 .home-photo {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 85%;
   overflow: hidden;
   display: block;
   line-height: 0;
@@ -292,7 +292,7 @@ nav {
 
 .home-photo img {
   width: 100%;
-  height: 100%;
+  height: 70vh;
   object-fit: cover;
   object-position: center top;
   filter: grayscale(10%) contrast(1.06);
@@ -829,38 +829,32 @@ footer span {
 
   /* ── HOME ── */
   .home-hero {
-    display: flex;
     flex-direction: column;
     min-height: unset;
-    overflow: hidden;
+    position: relative;
   }
-
   .home-left {
     width: 100%;
     max-width: 100%;
-    padding: 8vw 6vw 6vw;
-    gap: 1.5rem;
-    z-index: 2;
     border-right: none;
+    padding: 8vw 6vw 6vw;
     border-bottom: 1px solid var(--rule);
+    gap: 1.5rem;
+    z-index: 3;
   }
-
   .home-right {
     position: relative;
     width: 100%;
-    min-width: unset;
-    height: 60vw;
+    right: auto;
+    height: auto;
+    margin-left: 0;
   }
-
   .home-photo {
     width: 100%;
-    height: 100%;
+    height: auto;
   }
-
   .home-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: 70vw;
     object-position: center 20%;
   }
 
