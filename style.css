@@ -108,7 +108,6 @@ body {
   transform: translate(-50%, -50%);
   mix-blend-mode: difference;
   opacity: 0;
-  border-radius: 50%;
 }
 
 .cursor-ring {
@@ -120,8 +119,6 @@ body {
   transform: translate(-50%, -50%);
   transition: width 0.4s var(--ease), height 0.4s var(--ease);
   mix-blend-mode: difference;
-  border-radius: 50%;
-  opacity: 0;
 }
 .cursor-ring.grow {
   width: 64px;
@@ -322,6 +319,7 @@ nav {
   position: relative;
   z-index: 1;
   margin-left: -120px;
+  min-width: 300px;
 }
 
 .home-photo {
@@ -824,7 +822,7 @@ footer span {
   .hamburger { display: flex !important; }
 
   /* ── PAGE ── */
-  .page { padding-top: 64px; max-width: 100%; }
+  .page { padding-top: 64px; }
 
   /* ── HOME ── */
   .home-hero {
@@ -834,7 +832,6 @@ footer span {
   }
   .home-left {
     width: 100%;
-    max-width: 100%;
     border-right: none;
     padding: 8vw 6vw 6vw;
     border-bottom: 1px solid var(--rule);
@@ -860,14 +857,19 @@ footer span {
     word-break: break-word;
     overflow-wrap: break-word;
   }
+  .home-title {
+    font-size: clamp(2rem, 9vw, 4rem);
+    line-height: 0.9;
+  }
+  .home-title em {
+    font-size: 0.52em;
+  }
+  .home-desc { max-width: 100%; }
+
   .wi-title {
     font-size: clamp(1rem, 5.5vw, 2rem);
     word-break: normal;
   }
-  .home-title {
-    font-size: clamp(2rem, 9vw, 4rem);
-  }
-  .home-desc { max-width: 100%; }
 
   /* ── TICKER ── */
   .ticker-wrap { padding: 0.7rem 0; }
