@@ -210,11 +210,8 @@ function initAnalyticsTracking() {
   });
 }
 
-// ── DISABLE NORMAL CURSOR & INITIALIZE CUSTOM CURSOR ──
+// ── INITIALIZE CUSTOM CURSOR ──
 function initCustomCursor() {
-  // Hide default cursor on entire document
-  document.body.style.cursor = 'none';
-  
   const cursor = document.querySelector('.cursor');
   const ring = document.querySelector('.cursor-ring');
   
