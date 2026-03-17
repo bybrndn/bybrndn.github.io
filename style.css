@@ -108,6 +108,8 @@ body {
   transform: translate(-50%, -50%);
   mix-blend-mode: difference;
   opacity: 0;
+  left: -9999px;
+  top: -9999px;
 }
 
 .cursor-ring {
@@ -119,6 +121,9 @@ body {
   transform: translate(-50%, -50%);
   transition: width 0.4s var(--ease), height 0.4s var(--ease);
   mix-blend-mode: difference;
+  opacity: 0;
+  left: -9999px;
+  top: -9999px;
 }
 .cursor-ring.grow {
   width: 64px;
