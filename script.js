@@ -215,59 +215,67 @@ function initCustomCursor() {
   const cursor = document.querySelector('.cursor');
   const ring = document.querySelector('.cursor-ring');
   
-  if (cursor && ring) {
-    let mx = 0, my = 0, rx = 0, ry = 0, moved = false;
-    cursor.style.opacity = '0';
-    ring.style.opacity = '0';
+  if (!cursor || !ring) return;
 
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX;
-      my = e.clientY;
-      cursor.style.left = mx + 'px';
-      cursor.style.top = my + 'px';
-      
-      if (!moved) {
-        moved = true;
-        rx = mx;
-        ry = my;
-        ring.style.left = rx + 'px';
-        ring.style.top = ry + 'px';
-        cursor.style.opacity = '1';
-        ring.style.opacity = '1';
-      }
-    });
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  let isVisible = false;
 
-    // Animate ring to follow cursor smoothly
-    function lerp(a, b, t) {
-      return a + (b - a) * t;
-    }
+  // Track mouse movement
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX;
+    my = e.clientY;
     
-    (function animRing() {
-      rx = lerp(rx, mx, 0.1);
-      ry = lerp(ry, my, 0.1);
-      ring.style.left = rx + 'px';
-      ring.style.top = ry + 'px';
-      requestAnimationFrame(animRing);
-    })();
-
-    // Grow ring on interactive elements
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => ring.classList.add('grow'));
-      el.addEventListener('mouseleave', () => ring.classList.remove('grow'));
-    });
-
-    // Hide custom cursor when leaving window
-    document.addEventListener('mouseleave', () => {
-      cursor.style.opacity = '0';
-      ring.style.opacity = '0';
-    });
-
-    // Show custom cursor when entering window
-    document.addEventListener('mouseenter', () => {
+    // Position cursor dot
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+    
+    // Show on first move
+    if (!isVisible) {
+      isVisible = true;
       cursor.style.opacity = '1';
       ring.style.opacity = '1';
-    });
+      rx = mx;
+      ry = my;
+    }
+  });
+
+  // Smooth ring animation
+  function lerp(a, b, t) {
+    return a + (b - a) * t;
   }
+  
+  setInterval(() => {
+    if (isVisible) {
+      rx = lerp(rx, mx, 0.15);
+      ry = lerp(ry, my, 0.15);
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+    }
+  }, 16);
+
+  // Grow ring on hover
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      ring.classList.add('grow');
+    });
+    el.addEventListener('mouseleave', () => {
+      ring.classList.remove('grow');
+    });
+  });
+
+  // Hide when leaving window
+  document.addEventListener('mouseleave', () => {
+    cursor.style.opacity = '0';
+    ring.style.opacity = '0';
+    isVisible = false;
+  });
+
+  // Show when entering window
+  document.addEventListener('mouseenter', () => {
+    cursor.style.opacity = '1';
+    ring.style.opacity = '1';
+    isVisible = true;
+  });
 }
 
 // ── ALL DOM-DEPENDENT LOGIC ──
