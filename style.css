@@ -241,23 +241,24 @@ nav {
 
 /* ── HOME ── */
 .home-hero {
-  display: grid;
-  grid-template-columns: 1fr 1.3fr;
+  position: relative;
   min-height: calc(100vh - 80px);
   border-bottom: 1px solid transparent;
   overflow: hidden;
-  align-items: flex-end;
+  display: flex;
+  align-items: center;
 }
 
 .home-left {
   padding: 5vw 4vw 5vw 3.5vw;
-  border-right: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
   position: relative;
   z-index: 2;
+  width: 50%;
+  max-width: 550px;
 }
 
 .home-overline {
@@ -305,20 +306,21 @@ nav {
 }
 
 .home-right {
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  overflow: hidden;
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  right: -10%;
+  width: 70%;
   height: 100%;
-  min-height: calc(100vh - 80px);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  z-index: 1;
 }
 
 .home-photo {
   position: relative;
-  width: 100%;
+  width: 85%;
   height: 100%;
   overflow: hidden;
   display: block;
@@ -820,15 +822,32 @@ footer span {
 
   /* ── HOME ── */
   .home-hero {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     min-height: unset;
-    overflow: hidden;
+    position: relative;
   }
   .home-left {
+    width: 100%;
+    max-width: 100%;
     border-right: none;
     padding: 8vw 6vw 6vw;
     border-bottom: 1px solid var(--rule);
     gap: 1.5rem;
+    z-index: 3;
+  }
+  .home-right {
+    position: relative;
+    width: 100%;
+    right: auto;
+    height: auto;
+  }
+  .home-photo {
+    width: 100%;
+    height: auto;
+  }
+  .home-photo img {
+    height: 70vw;
+    object-position: center 20%;
   }
   .home-title, .about-big, .contact-big {
     word-break: break-word;
@@ -842,18 +861,6 @@ footer span {
     font-size: clamp(2rem, 9vw, 4rem);
   }
   .home-desc { max-width: 100%; }
-  .home-right { 
-    height: auto;
-    min-height: unset;
-  }
-  .home-photo {
-    width: 100%;
-    height: auto;
-  }
-  .home-photo img {
-    height: 70vw;
-    object-position: center 20%;
-  }
 
   /* ── TICKER ── */
   .ticker-wrap { padding: 0.7rem 0; }
