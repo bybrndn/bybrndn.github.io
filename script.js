@@ -210,42 +210,35 @@ function initCustomCursor() {
   document.documentElement.style.cursor = 'none';
   document.body.style.cursor = 'none';
 
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  let isVisible = false;
+  let mx, my, rx, ry;
+  let started = false;
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
 
   document.addEventListener('mousemove', e => {
     mx = e.clientX;
     my = e.clientY;
 
-    if (!isVisible) {
-      isVisible = true;
-      rx = mx; ry = my;
-      cursor.style.left = mx + 'px';
-      cursor.style.top = my + 'px';
-      ring.style.left = mx + 'px';
-      ring.style.top = my + 'px';
-      requestAnimationFrame(() => {
-        cursor.style.opacity = '1';
-        ring.style.opacity = '1';
-      });
-    }
-
     cursor.style.left = mx + 'px';
     cursor.style.top = my + 'px';
-  });
 
-  function lerp(a, b, t) {
-    return a + (b - a) * t;
-  }
-
-  setInterval(() => {
-    if (isVisible) {
-      rx = lerp(rx, mx, 0.15);
-      ry = lerp(ry, my, 0.15);
+    if (!started) {
+      started = true;
+      rx = mx;
+      ry = my;
       ring.style.left = rx + 'px';
       ring.style.top = ry + 'px';
+      cursor.style.opacity = '1';
+      ring.style.opacity = '1';
+
+      setInterval(() => {
+        rx = lerp(rx, mx, 0.15);
+        ry = lerp(ry, my, 0.15);
+        ring.style.left = rx + 'px';
+        ring.style.top = ry + 'px';
+      }, 16);
     }
-  }, 16);
+  });
 
   document.querySelectorAll('a, button').forEach(el => {
     el.style.cursor = 'none';
@@ -256,13 +249,13 @@ function initCustomCursor() {
   document.addEventListener('mouseleave', () => {
     cursor.style.opacity = '0';
     ring.style.opacity = '0';
-    isVisible = false;
   });
 
   document.addEventListener('mouseenter', () => {
-    cursor.style.opacity = '1';
-    ring.style.opacity = '1';
-    isVisible = true;
+    if (started) {
+      cursor.style.opacity = '1';
+      ring.style.opacity = '1';
+    }
   });
 }
 
