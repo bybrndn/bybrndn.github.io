@@ -344,6 +344,8 @@ nav {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   background: linear-gradient(to top, rgba(15,17,23,0.7), transparent);
+  pointer-events: none;
+  z-index: 10;
 }
 
 .home-index-num {
