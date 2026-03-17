@@ -247,7 +247,7 @@ nav {
 /* ── HOME ── */
 .home-hero {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr;       /* single column — left content stacks naturally */
   min-height: calc(100vh - 80px);
   border-bottom: 1px solid transparent;
   overflow: hidden;
@@ -256,13 +256,84 @@ nav {
 
 .home-left {
   padding: 5vw 4vw 5vw 3.5vw;
-  border-right: 1px solid transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
   position: relative;
-  z-index: 2;
+  z-index: 2;                        /* always sits on top of the image */
+  /* limit width so text doesn't stretch full width behind image */
+  max-width: 55%;
+}
+
+/* ── HOME IMAGE: absolutely positioned, always behind text ── */
+.home-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 55%;                        /* stays this wide regardless of zoom level */
+  min-width: 320px;                  /* never collapses thinner than this */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1;                        /* behind home-left */
+}
+
+.home-photo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: block;
+  line-height: 0;
+}
+
+.home-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(10%) contrast(1.06);
+  transition: transform 1s var(--ease);
+  display: block;
+}
+.home-photo:hover img { transform: scale(1.02); }
+
+.home-index {
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(15,17,23,0.7), transparent);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.home-index-num {
+  font-family: 'Grandspan Wide', sans-serif;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--ink-faint);
+  letter-spacing: -0.04em;
+  user-select: none;
+}
+
+.home-index-tags {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+}
+.home-index-tag {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
 }
 
 .home-overline {
@@ -307,71 +378,6 @@ nav {
   display: flex;
   align-items: center;
   gap: 2.5rem;
-}
-
-.home-right {
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
-  margin-left: -120px;
-}
-
-.home-photo {
-  position: relative;
-  width: 85%;
-  overflow: hidden;
-  display: block;
-  line-height: 0;
-}
-
-.home-photo img {
-  width: 100%;
-  height: 70vh;
-  object-fit: cover;
-  object-position: center top;
-  filter: grayscale(10%) contrast(1.06);
-  transition: transform 1s var(--ease);
-  display: block;
-}
-.home-photo:hover img { transform: scale(1.02); }
-
-.home-index {
-  padding: 1.5rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top, rgba(15,17,23,0.7), transparent);
-  pointer-events: none;
-  z-index: 10;
-}
-
-.home-index-num {
-  font-family: 'Grandspan Wide', sans-serif;
-  font-size: 2.5rem;
-  line-height: 1;
-  color: var(--ink-faint);
-  letter-spacing: -0.04em;
-  user-select: none;
-}
-
-.home-index-tags {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.4rem;
-}
-.home-index-tag {
-  font-size: 0.58rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--ink-mid);
 }
 
 /* ── TICKER ── */
@@ -824,33 +830,42 @@ footer span {
 
   /* ── HOME ── */
   .home-hero {
+    display: flex;                   /* flex avoids grid overflow on mobile */
     flex-direction: column;
     min-height: unset;
     position: relative;
+    overflow: hidden;
   }
+
   .home-left {
     width: 100%;
     max-width: 100%;
-    border-right: none;
     padding: 8vw 6vw 6vw;
-    border-bottom: 1px solid var(--rule);
     gap: 1.5rem;
     z-index: 3;
+    border-right: none;
+    border-bottom: 1px solid var(--rule);
   }
+
   .home-right {
-    position: relative;
+    position: relative;              /* back to normal flow on mobile */
     width: 100%;
-    right: auto;
+    min-width: unset;
     height: auto;
+    top: auto; right: auto; bottom: auto;
   }
+
   .home-photo {
     width: 100%;
     height: auto;
   }
+
   .home-photo img {
+    width: 100%;
     height: 70vw;
     object-position: center 20%;
   }
+
   .home-title, .about-big, .contact-big {
     word-break: break-word;
     overflow-wrap: break-word;
