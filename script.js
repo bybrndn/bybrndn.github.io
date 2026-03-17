@@ -210,28 +210,30 @@ function initCustomCursor() {
   document.documentElement.style.cursor = 'none';
   document.body.style.cursor = 'none';
 
-  // Seed position to current mouse location so cursor never flashes at 0,0
-  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-  let rx = mx, ry = my;
+  // Don't assume any position — wait for real mouse coords on first move
+  let mx = 0, my = 0, rx = 0, ry = 0;
   let isVisible = false;
 
   document.addEventListener('mousemove', e => {
     mx = e.clientX;
     my = e.clientY;
 
-    cursor.style.left = mx + 'px';
-    cursor.style.top = my + 'px';
-
     if (!isVisible) {
+      // First move: snap everything instantly to the real cursor position
       isVisible = true;
-      cursor.style.opacity = '1';
-      ring.style.opacity = '1';
-      // Snap ring to actual position on first move so it doesn't slide in from center
       rx = mx;
       ry = my;
+      cursor.style.left = mx + 'px';
+      cursor.style.top = my + 'px';
       ring.style.left = rx + 'px';
       ring.style.top = ry + 'px';
+      cursor.style.opacity = '1';
+      ring.style.opacity = '1';
+      return;
     }
+
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
   });
 
   function lerp(a, b, t) {
