@@ -181,75 +181,7 @@ function initAnalyticsTracking() {
     });
   });
 
-  // Track YouTube video plays
-  document.querySelectorAll('iframe[src*="youtube.com"]').forEach(iframe => {
-    iframe.addEventListener('click', () => {
-      const videoUrl = iframe.src;
-      const videoId = videoUrl.split('embed/')[1]?.split('?')[0] || 'unknown';
-      
-      if (window.gtag) {
-        gtag('event', 'video_play', {
-          'video_id': videoId,
-          'video_platform': 'YouTube',
-          'video_url': videoUrl
-        });
-      }
-    }, { once: true });
-  });
-
-  // Track project clicks
-  document.querySelectorAll('.work-item, a[href*="/projects/"]').forEach(link => {
-    link.addEventListener('click', () => {
-      const projectName = link.textContent.trim() || link.href;
-      
-      if (window.gtag) {
-        gtag('event', 'project_click', {
-          'project_name': projectName,
-          'project_url': link.href
-        });
-      }
-    });
-  });
-
   // Track external link clicks
-  document.querySelectorAll('a[href^="http"]').forEach(link => {
-    // Skip YouTube embeds since we track those separately
-    if (link.href.includes('youtube.com') && link.target === '_blank') {
-      link.addEventListener('click', () => {
-        const url = link.href;
-        const linkText = link.textContent.trim();
-        
-        if (window.gtag) {
-          gtag('event', 'external_link_click', {
-            'url': url,
-            'link_text': linkText
-          });
-        }
-      });
-    }
-  });
-}
-
-// ── GOOGLE ANALYTICS EVENT TRACKING ──
-function initAnalyticsTracking() {
-  // Track PDF downloads
-  document.querySelectorAll('a[href*=".pdf"]').forEach(link => {
-    link.addEventListener('click', () => {
-      const fileName = link.href.split('/').pop() || 'PDF';
-      const buttonText = link.textContent.trim();
-      
-      // Send event to Google Analytics
-      if (window.gtag) {
-        gtag('event', 'file_download', {
-          'file_name': fileName,
-          'button_text': buttonText,
-          'file_type': 'pdf'
-        });
-      }
-    });
-  });
-
-  // Track external link clicks (optional - see who clicks socials, etc)
   document.querySelectorAll('a[href^="http"]').forEach(link => {
     link.addEventListener('click', () => {
       const url = link.href;
@@ -278,7 +210,68 @@ function initAnalyticsTracking() {
   });
 }
 
+// ── DISABLE NORMAL CURSOR & INITIALIZE CUSTOM CURSOR ──
+function initCustomCursor() {
+  // Hide default cursor on entire document
+  document.body.style.cursor = 'none';
+  
+  const cursor = document.querySelector('.cursor');
+  const ring = document.querySelector('.cursor-ring');
+  
+  if (cursor && ring) {
+    let mx = 0, my = 0, rx = 0, ry = 0, moved = false;
+    cursor.style.opacity = '0';
+    ring.style.opacity = '0';
 
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX;
+      my = e.clientY;
+      cursor.style.left = mx + 'px';
+      cursor.style.top = my + 'px';
+      
+      if (!moved) {
+        moved = true;
+        rx = mx;
+        ry = my;
+        ring.style.left = rx + 'px';
+        ring.style.top = ry + 'px';
+        cursor.style.opacity = '1';
+        ring.style.opacity = '1';
+      }
+    });
+
+    // Animate ring to follow cursor smoothly
+    function lerp(a, b, t) {
+      return a + (b - a) * t;
+    }
+    
+    (function animRing() {
+      rx = lerp(rx, mx, 0.1);
+      ry = lerp(ry, my, 0.1);
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+      requestAnimationFrame(animRing);
+    })();
+
+    // Grow ring on interactive elements
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => ring.classList.add('grow'));
+      el.addEventListener('mouseleave', () => ring.classList.remove('grow'));
+    });
+
+    // Hide custom cursor when leaving window
+    document.addEventListener('mouseleave', () => {
+      cursor.style.opacity = '0';
+      ring.style.opacity = '0';
+    });
+
+    // Show custom cursor when entering window
+    document.addEventListener('mouseenter', () => {
+      cursor.style.opacity = '1';
+      ring.style.opacity = '1';
+    });
+  }
+}
 
 // ── ALL DOM-DEPENDENT LOGIC ──
 document.addEventListener('DOMContentLoaded', () => {
@@ -293,6 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initActiveSectionTracking();
   initSmoothAnchors();
   initAnalyticsTracking();
+  initCustomCursor(); // Custom cursor with disabled normal cursor
 
   // Next project
   const nextEl = document.querySelector('.next-project');
@@ -305,43 +299,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const titleEl = nextEl.querySelector('.next-title');
       if (titleEl) titleEl.innerHTML = next.title;
     }
-  }
-
-  // Custom cursor
-  const cursor = document.querySelector('.cursor');
-  const ring = document.querySelector('.cursor-ring');
-  if (cursor && ring) {
-    let mx = 0, my = 0, rx = 0, ry = 0, moved = false;
-    cursor.style.opacity = '0';
-    ring.style.opacity = '0';
-
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cursor.style.left = mx + 'px';
-      cursor.style.top = my + 'px';
-      if (!moved) {
-        moved = true;
-        rx = mx; ry = my;
-        ring.style.left = rx + 'px';
-        ring.style.top = ry + 'px';
-        cursor.style.opacity = '1';
-        ring.style.opacity = '1';
-      }
-    });
-
-    function lerp(a, b, t) { return a + (b - a) * t; }
-    (function animRing() {
-      rx = lerp(rx, mx, 0.1);
-      ry = lerp(ry, my, 0.1);
-      ring.style.left = rx + 'px';
-      ring.style.top = ry + 'px';
-      requestAnimationFrame(animRing);
-    })();
-
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => ring.classList.add('grow'));
-      el.addEventListener('mouseleave', () => ring.classList.remove('grow'));
-    });
   }
 
   // Nav scroll
