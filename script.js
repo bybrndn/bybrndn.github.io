@@ -210,13 +210,7 @@ function initCustomCursor() {
   document.documentElement.style.cursor = 'none';
   document.body.style.cursor = 'none';
 
-  // Park off-screen until real mouse position is known
-  cursor.style.left = '-200px';
-  cursor.style.top = '-200px';
-  ring.style.left = '-200px';
-  ring.style.top = '-200px';
-
-  let mx = -200, my = -200, rx = -200, ry = -200;
+  let mx = 0, my = 0, rx = 0, ry = 0;
   let isVisible = false;
 
   document.addEventListener('mousemove', e => {
@@ -225,9 +219,11 @@ function initCustomCursor() {
 
     if (!isVisible) {
       isVisible = true;
-      // Snap the dot instantly, let the ring lerp in smoothly from off-screen
+      rx = mx; ry = my;
       cursor.style.left = mx + 'px';
       cursor.style.top = my + 'px';
+      ring.style.left = mx + 'px';
+      ring.style.top = my + 'px';
       requestAnimationFrame(() => {
         cursor.style.opacity = '1';
         ring.style.opacity = '1';
