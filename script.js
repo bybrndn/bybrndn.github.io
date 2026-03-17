@@ -44,12 +44,10 @@ function toggleMenu() {
 
 // ── PAGE TRANSITIONS ──
 function initTransitions() {
-  // Create overlay element
   const overlay = document.createElement('div');
   overlay.className = 'page-transition';
   document.body.appendChild(overlay);
 
-  // Fade in on arrival
   requestAnimationFrame(() => {
     overlay.classList.add('enter');
     requestAnimationFrame(() => {
@@ -58,7 +56,6 @@ function initTransitions() {
     });
   });
 
-  // Intercept all internal link clicks
   document.addEventListener('click', e => {
     const link = e.target.closest('a');
     if (!link) return;
@@ -66,7 +63,6 @@ function initTransitions() {
     const href = link.getAttribute('href');
     if (!href) return;
 
-    // Skip external links, anchors, and mailto/tel
     if (href.startsWith('http') || href.startsWith('#') ||
         href.startsWith('mailto') || href.startsWith('tel')) return;
 
@@ -165,12 +161,10 @@ function initSmoothAnchors() {
 
 // ── GOOGLE ANALYTICS EVENT TRACKING ──
 function initAnalyticsTracking() {
-  // Track PDF downloads
   document.querySelectorAll('a[href*=".pdf"]').forEach(link => {
     link.addEventListener('click', () => {
       const fileName = link.href.split('/').pop() || 'PDF';
       const buttonText = link.textContent.trim();
-      
       if (window.gtag) {
         gtag('event', 'file_download', {
           'file_name': fileName,
@@ -181,12 +175,10 @@ function initAnalyticsTracking() {
     });
   });
 
-  // Track external link clicks
   document.querySelectorAll('a[href^="http"]').forEach(link => {
     link.addEventListener('click', () => {
       const url = link.href;
       const linkText = link.textContent.trim();
-      
       if (window.gtag) {
         gtag('event', 'external_link_click', {
           'url': url,
@@ -196,11 +188,9 @@ function initAnalyticsTracking() {
     });
   });
 
-  // Track project clicks
   document.querySelectorAll('.work-item, a[href*="/projects/"]').forEach(link => {
     link.addEventListener('click', () => {
       const projectName = link.textContent.trim() || link.href;
-      
       if (window.gtag) {
         gtag('event', 'project_viewed', {
           'project_name': projectName
@@ -214,40 +204,40 @@ function initAnalyticsTracking() {
 function initCustomCursor() {
   const cursor = document.querySelector('.cursor');
   const ring = document.querySelector('.cursor-ring');
-  
+
   if (!cursor || !ring) return;
 
-  // Force hide default cursor on entire document
   document.documentElement.style.cursor = 'none';
   document.body.style.cursor = 'none';
 
-  let mx = 0, my = 0, rx = 0, ry = 0;
+  // Seed position to current mouse location so cursor never flashes at 0,0
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  let rx = mx, ry = my;
   let isVisible = false;
 
-  // Track mouse movement
   document.addEventListener('mousemove', e => {
     mx = e.clientX;
     my = e.clientY;
-    
-    // Position cursor dot
+
     cursor.style.left = mx + 'px';
     cursor.style.top = my + 'px';
-    
-    // Show on first move
+
     if (!isVisible) {
       isVisible = true;
       cursor.style.opacity = '1';
       ring.style.opacity = '1';
+      // Snap ring to actual position on first move so it doesn't slide in from center
       rx = mx;
       ry = my;
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
     }
   });
 
-  // Smooth ring animation
   function lerp(a, b, t) {
     return a + (b - a) * t;
   }
-  
+
   setInterval(() => {
     if (isVisible) {
       rx = lerp(rx, mx, 0.15);
@@ -257,25 +247,18 @@ function initCustomCursor() {
     }
   }, 16);
 
-  // Grow ring on hover
   document.querySelectorAll('a, button').forEach(el => {
     el.style.cursor = 'none';
-    el.addEventListener('mouseenter', () => {
-      ring.classList.add('grow');
-    });
-    el.addEventListener('mouseleave', () => {
-      ring.classList.remove('grow');
-    });
+    el.addEventListener('mouseenter', () => ring.classList.add('grow'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('grow'));
   });
 
-  // Hide when leaving window
   document.addEventListener('mouseleave', () => {
     cursor.style.opacity = '0';
     ring.style.opacity = '0';
     isVisible = false;
   });
 
-  // Show when entering window
   document.addEventListener('mouseenter', () => {
     cursor.style.opacity = '1';
     ring.style.opacity = '1';
@@ -296,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initActiveSectionTracking();
   initSmoothAnchors();
   initAnalyticsTracking();
-  initCustomCursor(); // Custom cursor with disabled normal cursor
+  initCustomCursor();
 
   // Next project
   const nextEl = document.querySelector('.next-project');
