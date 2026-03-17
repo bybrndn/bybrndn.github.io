@@ -210,8 +210,13 @@ function initCustomCursor() {
   document.documentElement.style.cursor = 'none';
   document.body.style.cursor = 'none';
 
-  // Don't assume any position — wait for real mouse coords on first move
-  let mx = 0, my = 0, rx = 0, ry = 0;
+  // Park off-screen until real mouse position is known
+  cursor.style.left = '-200px';
+  cursor.style.top = '-200px';
+  ring.style.left = '-200px';
+  ring.style.top = '-200px';
+
+  let mx = -200, my = -200, rx = -200, ry = -200;
   let isVisible = false;
 
   document.addEventListener('mousemove', e => {
