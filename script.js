@@ -217,6 +217,10 @@ function initCustomCursor() {
   
   if (!cursor || !ring) return;
 
+  // Force hide default cursor on entire document
+  document.documentElement.style.cursor = 'none';
+  document.body.style.cursor = 'none';
+
   let mx = 0, my = 0, rx = 0, ry = 0;
   let isVisible = false;
 
@@ -255,6 +259,7 @@ function initCustomCursor() {
 
   // Grow ring on hover
   document.querySelectorAll('a, button').forEach(el => {
+    el.style.cursor = 'none';
     el.addEventListener('mouseenter', () => {
       ring.classList.add('grow');
     });
