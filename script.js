@@ -224,17 +224,14 @@ function initCustomCursor() {
     my = e.clientY;
 
     if (!isVisible) {
-      // First move: snap everything instantly to the real cursor position
       isVisible = true;
-      rx = mx;
-      ry = my;
+      // Snap the dot instantly, let the ring lerp in smoothly from off-screen
       cursor.style.left = mx + 'px';
       cursor.style.top = my + 'px';
-      ring.style.left = rx + 'px';
-      ring.style.top = ry + 'px';
-      cursor.style.opacity = '1';
-      ring.style.opacity = '1';
-      return;
+      requestAnimationFrame(() => {
+        cursor.style.opacity = '1';
+        ring.style.opacity = '1';
+      });
     }
 
     cursor.style.left = mx + 'px';
