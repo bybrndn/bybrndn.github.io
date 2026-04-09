@@ -292,7 +292,7 @@ nav {
 
 .home-photo img {
   width: 100%;
-  height: 50vh;
+  height: 60vh;
   object-fit: cover;
   object-position: center center;
   filter: grayscale(10%) contrast(1.06);
@@ -855,8 +855,8 @@ footer span {
     height: auto;
   }
   .home-photo img {
-    height: 70vw;
-    object-position: center 20%;
+    height:50vw;
+    object-position: center center;
   }
 
   .home-title, .about-big, .contact-big {
