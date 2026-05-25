@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BY BRNDN — Te Whāriki Manawāhine o Hauraki</title>
   <link rel="icon" href="/images/BRNDN favicon.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style.css" />
 
     <!-- Google Analytics tag (gtag.js) -->
@@ -22,14 +22,18 @@
 
   <style>
     :root {
-      --bg: #05162B;
-      --bg-dark: #00224D;
+      --bg: #0d1a0e;
+      --bg-dark: #162416;
+      --bg-darker: #1e3020;
+      --accent: #1a7a5a;
+      --accent-light: #6ecfaa;
+      --warm: #e8dfc0;
+      --offwhite: #f5f5f0;
       --ink: #ffffff;
       --ink-mid: rgba(255,255,255,0.45);
       --ink-faint: rgba(255,255,255,0.05);
       --white: #ffffff;
       --rule: rgba(255,255,255,0.07);
-      --accent: #FF204E;
     }
 
     .accent { color: var(--accent); }
@@ -115,7 +119,8 @@
     }
     .project-back:hover { color: var(--ink); gap: 0.9rem; }
     .project-title {
-      font-family: 'Grandspan Wide', sans-serif;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
       font-size: clamp(2.8rem, 5vw, 6rem);
       line-height: 0.9;
       letter-spacing: -0.02em;
@@ -132,7 +137,7 @@
     }
     .project-meta-row:last-of-type { border-bottom: none; padding-bottom: 0; }
     .project-meta-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
-    .project-meta-value { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
+    .project-meta-value { font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 300; color: var(--ink); }
     .project-hero-right {
       padding: 5vw 3.5vw 5vw 4vw;
       display: flex;
@@ -143,7 +148,7 @@
     .project-cover { width: 100%; flex: 1; min-height: 0; overflow: hidden; max-height: 60vh; }
     .project-cover img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 1s var(--ease); }
     .project-cover:hover img { transform: scale(1.03); }
-    .project-desc { font-size: 0.82rem; line-height: 1.95; color: var(--ink-mid); font-weight: 500; }
+    .project-desc { font-family: 'DM Sans', sans-serif; font-size: 0.82rem; line-height: 1.95; color: var(--ink-mid); font-weight: 300; }
 
     .project-section {
       display: grid;
@@ -153,7 +158,7 @@
     }
     .ps-label { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 600; padding-top: 0.2rem; padding-right: 4vw; }
     .ps-content { padding-left: 4vw; display: flex; flex-direction: column; gap: 2rem; }
-    .ps-text { font-size: 0.85rem; line-height: 2; color: var(--ink-mid); font-weight: 500; max-width: 640px; }
+    .ps-text { font-family: 'DM Sans', sans-serif; font-size: 0.85rem; line-height: 2; color: var(--ink-mid); font-weight: 300; max-width: 640px; }
 
     .img-grid { display: grid; gap: 1rem; }
     .img-grid.cols-1 { grid-template-columns: 1fr; }
@@ -181,7 +186,7 @@
     }
     .next-project:hover { padding-left: 5vw; }
     .next-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-mid); font-weight: 600; margin-bottom: 0.5rem; }
-    .next-title { font-family: 'Grandspan Wide', sans-serif; font-size: clamp(1.5rem, 3vw, 3rem); color: var(--ink); line-height: 1; }
+    .next-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1.5rem, 3vw, 3rem); color: var(--ink); line-height: 1; }
     .next-arrow { font-size: 1.5rem; color: var(--ink-mid); transition: transform 0.3s var(--ease), color 0.2s; }
     .next-project:hover .next-arrow { transform: translate(6px, -6px); color: var(--ink); }
 
@@ -206,10 +211,10 @@
     /* ── COLOUR PALETTE ── */
     .palette-section { display: grid; grid-template-columns: 18rem 1fr; padding: 5vw 3.5vw; border-top: 1px solid var(--rule); }
     .palette-swatches { display: flex; gap: 1.5rem; flex-wrap: wrap; padding-left: 4vw; align-items: flex-start; }
-    .palette-swatch { display: flex; flex-direction=column; gap: 0.8rem; }
+    .palette-swatch { display: flex; flex-direction: column; gap: 0.8rem; }
     .palette-swatch-color { width: 100px; height: 100px; border-radius: 2px; }
-    .palette-swatch-name { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.05em; color: var(--ink); }
-    .palette-swatch-hex { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mid); }
+    .palette-swatch-name { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.05em; color: var(--ink); }
+    .palette-swatch-hex { font-family: 'DM Sans', sans-serif; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mid); }
     @media (max-width: 860px) {
       .palette-section { grid-template-columns: 1fr; }
       .palette-swatches { padding-left: 0; padding-top: 2rem; }
@@ -230,7 +235,7 @@
     <div class="project-hero-content">
       <a class="project-back reveal" href="/work">← Back to Work</a>
       <div>
-        <h1 class="project-title reveal d1">Te Whāriki<br><span>Manawāhine</span></h1>
+        <h1 class="project-title reveal d1">Te Whariki<br><span>Manawahine</span></h1>
         <p class="project-desc reveal d2">Proposed Visual Identity Guidelines for Te Whāriki Manawāhine o Hauraki - a cultural design project celebrating Māori women's patterns and traditions from Hauraki.</p>
       </div>
       <div class="project-meta reveal d3">
@@ -244,7 +249,7 @@
         </div>
         <div class="project-meta-row">
           <span class="project-meta-label">Tools</span>
-          <span class="project-meta-value">Photoshop, Illustrator, InDesign</span>
+          <span class="project-meta-value">Figma</span>
         </div>
         <div class="project-meta-row">
           <a href="/projects/te-whariki-manawahine-o-hauraki/Te Whāriki Manawāhine o Hauraki – Proposed Visual Identity Guidelines 2026 V2.pdf" class="link-arrow" target="_blank">View Guidelines PDF <span>→</span></a>
@@ -257,8 +262,8 @@
     <div class="project-section reveal">
       <span class="ps-label">Overview</span>
       <div class="ps-content">
-        <p class="ps-text">Te Whāriki Manawāhine o Hauraki represents a visual identity system разработанное для célébrer et préserver les motifs traditionnels des femmes Māori de la région Hauraki. Ce projet explore l'intersection entre le patrimoine culturel et le design contemporain, créant un système visuel qui honore les traditions tout en étant applicable aux contextes modernes.</p>
-        <p class="ps-text">Le système visuel s'inspire des motifs de tissage traditionnels (whāriki), des formes naturelles de la région Hauraki, et des symboles culturels significatifs pour créer une identité qui est à la fois profondément ancrée dans le passé et résolument tournée vers l'avenir.</p>
+        <p class="ps-text">Te Whāriki Manawāhine o Hauraki represents a visual identity system developed to celebrate and preserve traditional Māori women's patterns from the Hauraki region. This project explores the intersection between cultural heritage and contemporary design, creating a visual system that honors tradition while being applicable to modern contexts.</p>
+        <p class="ps-text">The visual system draws inspiration from traditional weaving patterns (whāriki), natural forms of the Hauraki landscape, and significant cultural symbols to create an identity deeply rooted in the past while looking toward the future.</p>
       </div>
     </div>
 
@@ -266,24 +271,64 @@
       <span class="ps-label">Colour Palette</span>
       <div class="palette-swatches">
         <div class="palette-swatch">
-          <div class="palette-swatch-color" style="background:#8B4513;"></div>
-          <span class="palette-swatch-name">Earth Brown</span>
-          <span class="palette-swatch-hex">#8B4513</span>
+          <div class="palette-swatch-color" style="background:#0d1a0e;"></div>
+          <span class="palette-swatch-name">Pō</span>
+          <span class="palette-swatch-hex">#0d1a0e</span>
         </div>
         <div class="palette-swatch">
-          <div class="palette-swatch-color" style="background:#2E8B57;"></div>
-          <span class="palette-swatch-name">Sea Green</span>
-          <span class="palette-swatch-hex">#2E8B57</span>
+          <div class="palette-swatch-color" style="background:#162416;"></div>
+          <span class="palette-swatch-name">Ngahere</span>
+          <span class="palette-swatch-hex">#162416</span>
         </div>
         <div class="palette-swatch">
-          <div class="palette-swatch-color" style="background:#DAA520;"></div>
-          <span class="palette-swatch-name">Golden Sand</span>
-          <span class="palette-swatch-hex">#DAA520</span>
+          <div class="palette-swatch-color" style="background:#1e3020;"></div>
+          <span class="palette-swatch-name">Uru</span>
+          <span class="palette-swatch-hex">#1e3020</span>
         </div>
         <div class="palette-swatch">
-          <div class="palette-swatch-color" style="background:#FFFFFF;"></div>
-          <span class="palette-swatch-name">White</span>
-          <span class="palette-swatch-hex">#FFFFFF</span>
+          <div class="palette-swatch-color" style="background:#1a7a5a;"></div>
+          <span class="palette-swatch-name">Kākāriki</span>
+          <span class="palette-swatch-hex">#1a7a5a</span>
+        </div>
+        <div class="palette-swatch">
+          <div class="palette-swatch-color" style="background:#6ecfaa;"></div>
+          <span class="palette-swatch-name">Māramatanga</span>
+          <span class="palette-swatch-hex">#6ecfaa</span>
+        </div>
+        <div class="palette-swatch">
+          <div class="palette-swatch-color" style="background:#e8dfc0;"></div>
+          <span class="palette-swatch-name">Maramara</span>
+          <span class="palette-swatch-hex">#e8dfc0</span>
+        </div>
+        <div class="palette-swatch">
+          <div class="palette-swatch-color" style="background:#f5f5f0;"></div>
+          <span class="palette-swatch-name">Kō</span>
+          <span class="palette-swatch-hex">#f5f5f0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <span class="ps-label">Typography System</span>
+      <div class="ps-content">
+        <p class="ps-text">The typography system combines two complementary typefaces: Cormorant Garamond for display and heading text, and DM Sans for body text and labels. This pairing creates a balance between classical elegance and contemporary readability.</p>
+        <div class="img-grid cols-2">
+          <div>
+            <h3>Display / Heading</h3>
+            <p><strong>Cormorant Garamond</strong></p>
+            <p>Display/H1: Light 300</p>
+            <p>Heading/H2: Regular 400</p>
+          </div>
+          <div>
+            <h3>Body & Labels</h3>
+            <p><strong>DM Sans</strong></p>
+            <p>Body Text: Light 300 · 15px · line-height 1.8</p>
+            <p>Label/Tag: Bold 400 · 8px · tracked</p>
+          </div>
+        </div>
+        <div class="img-grid cols-1" style="margin-top: 1.5rem;">
+          <p><em>Haere Mai</em></p>
+          <p>A place of healing, story, and connection.</p>
         </div>
       </div>
     </div>
@@ -291,7 +336,7 @@
     <div class="project-section reveal">
       <span class="ps-label">Pattern System</span>
       <div class="ps-content">
-        <p class="ps-text">Le système de motifs s'inspire des traditions de tissage whāriki, en adaptant les formes géométriques et les rythmes répétitifs pour créer un langage visuel contemporain qui respecte l'héritage culturel tout en fonctionnant dans les applications modernes.</p>
+        <p class="ps-text">The pattern system draws inspiration from traditional whāriki (weaving) patterns, adapting geometric forms and rhythmic repetitions to create a contemporary visual language that respects cultural heritage while functioning in modern applications.</p>
         <div class="img-grid cols-2">
           <div>
             <img src="/projects/te-whariki-manawahine-o-hauraki/placeholder-pattern1.jpg" alt="Pattern study 1" />
@@ -308,7 +353,7 @@
     <div class="project-section reveal">
       <span class="ps-label">Applications</span>
       <div class="ps-content">
-        <p class="ps-text">L'identité visuelle a été développée pour fonctionner across various applications, from cultural documentation and educational materials to contemporary branding and digital platforms. Chaque application respecte les principes fondamentaux tout en s'adaptant au contexte spécifique.</p>
+        <p class="ps-text">The visual identity has been developed for various applications, from cultural documentation and educational materials to contemporary branding and digital platforms. Each application respects the core principles while adapting to specific contexts.</p>
         <div class="img-grid cols-3">
           <div>
             <img src="/projects/te-whariki-manawahine-o-hauraki/placeholder-app1.jpg" alt="Cultural document" />
