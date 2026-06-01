@@ -1,0 +1,96 @@
+{
+  "title": "itsmejagz",
+  "titleHTML": "ITSME<br><span>JAGZ</span>",
+  "subtitle": "Personal Branding & Visual Identity",
+  "description": "A full visual identity system built for JAGZ — an IRL streamer from New Zealand making his presence known on the streets and on screen.",
+  "theme": {
+    "bg": "#05162B",
+    "bgDark": "#00224D",
+    "ink": "#ffffff",
+    "inkMid": "rgba(255,255,255,0.45)",
+    "rule": "rgba(255,255,255,0.07)",
+    "accent": "#FF204E"
+  },
+  "hero": {
+    "layout": "parallax",
+    "background": "/projects/itsmejagz/jagzbackground.png"
+  },
+  "meta": [
+    { "label": "Type", "value": "Personal Branding & Visual Identity" },
+    { "label": "Year", "value": "2026" },
+    { "label": "Tools", "value": "Photoshop, Illustrator, Figma" }
+  ],
+  "link": {
+    "label": "View Guidelines PDF",
+    "url": "https://c770f7a1-c0a1-4d47-9df7-610a5c2148fe.filesusr.com/ugd/64ccbb_1a7e6fb05aca418ca5e5840d7456d5ce.pdf"
+  },
+  "sections": [
+    {
+      "type": "text",
+      "label": "Overview",
+      "paragraphs": [
+        "JAGZ is an IRL streamer from New Zealand — taking to the streets and building a community one stream at a time. This visual identity was built to match that energy and give him a look that stands out. Starting from the original JAGZ logo, the identity was expanded into a full system — refining the colour palette, establishing logo variations, and building out a consistent set of visual rules that flex across streaming and social.",
+        "Neon-shifted red and crisp white cut through deep navy, capturing the feel of city lights after dark. Bold, electric, and built to last. The result is a visual language that puts JAGZ on the map — loud enough to stop the scroll, considered enough to grow with him."
+      ]
+    },
+    {
+      "type": "palette",
+      "label": "Colour Palette",
+      "swatches": [
+        { "name": "JAGZ Red", "hex": "#FF204E" },
+        { "name": "Deep Navy", "hex": "#05162B", "border": true },
+        { "name": "Dark Navy", "hex": "#00224D", "border": true },
+        { "name": "White", "hex": "#ffffff" }
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "Logo System",
+      "paragraphs": [
+        "The main logo was the starting point — with additional style variations built out to give flexibility across different contexts and formats."
+      ],
+      "columns": 3,
+      "images": [
+        { "src": "https://static.wixstatic.com/media/64ccbb_c573441396174b06b5c7cdd6f69970e1~mv2.png", "alt": "Logo style 1", "caption": "Style 01" },
+        { "src": "https://static.wixstatic.com/media/64ccbb_e96c1365294d4058a142c939551463f7~mv2.png", "alt": "Logo style 2", "caption": "Style 02 — Main" },
+        { "src": "https://static.wixstatic.com/media/64ccbb_187bbc98e49640dc8ee1f3b0d4e83cdf~mv2.png", "alt": "Logo style 3", "caption": "Style 03" }
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "Social Assets",
+      "paragraphs": [
+        "The identity extended across all of JAGZ's social platforms — YouTube, Instagram, TikTok, and Kick. Each asset was designed to be immediately recognisable while staying consistent across different formats and contexts."
+      ],
+      "columns": 4,
+      "images": [
+        { "src": "https://static.wixstatic.com/media/64ccbb_47955fb8ebfe48e1b7f963dc4603cf27~mv2.png", "alt": "YouTube asset", "caption": "YouTube", "contain": true },
+        { "src": "https://static.wixstatic.com/media/64ccbb_f2c3f366b0cc4729a0e4d4487aaaab83~mv2.png", "alt": "Instagram asset", "caption": "Instagram", "contain": true },
+        { "src": "https://static.wixstatic.com/media/64ccbb_e7ebd0282408404b90593500e8cc4682~mv2.png", "alt": "TikTok asset", "caption": "TikTok", "contain": true },
+        { "src": "https://static.wixstatic.com/media/64ccbb_8ef2b0300a584d5ba3fe1cd5bc9d7c7b~mv2.png", "alt": "Kick asset", "caption": "Kick", "contain": true }
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "Stream Panels",
+      "paragraphs": [
+        "Stream panels and overlay screens were designed to bring the identity into the live streaming environment — offline screens, donation banners, and social follow panels."
+      ],
+      "grids": [
+        {
+          "columns": 1,
+          "images": [
+            { "src": "https://static.wixstatic.com/media/64ccbb_0870dd90a85e4e88bc1620ee2ebaad19~mv2.png", "alt": "Stream offline screen", "caption": "Stream offline screen" }
+          ]
+        },
+        {
+          "columns": 2,
+          "images": [
+            { "src": "https://static.wixstatic.com/media/64ccbb_0045e11ea1204be48a879981c07998bc~mv2.png", "alt": "Follow on TikTok", "caption": "Follow panel — TikTok" },
+            { "src": "https://static.wixstatic.com/media/64ccbb_178aa90d1fca413dae728504b5dd2e96~mv2.png", "alt": "Follow on Instagram", "caption": "Follow panel — Instagram" }
+          ]
+        }
+      ]
+    }
+  ]
+}

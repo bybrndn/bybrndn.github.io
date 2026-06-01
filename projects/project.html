@@ -1,0 +1,39 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- title is set dynamically by project.js from the config -->
+  <title>BY BRNDN — Project</title>
+  <link rel="icon" href="/images/BRNDN favicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/projects/project.css" />
+
+  <!-- Google Analytics tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHZLX6JYBW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JHZLX6JYBW');
+  </script>
+</head>
+<body class="proj-loading">
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+
+  <nav id="navbar"></nav>
+
+  <!-- Full-bleed hero (parallax or split) is rendered here -->
+  <section class="project-hero" id="project-hero"></section>
+
+  <!-- Sections, next-project and footer are rendered here -->
+  <div class="page" id="project-content"></div>
+
+  <script src="/script.js"></script>
+  <script src="/projects/project.js"></script>
+</body>
+</html>

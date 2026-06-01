@@ -1,0 +1,79 @@
+{
+  "title": "Move Media NZ",
+  "titleHTML": "MOVE<br><span>MEDIA NZ</span>",
+  "subtitle": "Brand Design — Work in Progress",
+  "description": "An Auckland-based boutique video production house — crafting cinematic, authentic stories that emotionally move people and elevate brands.",
+  "theme": {
+    "bg": "#222932",
+    "bgDark": "#181d23",
+    "ink": "#ECF5F4",
+    "inkMid": "rgba(236,245,244,0.45)",
+    "rule": "rgba(236,245,244,0.08)",
+    "accent": "#2ABBB2"
+  },
+  "hero": {
+    "layout": "parallax",
+    "background": "/projects/movemedia/movemediabg.png",
+    "backgroundFilter": "brightness(0.4)"
+  },
+  "meta": [
+    { "label": "Type", "value": "Brand Design" },
+    { "label": "Tools", "value": "Photoshop, Illustrator" },
+    { "label": "Status", "value": "Work in Progress" }
+  ],
+  "sections": [
+    {
+      "type": "text",
+      "label": "Overview",
+      "paragraphs": [
+        "Move Media is an Auckland-based boutique video production house specialising in event films, corporate videos, social media content, videography, photography, and post-production. With over 20 years in the industry, they create beautiful, meaningful visuals that capture moments and tell compelling stories.",
+        "The brief was to build a brand identity that reflected their vision — to be Aotearoa's trusted creative partner for storytelling videos that emotionally move people and elevate brands worldwide. The result is a clean, confident system built around the values of storytelling, excellence, true collaboration, and real impact."
+      ]
+    },
+    {
+      "type": "logos",
+      "label": "Logomark",
+      "paragraphs": [
+        "The logomark is a minimalist \"M\" formed by three geometric elements — a small upward-angled triangle symbolising picking yourself up, a gentle angled line for smooth transition and flow, and a tall solid vertical beam representing stability, strength, and forward momentum."
+      ],
+      "columns": 2,
+      "items": [
+        { "src": "/projects/movemedia/MoveMediaLogo.png", "alt": "Move Media Logomark", "caption": "Logomark — dark", "bg": "dark" },
+        { "src": "/projects/movemedia/MoveMediaLogoDark.png", "alt": "Move Media Logomark dark version", "caption": "Logomark — light bg", "bg": "light" }
+      ]
+    },
+    {
+      "type": "logos",
+      "label": "Logo System",
+      "paragraphs": [
+        "Three logo configurations were developed to cover every use case — from compact icon-only applications to full horizontal and stacked lockups for formal branded materials."
+      ],
+      "columns": 2,
+      "items": [
+        { "src": "/projects/movemedia/MoveMediaFull.png", "alt": "Move Media wordmark", "caption": "Wordmark" },
+        { "src": "/projects/movemedia/MoveMediaFull2.png", "alt": "Move Media horizontal lockup", "caption": "Horizontal lockup" },
+        { "src": "/projects/movemedia/MoveMediaStacked.png", "alt": "Move Media stacked lockup", "caption": "Stacked lockup" },
+        { "src": "/projects/movemedia/MoveMediaStacked2.png", "alt": "Move Media stacked variation", "caption": "Stacked variation" }
+      ]
+    },
+    {
+      "type": "values",
+      "label": "Brand Values",
+      "items": [
+        { "name": "Storytelling", "desc": "We craft cinematic, authentic narratives full of emotional depth and top-tier quality." },
+        { "name": "Excellence", "desc": "We deliver powerful video that inspires hearts, forges genuine connections, and drives meaningful results." },
+        { "name": "Collaboration", "desc": "We listen deeply, partner closely, and tailor every project to perfectly match your vision." },
+        { "name": "Real Impact", "desc": "We communicate with purpose, emphasising emotion, connection, and results that matter." }
+      ]
+    },
+    {
+      "type": "palette",
+      "label": "Colour Palette",
+      "swatches": [
+        { "name": "Teal", "hex": "#2ABBB2" },
+        { "name": "Dark", "hex": "#222932", "border": true },
+        { "name": "Light", "hex": "#ECF5F4" }
+      ]
+    }
+  ]
+}

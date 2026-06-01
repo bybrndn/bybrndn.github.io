@@ -1,0 +1,328 @@
+/* ════════════════════════════════════════════════════════════════
+   SHARED PROJECT PAGE STYLES
+   One stylesheet for every project. Per-project colours, fonts and
+   image treatments are driven by CSS variables that project.js sets
+   on <html> from each project's project.json. Defaults below fall
+   back to the global dark theme in style.css.
+   ════════════════════════════════════════════════════════════════ */
+
+:root {
+  --title-font: 'Grandspan Wide', sans-serif;
+  --title-weight: 400;
+  --image-filter: none;
+  --accent: var(--ink);
+}
+
+/* While the config is loading, hide the unstyled scaffold. */
+.proj-loading .project-hero,
+.proj-loading #project-content { opacity: 0; }
+
+/* The hero handles nav clearance; sections bring their own padding. */
+#project-content { padding-top: 0; }
+
+/* ── HERO: shared ── */
+.project-back {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  transition: color 0.2s, gap 0.25s;
+  align-self: flex-start;
+}
+.project-back:hover { color: var(--ink); gap: 0.9rem; }
+
+.project-title {
+  font-family: var(--title-font);
+  font-weight: var(--title-weight);
+  font-size: clamp(2.5rem, 5.5vw, 6rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.project-title span { color: var(--accent); }
+
+.project-desc {
+  font-size: 0.82rem;
+  line-height: 1.95;
+  color: var(--ink-mid);
+  font-weight: 500;
+}
+
+.project-meta-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+.project-meta-value { font-size: 0.8rem; font-weight: 600; color: var(--ink); }
+
+/* ── HERO: parallax layout ── */
+.project-hero.layout-parallax {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.project-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  will-change: transform;
+  transition: filter 1.2s ease;
+  filter: var(--hero-filter, brightness(0.45)) blur(20px);
+}
+.project-hero-bg.loaded { filter: var(--hero-filter, brightness(0.45)) blur(0); }
+.project-hero-fade {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 65%;
+  background: linear-gradient(to bottom, transparent, var(--bg) 90%);
+  pointer-events: none;
+  z-index: 1;
+}
+.project-hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 3.5vw 6vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 100vh;
+}
+.layout-parallax .project-desc { max-width: 520px; margin-top: 1rem; }
+.layout-parallax .project-meta {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+.layout-parallax .project-meta-row { display: flex; flex-direction: column; gap: 0.3rem; }
+.layout-parallax .project-meta-link { flex-basis: 100%; }
+
+/* ── HERO: split layout ── */
+.project-hero.layout-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(80vh - 80px);
+  padding-top: 80px;
+  border-bottom: 1px solid var(--rule);
+}
+.project-hero-left {
+  padding: 5vw 4vw 5vw 3.5vw;
+  border-right: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.project-hero-right {
+  padding: 5vw 3.5vw 5vw 4vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+.project-cover { width: 100%; flex: 1; min-height: 0; overflow: hidden; max-height: 60vh; }
+.project-cover img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+  transition: transform 1s var(--ease);
+}
+.project-cover:hover img { transform: scale(1.03); }
+.layout-split .project-meta { display: flex; flex-direction: column; gap: 1.2rem; }
+.layout-split .project-meta-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--rule);
+}
+.layout-split .project-meta-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+/* ── CONTENT SECTIONS ── */
+.project-section {
+  display: grid;
+  grid-template-columns: 18rem 1fr;
+  padding: 5vw 3.5vw;
+  border-top: 1px solid var(--rule);
+  overflow: hidden;
+}
+.ps-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  padding-top: 0.2rem;
+  padding-right: 4vw;
+}
+.ps-content {
+  padding-left: 4vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 0;
+}
+.ps-text {
+  font-size: 0.85rem;
+  line-height: 2;
+  color: var(--ink-mid);
+  font-weight: 500;
+  max-width: 640px;
+}
+
+/* ── IMAGE GRIDS ── */
+.img-grid { display: grid; gap: 1rem; width: 100%; }
+.img-grid.cols-1 { grid-template-columns: 1fr; }
+.img-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+.img-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.img-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.img-grid img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  filter: var(--image-filter);
+  transition: transform 0.6s var(--ease);
+}
+.img-grid img.contain { object-fit: contain; max-height: 80px; background: transparent; filter: none; }
+.img-grid img:hover { transform: scale(1.02); }
+.img-caption {
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-top: 0.5rem;
+}
+
+/* ── VIDEO EMBED ── */
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  background: var(--bg-dark);
+  border: 1px solid var(--rule);
+}
+.video-container iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* ── COLOUR PALETTE ── */
+.palette-swatches { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: flex-start; }
+.palette-swatch { display: flex; flex-direction: column; gap: 0.8rem; }
+.palette-swatch-color { width: 100px; height: 100px; border-radius: 2px; }
+.palette-swatch-name { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.05em; color: var(--ink); }
+.palette-swatch-hex { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mid); }
+
+/* Inline swatch row (small circles) */
+.swatch-row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.swatch-dot { width: 3rem; height: 3rem; border-radius: 50%; }
+
+/* ── BRAND VALUES ── */
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  width: 100%;
+  overflow: hidden;
+}
+.value-item { background: var(--bg); padding: 2rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.value-name {
+  font-weight: 700;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.value-desc { font-size: 0.78rem; line-height: 1.8; color: var(--ink-mid); }
+
+/* ── LOGO GRID ── */
+.logo-grid { display: grid; gap: 3rem 2rem; width: 100%; }
+.logo-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.logo-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.logo-item { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+.logo-item img { max-height: 100px; width: auto; max-width: 100%; display: block; transition: transform 0.4s ease; }
+.logo-item:hover img { transform: scale(1.05); }
+.logo-item-caption {
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  text-align: center;
+}
+/* Boxed logo display (dark / light backing) */
+.logo-item .logo-box {
+  width: 100%;
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-item .logo-box.dark { background: var(--bg-dark); }
+.logo-item .logo-box.light { background: #ECF5F4; }
+.logo-item .logo-box img { max-height: 120px; }
+
+/* ── NEXT PROJECT ── */
+.next-project {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3.5rem 3.5vw;
+  text-decoration: none;
+  border-top: 1px solid var(--rule);
+  transition: padding-left 0.35s var(--ease);
+}
+.next-project:hover { padding-left: 5vw; }
+.next-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.next-title { font-family: var(--title-font); font-weight: var(--title-weight); font-size: clamp(1.5rem, 3vw, 3rem); color: var(--ink); line-height: 1; }
+.next-arrow { font-size: 1.5rem; color: var(--ink-mid); transition: transform 0.3s var(--ease), color 0.2s; }
+.next-project:hover .next-arrow { transform: translate(6px, -6px); color: var(--ink); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .project-hero.layout-split { grid-template-columns: 1fr; }
+  .project-hero-left { border-right: none; padding-right: 3.5vw; padding-bottom: 4vw; border-bottom: 1px solid var(--rule); }
+  .project-hero-right { padding-left: 3.5vw; }
+  .project-cover { max-height: 55vw; }
+  .project-hero-content { padding: 80px 6vw 5vw; }
+  .layout-parallax .project-meta { gap: 1.2rem; }
+  .project-title { font-size: clamp(2rem, 10vw, 3.5rem); word-break: break-word; }
+  .project-desc { font-size: 0.78rem; max-width: 100%; }
+
+  .project-section { grid-template-columns: 1fr; }
+  .ps-label { padding-right: 0; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+  .ps-content { padding-left: 0; padding-top: 2rem; }
+  .ps-text { font-size: 0.8rem; }
+
+  .img-grid.cols-3, .img-grid.cols-4 { grid-template-columns: 1fr 1fr; }
+  .img-grid.cols-2 { grid-template-columns: 1fr; }
+
+  .palette-swatch-color { width: 72px; height: 72px; }
+  .values-grid { grid-template-columns: 1fr; }
+  .logo-grid.cols-2, .logo-grid.cols-3 { grid-template-columns: 1fr; gap: 2rem; }
+  .logo-item .logo-box { padding: 2rem 1.5rem; }
+  .logo-item .logo-box img { max-height: 80px; }
+}

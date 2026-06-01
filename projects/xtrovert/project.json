@@ -1,0 +1,65 @@
+{
+  "title": "Xtrovert App",
+  "titleHTML": "XTRO<br><span>VERT</span>",
+  "subtitle": "UI/UX — Wellbeing App Design",
+  "description": "A social wellbeing app concept that connects extroverts with introverts — designed to make social connection feel less overwhelming and more meaningful.",
+  "theme": {
+    "bg": "#f5f0e8",
+    "bgDark": "#ede8e0",
+    "ink": "#1a1410",
+    "inkMid": "rgba(26,20,16,0.45)",
+    "rule": "rgba(26,20,16,0.1)",
+    "accent": "#7c3fff",
+    "accent2": "#ff3c3c"
+  },
+  "hero": {
+    "layout": "split",
+    "cover": "https://static.wixstatic.com/media/64ccbb_75952ee0fcdd4b66b2b76cedb3cd0fa0~mv2.png"
+  },
+  "meta": [
+    { "label": "Type", "value": "UI/UX — App Design" },
+    { "label": "Year", "value": "2023" },
+    { "label": "Tools", "value": "Figma, Photoshop" }
+  ],
+  "link": {
+    "label": "View Full Case Study",
+    "url": "https://c770f7a1-c0a1-4d47-9df7-610a5c2148fe.filesusr.com/ugd/64ccbb_50b53426709545d497aed80b57783529.pdf"
+  },
+  "sections": [
+    {
+      "type": "text",
+      "label": "Overview",
+      "paragraphs": [
+        "This was an elective project where I needed to articulate a proposal for a future vision of a creative concept. I created a social-focused app on how extroverted people can help out introverted ones — bridging the gap between two very different social personalities through thoughtful design.",
+        "The two main colours in the brand are a calm, cool deep purple (comfort for introverts) and a vibrant, energetic red (outgoing extrovert). Gradients are used throughout to give a visual cue of blending — representing the connection between the two."
+      ],
+      "swatchRow": ["#6b3fff", "#ff3c3c", "linear-gradient(135deg,#6b3fff,#ff3c3c)"]
+    },
+    {
+      "type": "gallery",
+      "label": "App Logo",
+      "grids": [
+        {
+          "columns": 1,
+          "maxWidth": 200,
+          "images": [
+            { "src": "https://static.wixstatic.com/media/64ccbb_666b0627893742d587622cb3f5712158~mv2.png", "alt": "Xtrovert App Logo", "caption": "App logo mark" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "UI Screens",
+      "paragraphs": [
+        "The interface leans into the gradient palette — dark backgrounds let the purple and red breathe. The home screen and onboarding were designed to feel welcoming and approachable, removing the friction that social apps often create for introverted users."
+      ],
+      "columns": 3,
+      "images": [
+        { "src": "https://static.wixstatic.com/media/64ccbb_dc1d5528160c4670b45f883e7acffd97~mv2.png", "alt": "Home Screen", "caption": "Home screen" },
+        { "src": "https://static.wixstatic.com/media/64ccbb_3c6496459f544a79aabf13a2f6364928~mv2.png", "alt": "Interface screen 2", "caption": "Interface" },
+        { "src": "https://static.wixstatic.com/media/64ccbb_8a4167458fc84fa3846dceae7b178456~mv2.png", "alt": "Interface screen 3", "caption": "Interface" }
+      ]
+    }
+  ]
+}

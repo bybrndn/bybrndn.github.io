@@ -1,0 +1,68 @@
+{
+  "title": "Conflict AR",
+  "titleHTML": "CON<br>FLICT <span>AR</span>",
+  "subtitle": "Branding, UI/UX & AR Game Design",
+  "description": "An augmented reality mobile game built to feel physical and active — not something you play in isolation. Bold branding, AR gameplay, and a full UI/UX system designed in Figma.",
+  "theme": {
+    "bg": "#1D2627",
+    "bgDark": "#141c1d",
+    "ink": "#E6EFEE",
+    "inkMid": "rgba(230,239,238,0.5)",
+    "rule": "rgba(230,239,238,0.08)",
+    "accent": "#22B7C3",
+    "accent2": "#327C83"
+  },
+  "hero": {
+    "layout": "parallax",
+    "background": "https://static.wixstatic.com/media/64ccbb_385481646238455faa4470646d16c0bc~mv2.png",
+    "backgroundFilter": "brightness(0.4)"
+  },
+  "meta": [
+    { "label": "Type", "value": "Branding, UI/UX, AR Game Design" },
+    { "label": "Year", "value": "2024" },
+    { "label": "By", "value": "Branden Hall & Kavish Kuver" },
+    { "label": "Tools", "value": "Figma, Photoshop, Unity" }
+  ],
+  "sections": [
+    {
+      "type": "text",
+      "label": "Overview",
+      "paragraphs": [
+        "During university, a friend and I began developing an augmented reality mobile game called CONFLICT. We set out to make a game that feels physical and active — not something you play in isolation. The visual direction needed to feel bold, energetic, and fresh.",
+        "AR is familiar tech, but we wanted to use it in a way that feels more purposeful and engaging. The brand uses sharp, drop-shadowed squares as its main visual element — representing the tile system in the game and tying the branding directly back to core gameplay."
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "Branding",
+      "columns": 1,
+      "images": [
+        { "src": "https://static.wixstatic.com/media/64ccbb_2e44b6f0805b4821bded4a5650ae6e04~mv2.png", "alt": "Conflict title logo", "caption": "Game logo" },
+        { "src": "https://static.wixstatic.com/media/64ccbb_d643ac0c234a432ca9b97a53e16aab46~mv2.png", "alt": "Conflict in hand", "caption": "Brand in context" },
+        { "src": "https://static.wixstatic.com/media/64ccbb_93a7d98d7ad54b30bc7d35c6de5fd857~mv2.png", "alt": "Conflict charts", "caption": "Design system" }
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "UI / UX",
+      "paragraphs": [
+        "Designing for augmented reality meant thinking carefully about what lives on screen versus in the real world. Previous experiments with AR and app development gave me a foundation to iterate from — studying what worked on a small mobile screen and what pulled focus away from the gameplay."
+      ],
+      "columns": 2,
+      "images": [
+        { "src": "https://static.wixstatic.com/media/64ccbb_09f75ccba6474027b0d0ffc1b7ee86a2~mv2.png", "alt": "HUD Concept in Figma", "caption": "HUD concept — Figma" },
+        { "src": "https://static.wixstatic.com/media/64ccbb_a5bfcc64b8c5450c9f978a1c2056e3b8~mv2.png", "alt": "HUD in-game", "caption": "HUD in-game" }
+      ]
+    },
+    {
+      "type": "palette",
+      "label": "Colour Palette",
+      "swatches": [
+        { "name": "Bright Gray", "hex": "#E6EFEE" },
+        { "name": "Ball Blue", "hex": "#22B7C3" },
+        { "name": "Teal Blue", "hex": "#327C83" },
+        { "name": "Dark Gunmetal", "hex": "#1D2627", "border": true }
+      ]
+    }
+  ]
+}

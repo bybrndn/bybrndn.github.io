@@ -39,65 +39,71 @@
     <div class="work-header reveal">
       <h1 class="work-big">PROJECTS</h1>
       <div class="work-header-right">
-        <span class="work-count">06 Projects</span>
+        <span class="work-count" id="workCount">Projects</span>
         <p class="work-intro">Branding, UI/UX, motion, and digital work. A growing collection.</p>
       </div>
     </div>
-    <div class="work-list">
-      <a class="work-item reveal" href="/projects/itsmejagz/itsmejagz">
-        <span class="wi-num">01</span>
-        <div class="wi-center">
-          <span class="wi-title">itsmejagz</span>
-          <span class="wi-type">Personal Branding & Visual Identity</span>
-        </div>
-        <span class="wi-arrow">↗</span>
-      </a>
-      <a class="work-item reveal" href="/projects/conversations/conversations">
-        <span class="wi-num">02</span>
-        <div class="wi-center">
-          <span class="wi-title">Conversations</span>
-          <span class="wi-type">Videography & Editing — Music Video</span>
-        </div>
-        <span class="wi-arrow">↗</span>
-      </a>
-      <a class="work-item reveal" href="/projects/movemedia/movemedia">
-        <span class="wi-num">03</span>
-        <div class="wi-center">
-          <span class="wi-title">Move Media NZ</span>
-          <span class="wi-type">Brand Design — Work in Progress</span>
-        </div>
-        <span class="wi-arrow">↗</span>
-      </a>
-      <a class="work-item reveal" href="/projects/conflict/conflict">
-        <span class="wi-num">04</span>
-        <div class="wi-center">
-          <span class="wi-title">Conflict AR</span>
-          <span class="wi-type">Branding, UI/UX & AR Game Design</span>
-        </div>
-        <span class="wi-arrow">↗</span>
-      </a>
-      <a class="work-item reveal" href="/projects/xtrovert/xtrovert">
-        <span class="wi-num">05</span>
-        <div class="wi-center">
-          <span class="wi-title">Xtrovert App</span>
-          <span class="wi-type">UI/UX — Wellbeing App Design</span>
-        </div>
-        <span class="wi-arrow">↗</span>
-      </a>
-      <a class="work-item reveal" href="/projects/te-whariki-manawahine-o-hauraki/te-whariki-manawahine-o-hauraki">
-        <span class="wi-num">06</span>
-        <div class="wi-center">
-          <span class="wi-title">Te Whariki Manawahine</span>
-          <span class="wi-type">Branding & Visual Identity</span>
-        </div>
-        <span class="wi-arrow">↗</span>
-      </a>
-    </div>
+    <!-- Populated dynamically from /projects/projects.json + each project.json -->
+    <div class="work-list" id="workList"></div>
     <footer>
       <span>© 2026 Branden Hall</span>
       <span>Auckland, NZ</span>
     </footer>
   </div>
   <script src="/script.js"></script>
+  <script>
+    // ── Build the work list from the project data source ──
+    (function () {
+      var PRETTY = !location.pathname.endsWith('.html');
+      function purl(slug) {
+        return (PRETTY ? '/projects/project/?p=' : '/projects/project.html?p=') + encodeURIComponent(slug);
+      }
+      var list = document.getElementById('workList');
+      var countEl = document.getElementById('workCount');
+
+      fetch('/projects/projects.json')
+        .then(function (r) { return r.json(); })
+        .then(function (slugs) {
+          return Promise.all(slugs.map(function (slug) {
+            return fetch('/projects/' + slug + '/project.json')
+              .then(function (r) { return r.ok ? r.json() : null; })
+              .then(function (d) { return d ? { slug: slug, data: d } : null; })
+              .catch(function () { return null; });
+          }));
+        })
+        .then(function (items) {
+          items = items.filter(Boolean);
+          if (countEl) countEl.textContent = String(items.length).padStart(2, '0') + (items.length === 1 ? ' Project' : ' Projects');
+          list.innerHTML = items.map(function (it, i) {
+            var d = it.data;
+            var num = String(i + 1).padStart(2, '0');
+            var title = d.listTitle || d.title;
+            var type = d.subtitle || (d.meta && d.meta[0] && d.meta[0].value) || '';
+            return '<a class="work-item reveal" href="' + purl(it.slug) + '">' +
+              '<span class="wi-num">' + num + '</span>' +
+              '<div class="wi-center"><span class="wi-title">' + title + '</span>' +
+              '<span class="wi-type">' + type + '</span></div>' +
+              '<span class="wi-arrow">↗</span></a>';
+          }).join('');
+
+          // Reveal-on-scroll for the freshly built items.
+          var obs = new IntersectionObserver(function (es) {
+            es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+          }, { threshold: 0.08 });
+          list.querySelectorAll('.reveal').forEach(function (el) {
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
+            else obs.observe(el);
+          });
+          var ring = document.querySelector('.cursor-ring');
+          if (ring) list.querySelectorAll('a').forEach(function (el) {
+            el.addEventListener('mouseenter', function () { ring.classList.add('grow'); });
+            el.addEventListener('mouseleave', function () { ring.classList.remove('grow'); });
+          });
+        })
+        .catch(function () {
+          list.innerHTML = '<p class="work-intro" style="padding:2rem 0">Unable to load projects.</p>';
+        });
+    })();
+  </script>
 </body>
 </html>

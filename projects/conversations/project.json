@@ -1,0 +1,96 @@
+{
+  "title": "Conversations",
+  "titleHTML": "CONVER<br><span>SATIONS</span>",
+  "subtitle": "Videography & Editing — Music Video",
+  "description": "A music video shot and edited through Auckland City at night — handheld, grainy, and vintage. A dreamy old-school aesthetic brought to life through filmmaking and After Effects.",
+  "theme": {
+    "bg": "#0d0a07",
+    "bgDark": "#080603",
+    "ink": "#f5ede0",
+    "inkMid": "rgba(245,237,224,0.45)",
+    "rule": "rgba(245,237,224,0.07)",
+    "accent": "#c4a06a",
+    "imageFilter": "sepia(15%) contrast(1.04)"
+  },
+  "hero": {
+    "layout": "parallax",
+    "background": "/projects/conversations/conversationsbackground.png",
+    "backgroundFilter": "sepia(20%) contrast(1.05) brightness(0.55)"
+  },
+  "meta": [
+    { "label": "Type", "value": "Videography & Editing" },
+    { "label": "Year", "value": "2023" },
+    { "label": "By", "value": "Branden Hall, Varish Nair, Denzel Pereiea" },
+    { "label": "Tools", "value": "Premiere Pro, After Effects" }
+  ],
+  "sections": [
+    {
+      "type": "text",
+      "label": "Overview",
+      "paragraphs": [
+        "My friends wanted me to shoot and edit their music video. They gave me some inspiration and a theme they were going for. Although informal, this project showcases my videography and editing skills in a real creative context.",
+        "The theme they wanted was a dreamy, vintage aesthetic — handheld footage with a grainy filter. That \"Old Skool\" vibe of a music video. We took to the streets of Auckland City at night and captured the scenes as we roamed."
+      ]
+    },
+    {
+      "type": "video",
+      "label": "Watch",
+      "embed": "https://www.youtube.com/embed/myNRkY5CQ70",
+      "caption": "Full music video — \"Conversations\""
+    },
+    {
+      "type": "gallery",
+      "label": "Filming",
+      "paragraphs": [
+        "I independently filmed each scene for this music video. We knew we wanted it to take place within the city — Auckland at night gave us the atmosphere we needed. Most scenes were improvised on the spot as we moved through the streets."
+      ],
+      "columns": 3,
+      "images": [
+        { "src": "https://static.wixstatic.com/media/64ccbb_c18bfcb6dc0947829c8f37a85899bc38~mv2.jpg", "alt": "Auckland City filming", "caption": "Auckland City" },
+        { "src": "https://static.wixstatic.com/media/64ccbb_490d6b900c0444bebc9e58d665563f03~mv2.jpg", "alt": "On location", "caption": "On location" },
+        { "src": "https://static.wixstatic.com/media/64ccbb_5d88370073484740819c54b96b81dc55~mv2.jpg", "alt": "Night scene", "caption": "Night scene" }
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "Editing & VFX",
+      "paragraphs": [
+        "Several After Effects VFX shots were used throughout the video — including a VHS intro and outro effect with cinemascope bars, and a climax sequence where camera motion tracks between the two artists going bar for bar. This was the one planned scene in the whole video."
+      ],
+      "grids": [
+        {
+          "columns": 3,
+          "images": [
+            { "src": "https://static.wixstatic.com/media/64ccbb_1dcb466fe37a438abe72587983f66624~mv2.png", "alt": "Video screenshot 1", "caption": "VHS intro effect" },
+            { "src": "https://static.wixstatic.com/media/64ccbb_9b3710a210ac40ba995672519cd6a4a4~mv2.png", "alt": "Video screenshot 2", "caption": "Street scene" },
+            { "src": "https://static.wixstatic.com/media/64ccbb_ff8878bf5f5341dd8c9bd7cb2952fd22~mv2.png", "alt": "Video screenshot 3", "caption": "Climax sequence" }
+          ]
+        },
+        {
+          "columns": 2,
+          "images": [
+            { "src": "https://static.wixstatic.com/media/64ccbb_79ae42756b344a7da786864fdb281e29~mv2.gif", "alt": "VFX animation 1", "caption": "After Effects VFX" },
+            { "src": "https://static.wixstatic.com/media/64ccbb_a4d6bbaee3e24df3ae72cc899567c904~mv2.gif", "alt": "VFX animation 2", "caption": "Motion tracking" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "label": "Reflection",
+      "paragraphs": [
+        "Since this was one of my first proper uses of After Effects and videography skills together, looking back I feel like I could've spent a bit more time on the edit and pushed the VFX further. My skills have grown a lot since 2023 — but this project was a solid foundation and a real-world test of what I'd been learning."
+      ]
+    },
+    {
+      "type": "palette",
+      "label": "Colour Palette",
+      "swatches": [
+        { "name": "Deep Brown", "hex": "#0d0a07", "border": true },
+        { "name": "Gold", "hex": "#c4a06a" },
+        { "name": "Warm White", "hex": "#f5ede0" },
+        { "name": "Dark Espresso", "hex": "#3a2e22", "border": true }
+      ]
+    }
+  ]
+}
