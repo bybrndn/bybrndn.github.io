@@ -4,7 +4,7 @@
   "listTitle": "Te Whariki Manawahine",
   "nextTitle": "Te Whariki Manawahine",
   "subtitle": "Branding & Visual Identity",
-  "description": "Proposed Visual Identity Guidelines for Te Whāriki Manawāhine o Hauraki - a cultural design project celebrating Māori women's patterns and traditions from Hauraki.",
+  "description": "Visual identity for Hauraki Refuge — ‘Hauraki, the healing place of unseen wounds.’ A brand system rooted in land, culture, and quiet strength.",
   "theme": {
     "bg": "#0d1a0e",
     "bgDark": "#162416",
@@ -19,12 +19,11 @@
     "googleFonts": "Cormorant+Garamond:wght@300;400&family=DM+Sans:wght@300;400"
   },
   "hero": {
-    "layout": "parallax",
-    "background": "/projects/te-whariki-manawahine-o-hauraki/placeholder-bg.jpg",
-    "backgroundFilter": "brightness(0.45)"
+    "layout": "parallax"
   },
   "meta": [
     { "label": "Type", "value": "Branding & Visual Identity" },
+    { "label": "Client", "value": "Hauraki Refuge" },
     { "label": "Year", "value": "2026" },
     { "label": "Tools", "value": "Figma" }
   ],
@@ -37,13 +36,16 @@
       "type": "text",
       "label": "Overview",
       "paragraphs": [
-        "Te Whāriki Manawāhine o Hauraki represents a visual identity system developed to celebrate and preserve traditional Māori women's patterns from the Hauraki region. This project explores the intersection between cultural heritage and contemporary design, creating a visual system that honors tradition while being applicable to modern contexts.",
-        "The visual system draws inspiration from traditional weaving patterns (whāriki), natural forms of the Hauraki landscape, and significant cultural symbols to create an identity deeply rooted in the past while looking toward the future."
+        "Te Whāriki Manawāhine o Hauraki is the proposed visual identity for Hauraki Refuge — a kaupapa Māori service providing wraparound support for whānau. Its guiding whakataukī: <em>‘Hauraki, the healing place of unseen wounds.’</em>",
+        "The brief was a brand system rooted in land, culture, and quiet strength — one that feels like a person, not a policy. Every decision moves away from the busy toward the essential, finding the quiet strength at the heart of the organisation."
       ]
     },
     {
       "type": "palette",
       "label": "Colour Palette",
+      "paragraphs": [
+        "Every colour was drawn from the Hauraki landscape — dark forest floor, native bush, the glimmer of tidal light. Together they communicate safety, depth, and quiet healing."
+      ],
       "swatches": [
         { "name": "Pō", "hex": "#0d1a0e" },
         { "name": "Ngahere", "hex": "#162416" },
@@ -55,33 +57,72 @@
       ]
     },
     {
-      "type": "custom",
-      "label": "Typography System",
-      "html": "<p class=\"ps-text\">The typography system combines two complementary typefaces: Cormorant Garamond for display and heading text, and DM Sans for body text and labels. This pairing creates a balance between classical elegance and contemporary readability.</p><div class=\"img-grid cols-2\"><div><h3>Display / Heading</h3><p><strong>Cormorant Garamond</strong></p><p>Display/H1: Light 300</p><p>Heading/H2: Regular 400</p></div><div><h3>Body &amp; Labels</h3><p><strong>DM Sans</strong></p><p>Body Text: Light 300 · 15px · line-height 1.8</p><p>Label/Tag: Bold 400 · 8px · tracked</p></div></div><div class=\"img-grid cols-1\" style=\"margin-top:1.5rem\"><p><em>Haere Mai</em></p><p>A place of healing, story, and connection.</p></div>"
+      "type": "values",
+      "label": "Reading the Palette",
+      "items": [
+        { "name": "The forest at rest", "desc": "Three forest greens — Pō, Ngahere, Uru — create a quiet, enveloping atmosphere. Dark backgrounds remove visual noise and invite the visitor to slow down, mirroring the experience of entering a safe, sheltered space." },
+        { "name": "Growth & healing", "desc": "Kākāriki and pounamu tones carry deep significance in te ao Māori — life, renewal, the vitality of the land. The dual teal registers let the brand feel grounded and alive, never cold or clinical." },
+        { "name": "Warmth & welcome", "desc": "Cream and white — Maramara, Kō — carry a warmth pure white cannot. They feel human and worn, like a letter, like a kōrero around a table, keeping the brand inviting rather than institutional." },
+        { "name": "You are safe here", "desc": "The movement from dark to teal to warm light mirrors a journey from protection into healing. No harsh contrast, no alarm — only depth, movement, and quiet care." }
+      ]
     },
     {
-      "type": "gallery",
-      "label": "Pattern System",
+      "type": "logos",
+      "label": "Logo & Identity",
       "paragraphs": [
-        "The pattern system draws inspiration from traditional whāriki (weaving) patterns, adapting geometric forms and rhythmic repetitions to create a contemporary visual language that respects cultural heritage while functioning in modern applications."
+        "A refinement of the original — the tukutuku (weaved panels) form carried forward, simplified and distilled to its quiet essence. At the base, two kōru curl inward and cross, their forms embracing as if holding something gently between them: a symbol of shelter, of safe hands."
       ],
-      "columns": 2,
-      "images": [
-        { "src": "/projects/te-whariki-manawahine-o-hauraki/placeholder-pattern1.jpg", "alt": "Pattern study 1", "caption": "Pattern Study 01 - Whāriki Base" },
-        { "src": "/projects/te-whariki-manawahine-o-hauraki/placeholder-pattern2.jpg", "alt": "Pattern study 2", "caption": "Pattern Study 02 - Hauraki Adaptation" }
+      "columns": 3,
+      "items": [
+        { "src": "/projects/te-whariki-manawahine-o-hauraki/logo-minimal.png", "alt": "Te Whāriki mark — primary", "caption": "Primary — on dark", "bg": "dark" },
+        { "src": "/projects/te-whariki-manawahine-o-hauraki/logo-gradient.png", "alt": "Te Whāriki mark — gradient", "caption": "Icon — gradient", "bg": "dark" },
+        { "src": "/projects/te-whariki-manawahine-o-hauraki/logo-minimal.png", "alt": "Te Whāriki mark — reverse on light", "caption": "Reverse — on light", "bg": "light" }
+      ]
+    },
+    {
+      "type": "values",
+      "label": "Logo Principles",
+      "items": [
+        { "name": "Minimal & Uncluttered", "desc": "Strip back decorative elements. The mark should breathe — generous whitespace, no competing details. Simplicity signals confidence." },
+        { "name": "Warm, Not Corporate", "desc": "Avoid geometric rigidity. The logo should feel like it belongs to people, not an institution. Soft, approachable forms invite rather than impose." },
+        { "name": "Bilingual by Nature", "desc": "Te reo Māori is primary. The mark holds both the full name and the English identifier with equal visual dignity." }
+      ]
+    },
+    {
+      "type": "custom",
+      "label": "Typography",
+      "html": "<p class=\"ps-text\">Two voices. One classical, one contemporary. Together they carry the weight of the mahi and the warmth of the people it serves.</p><div class=\"img-grid cols-2\"><div><span class=\"img-caption\">Display / H1 — Cormorant Garamond, Light 300</span><p style=\"font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.6rem;line-height:1.05;color:var(--ink);margin:.4rem 0 1.8rem\">Haere Mai</p><span class=\"img-caption\">Heading / H2 — Cormorant Garamond, Regular 400</span><p style=\"font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.5rem;line-height:1.2;color:var(--ink);margin-top:.4rem\">A place of healing, story, and connection.</p></div><div><span class=\"img-caption\">Body — DM Sans, Light 300 · 15px · line-height 1.8</span><p style=\"font-weight:300;font-size:0.9rem;line-height:1.8;color:var(--ink-mid);margin:.4rem 0 1.8rem\">Te Whāriki provides wraparound support for whānau. We walk alongside people — not ahead, not behind.</p><span class=\"img-caption\">Label / Tag — DM Sans, Bold · tracked</span><p style=\"font-weight:700;font-size:0.62rem;letter-spacing:0.2em;color:var(--accent);margin-top:.6rem\">TĀNE WHAKAPIRIPIRI — MEN'S WELLBEING SERVICE</p></div></div>"
+    },
+    {
+      "type": "values",
+      "label": "Voice & Tone",
+      "items": [
+        { "name": "Grounded", "desc": "Rooted in place and kaupapa Māori. The voice speaks with earned authority — not loudly, but with quiet certainty." },
+        { "name": "Inviting", "desc": "People arriving in difficult moments need to feel welcome before they feel helped. Language is an open door — warm without being performative." },
+        { "name": "Honest", "desc": "No jargon. No over-promising. Honest language builds trust — especially with people who have been let down before." }
+      ]
+    },
+    {
+      "type": "values",
+      "label": "Space & Layout",
+      "items": [
+        { "name": "Generous Whitespace", "desc": "Space is breathing room, not emptiness. Minimum 48px between sections, 24px between elements. Let each item land before the next arrives." },
+        { "name": "Clear Hierarchy", "desc": "One dominant headline, supporting body, a quiet label. Never more than three levels of visual weight on a single screen — the eye should know instantly where to go first." },
+        { "name": "Left-Anchored Structure", "desc": "Content reads left-to-right, top-to-bottom. Anchor key identifiers to the left; centre-align display headlines only." },
+        { "name": "Depth Through Layers", "desc": "Use the three background tones to create depth without shadows or heavy borders — cards lift off the page through colour alone." }
       ]
     },
     {
       "type": "gallery",
-      "label": "Applications",
+      "label": "Imagery Direction",
       "paragraphs": [
-        "The visual identity has been developed for various applications, from cultural documentation and educational materials to contemporary branding and digital platforms. Each application respects the core principles while adapting to specific contexts."
+        "Photography sets the emotional register before a single word is read. The brand draws from landscape, marae, and the quiet dignity of daily life in Hauraki — natural light, muted grading, and subjects shown with dignity and agency."
       ],
       "columns": 3,
       "images": [
-        { "src": "/projects/te-whariki-manawahine-o-hauraki/placeholder-app1.jpg", "alt": "Cultural document", "caption": "Cultural Documentation" },
-        { "src": "/projects/te-whariki-manawahine-o-hauraki/placeholder-app2.jpg", "alt": "Educational material", "caption": "Educational Resources" },
-        { "src": "/projects/te-whariki-manawahine-o-hauraki/placeholder-app3.jpg", "alt": "Digital platform", "caption": "Digital Interface" }
+        { "src": "/projects/te-whariki-manawahine-o-hauraki/whenua.jpg", "alt": "Hauraki coastline at dusk", "caption": "Whenua — Landscape & Place" },
+        { "src": "/projects/te-whariki-manawahine-o-hauraki/tangata.jpg", "alt": "Kuia and mokopuna together", "caption": "Tangata — People & Whānau" },
+        { "src": "/projects/te-whariki-manawahine-o-hauraki/maramatanga.jpg", "alt": "Open window onto a dawn sky", "caption": "Māramatanga — Light & Hope" }
       ]
     }
   ]

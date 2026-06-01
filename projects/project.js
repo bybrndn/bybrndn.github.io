@@ -65,14 +65,14 @@
           '<span class="palette-swatch-name">' + c.name + '</span>' +
           '<span class="palette-swatch-hex">' + c.hex + '</span></div>';
       }).join('');
-      return content(s.label, '<div class="palette-swatches">' + sw + '</div>');
+      return content(s.label, paras(s.paragraphs) + '<div class="palette-swatches">' + sw + '</div>');
     },
     values: function (s) {
       var items = (s.items || []).map(function (v) {
         return '<div class="value-item"><span class="value-name">' + v.name +
           '</span><p class="value-desc">' + v.desc + '</p></div>';
       }).join('');
-      return content(s.label, '<div class="values-grid">' + items + '</div>');
+      return content(s.label, paras(s.paragraphs) + '<div class="values-grid">' + items + '</div>');
     },
     logos: function (s) {
       var cols = s.columns || 2;
@@ -126,8 +126,9 @@
     } else {
       hero.className = 'project-hero layout-parallax';
       if (h.backgroundFilter) document.documentElement.style.setProperty('--hero-filter', h.backgroundFilter);
+      var bgStyle = h.background ? ' style="background-image:url(\'' + h.background + '\')"' : '';
       hero.innerHTML =
-        '<div class="project-hero-bg" id="parallaxBg" style="background-image:url(\'' + (h.background || '') + '\')"></div>' +
+        '<div class="project-hero-bg" id="parallaxBg"' + bgStyle + '></div>' +
         '<div class="project-hero-fade"></div>' +
         '<div class="project-hero-content">' +
           '<a class="project-back reveal" href="/work">← Back to Work</a>' +
@@ -135,7 +136,7 @@
           '<p class="project-desc reveal d2">' + (data.description || '') + '</p></div>' +
           metaRows(data, true) +
         '</div>';
-      setupParallax(h.background);
+      if (h.background) setupParallax(h.background);
     }
   }
 
