@@ -23,6 +23,7 @@ function injectNav() {
     if (path === href || path === href + '/' || (href === '/work' && path.includes('/projects/'))) {
       link.classList.add('active');
     }
+    link.addEventListener('click', closeMenu);
   });
 }
 
@@ -38,8 +39,17 @@ const PROJECTS = [
 // ── MOBILE MENU ──
 function toggleMenu() {
   const links = document.querySelector('.nav-links');
+  const burger = document.querySelector('.hamburger');
   if (!links) return;
-  links.classList.toggle('open');
+  const open = links.classList.toggle('open');
+  if (burger) burger.classList.toggle('open', open);
+  document.body.classList.toggle('menu-open', open);
+}
+
+function closeMenu() {
+  document.querySelector('.nav-links')?.classList.remove('open');
+  document.querySelector('.hamburger')?.classList.remove('open');
+  document.body.classList.remove('menu-open');
 }
 
 // ── PAGE TRANSITIONS ──
