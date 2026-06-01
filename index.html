@@ -10,6 +10,87 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style.css" />
 
+  <!-- ── PRELOADER (critical, inlined so it paints instantly) ── -->
+  <style>
+    @font-face {
+      font-family: 'Grandspan Wide';
+      src: url('/fonts/Grandspan-Wide.otf') format('opentype');
+      font-display: swap;
+    }
+    .preloader {
+      position: fixed; inset: 0; z-index: 10000;
+      background: #15181e; color: #ecf4f9;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      overflow: hidden;
+      transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+      will-change: transform;
+    }
+    html.pre-active { overflow: hidden; }
+    .preloader.done { transform: translateY(-101%); }
+
+    .pre-overline {
+      font-size: 0.58rem; font-weight: 600;
+      letter-spacing: 0.35em; text-transform: uppercase;
+      color: rgba(236,244,249,0.45);
+      opacity: 0; animation: preFade 0.7s 0.1s forwards;
+    }
+
+    .pre-mid { display: flex; align-items: flex-end; flex: 1; }
+    .pre-name {
+      font-family: 'Grandspan Wide', sans-serif;
+      font-size: clamp(2.6rem, 9vw, 7rem);
+      line-height: 0.92; letter-spacing: -0.02em;
+    }
+    .pre-line { display: block; overflow: hidden; }
+    .pre-line > span {
+      display: block;
+      transform: translateY(110%);
+      animation: preRise 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .pre-line:nth-child(2) > span { animation-delay: 0.08s; color: rgba(236,244,249,0.45); }
+
+    .pre-foot {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 1rem;
+    }
+    .pre-status {
+      font-size: 0.58rem; font-weight: 600;
+      letter-spacing: 0.35em; text-transform: uppercase;
+      color: rgba(236,244,249,0.45);
+      opacity: 0; animation: preFade 0.7s 0.2s forwards;
+    }
+    .pre-count {
+      font-family: 'Grandspan Wide', sans-serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      line-height: 0.85; letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
+    }
+    .pre-count i { font-style: normal; font-size: 0.4em; color: rgba(236,244,249,0.45); }
+
+    .pre-bar {
+      position: absolute; left: 0; bottom: 0;
+      height: 2px; width: 100%;
+      background: rgba(236,244,249,0.08);
+    }
+    .pre-bar > i {
+      display: block; height: 100%; width: 0;
+      background: #ecf4f9;
+      box-shadow: 0 0 12px rgba(236,244,249,0.3);
+      transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes preRise { to { transform: translateY(0); } }
+    @keyframes preFade { to { opacity: 1; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .preloader, .pre-line > span, .pre-bar > i { transition: none; animation: none; }
+      .pre-line > span { transform: none; }
+      .pre-overline, .pre-status { opacity: 1; }
+    }
+  </style>
+
   <!-- Google Analytics tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHZLX6JYBW"></script>
   <script>
@@ -21,6 +102,72 @@
   </script>
 </head>
 <body>
+  <!-- ── PRELOADER ── -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <span class="pre-overline">By Brndn — Portfolio</span>
+    <div class="pre-mid">
+      <div class="pre-name">
+        <span class="pre-line"><span>Branden</span></span>
+        <span class="pre-line"><span>Hall</span></span>
+      </div>
+    </div>
+    <div class="pre-foot">
+      <span class="pre-status">Loading Studio</span>
+      <span class="pre-count"><span id="preCount">0</span><i>%</i></span>
+    </div>
+    <div class="pre-bar"><i id="preBar"></i></div>
+  </div>
+  <script>
+    (function () {
+      var pre = document.getElementById('preloader');
+      // Only play once per browsing session.
+      if (sessionStorage.getItem('brndnSeen')) {
+        pre.parentNode.removeChild(pre);
+        return;
+      }
+      document.documentElement.classList.add('pre-active');
+      var countEl = document.getElementById('preCount');
+      var barEl = document.getElementById('preBar');
+      var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var n = 0, finished = false;
+
+      function set(v) {
+        n = v;
+        countEl.textContent = v;
+        barEl.style.width = v + '%';
+      }
+
+      function finish() {
+        if (finished) return;
+        finished = true;
+        sessionStorage.setItem('brndnSeen', '1');
+        set(100);
+        setTimeout(function () {
+          pre.classList.add('done');
+          document.documentElement.classList.remove('pre-active');
+          pre.addEventListener('transitionend', function () {
+            if (pre.parentNode) pre.parentNode.removeChild(pre);
+          });
+        }, reduced ? 0 : 450);
+      }
+
+      // Ease the counter toward 90%, then snap to 100 once the page is ready.
+      var tick = setInterval(function () {
+        if (n >= 90) { clearInterval(tick); return; }
+        set(Math.min(90, n + Math.ceil((90 - n) * 0.08) + 1));
+      }, reduced ? 10 : 90);
+
+      function ready() {
+        clearInterval(tick);
+        finish();
+      }
+      if (document.readyState === 'complete') setTimeout(ready, reduced ? 0 : 700);
+      else window.addEventListener('load', function () { setTimeout(ready, reduced ? 0 : 500); });
+      // Safety net so it never sticks.
+      setTimeout(ready, 4000);
+    })();
+  </script>
+
   <div class="cursor"></div>
   <div class="cursor-ring"></div>
 
