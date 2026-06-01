@@ -61,11 +61,11 @@
       var list = document.getElementById('workList');
       var countEl = document.getElementById('workCount');
 
-      fetch('/projects/projects.json')
+      fetch('/projects/projects.json', { cache: 'no-cache' })
         .then(function (r) { return r.json(); })
         .then(function (slugs) {
           return Promise.all(slugs.map(function (slug) {
-            return fetch('/projects/' + slug + '/project.json')
+            return fetch('/projects/' + slug + '/project.json', { cache: 'no-cache' })
               .then(function (r) { return r.ok ? r.json() : null; })
               .then(function (d) { return d ? { slug: slug, data: d } : null; })
               .catch(function () { return null; });

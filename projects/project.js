@@ -171,13 +171,13 @@
 
   // ── next project (looped through the manifest order) ──────────
   function renderNext(slug) {
-    return fetch('/projects/projects.json')
+    return fetch('/projects/projects.json', { cache: 'no-cache' })
       .then(function (r) { return r.json(); })
       .then(function (list) {
         var i = list.indexOf(slug);
         if (i === -1 || list.length < 2) return '';
         var nextSlug = list[(i + 1) % list.length];
-        return fetch('/projects/' + nextSlug + '/project.json')
+        return fetch('/projects/' + nextSlug + '/project.json', { cache: 'no-cache' })
           .then(function (r) { return r.json(); })
           .then(function (n) {
             var t = n.nextTitle || n.titleHTML || n.title;
@@ -221,7 +221,7 @@
     var slug = getSlug();
     if (!slug) { notFound(); return; }
 
-    fetch('/projects/' + slug + '/project.json')
+    fetch('/projects/' + slug + '/project.json', { cache: 'no-cache' })
       .then(function (r) { if (!r.ok) throw new Error('404'); return r.json(); })
       .then(function (data) {
         document.title = 'BY BRNDN — ' + (data.title || 'Project');

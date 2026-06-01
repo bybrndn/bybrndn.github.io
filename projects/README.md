@@ -13,8 +13,10 @@ It now shows up automatically in the work list **and** has its own page at
 `/projects/project/?p=<slug>`. Drop images in the same folder (or link to remote
 URLs) and reference them from the config.
 
-> `projects.json` is the one registry. Order in that array = order on the work
-> page and the "next project" loop.
+> `projects.json` is the one registry. The list is shown **top to bottom**, so
+> the first slug appears first on the work page. To feature the newest project,
+> add its slug at the **top** of the list. The "next project" link follows the
+> same order and loops back to the top.
 
 ## Files
 
