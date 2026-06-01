@@ -224,6 +224,21 @@ nav {
 .d4 { transition-delay: 0.38s; }
 .d5 { transition-delay: 0.52s; }
 
+/* Auto-stagger for the work list — new projects animate in sequence
+   without needing a manual delay class each time. */
+.work-list .reveal:nth-child(1)  { transition-delay: 0s; }
+.work-list .reveal:nth-child(2)  { transition-delay: 0.08s; }
+.work-list .reveal:nth-child(3)  { transition-delay: 0.16s; }
+.work-list .reveal:nth-child(4)  { transition-delay: 0.24s; }
+.work-list .reveal:nth-child(5)  { transition-delay: 0.32s; }
+.work-list .reveal:nth-child(6)  { transition-delay: 0.40s; }
+.work-list .reveal:nth-child(7)  { transition-delay: 0.48s; }
+.work-list .reveal:nth-child(8)  { transition-delay: 0.56s; }
+.work-list .reveal:nth-child(9)  { transition-delay: 0.64s; }
+.work-list .reveal:nth-child(10) { transition-delay: 0.72s; }
+.work-list .reveal:nth-child(11) { transition-delay: 0.80s; }
+.work-list .reveal:nth-child(12) { transition-delay: 0.88s; }
+
 /* ── LINK ARROW ── */
 .link-arrow {
   display: inline-flex;
