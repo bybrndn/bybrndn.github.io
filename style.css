@@ -936,45 +936,61 @@ footer span {
   /* ── HOME ── */
   .home-hero {
     position: relative;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 4vw;
+    row-gap: 1.6rem;
+    align-items: start;
     min-height: unset;
+    padding: 7vw 6vw 8vw;
   }
 
+  /* Dissolve the wrapper so its children join the hero grid directly. */
   .home-left {
-    position: static;
-    z-index: auto;
-    background: transparent;
-    padding: 7vw 6vw 4vw;
-    border-bottom: none;
-    gap: 1.5rem;
+    display: contents;
+  }
+
+  .home-overline {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+  }
+
+  .home-title {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: center;
   }
 
   .home-right {
-    position: static;
-    width: 100%;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+    width: auto;
     height: auto;
     margin: 0;
-    padding: 0 6vw 8vw;
-    align-items: flex-start;
+    padding: 0;
   }
 
   .home-photo {
-    width: 100%;
-    max-width: 320px;
+    width: 28vw;
+    max-width: 120px;
     height: auto;
   }
-
   .home-photo img {
     width: 100%;
     height: auto;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 3 / 4;
     object-fit: cover;
     object-position: center center;
   }
 
-  .home-index { padding: 1.2rem 1.4rem; }
-  .home-index-num { font-size: 2rem; }
+  .home-index { display: none; }
+
+  .home-bottom {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
     
   .home-title, .about-big, .contact-big {
     word-break: break-word;
@@ -985,7 +1001,7 @@ footer span {
     word-break: normal;
   }
   .home-title {
-    font-size: clamp(1.5rem, 7vw, 4rem);
+    font-size: clamp(1.15rem, 5.4vw, 4rem);
     word-break: normal;
     overflow-wrap: normal;
   }
@@ -1079,7 +1095,7 @@ footer span {
 
 /* ── SMALL PHONES ── */
 @media (max-width: 400px) {
-  .home-title { font-size: 11vw; }
+  .home-title { font-size: 5.6vw; }
   .work-big, .about-big, .contact-big { font-size: 10vw; }
   .wi-title { font-size: 7vw; }
 }
