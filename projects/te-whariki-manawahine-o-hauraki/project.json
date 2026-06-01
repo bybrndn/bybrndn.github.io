@@ -120,9 +120,9 @@
       ],
       "columns": 3,
       "images": [
-        { "src": "/projects/te-whariki-manawahine-o-hauraki/whenua.jpg", "alt": "Hauraki coastline at dusk", "caption": "Whenua — Landscape & Place" },
-        { "src": "/projects/te-whariki-manawahine-o-hauraki/tangata.jpg", "alt": "Kuia and mokopuna together", "caption": "Tangata — People & Whānau" },
-        { "src": "/projects/te-whariki-manawahine-o-hauraki/maramatanga.jpg", "alt": "Open window onto a dawn sky", "caption": "Māramatanga — Light & Hope" }
+        { "src": "/projects/te-whariki-manawahine-o-hauraki/whenua.png", "alt": "Hauraki coastline at dusk", "caption": "Whenua — Landscape & Place" },
+        { "src": "/projects/te-whariki-manawahine-o-hauraki/tangata.png", "alt": "Kuia and mokopuna together", "caption": "Tangata — People & Whānau" },
+        { "src": "/projects/te-whariki-manawahine-o-hauraki/maramatanga.png", "alt": "Open window onto a dawn sky", "caption": "Māramatanga — Light & Hope" }
       ]
     }
   ]
