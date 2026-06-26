@@ -66,18 +66,19 @@
       "type": "gallery",
       "label": "Selected Work",
       "paragraphs": [
-        "A cross-section of the films and shoots that populate the site — university campaigns, awards nights, conferences and community work."
+        "A cross-section of the work that populates the site — from Marshmello and Qatar Airways to university campaigns, awards nights and community shoots."
       ],
       "columns": 3,
       "images": [
-        { "src": "/projects/movemedia-website/slkt_40th_101-1024x683.webp", "alt": "SEA LIFE Kelly Tarlton's", "caption": "SEA LIFE Kelly Tarlton's" },
-        { "src": "/projects/movemedia-website/uoa_corl_111-1024x683.webp", "alt": "University of Auckland", "caption": "University of Auckland" },
-        { "src": "/projects/movemedia-website/uoa_trt-1024x683.webp", "alt": "University of Auckland", "caption": "University of Auckland" },
-        { "src": "/projects/movemedia-website/sitesafe-1024x576.webp", "alt": "Site Safe", "caption": "Site Safe" },
-        { "src": "/projects/movemedia-website/okewaterview-1024x683.webp", "alt": "Community and education", "caption": "Community & education" },
-        { "src": "/projects/movemedia-website/iwo_pia26_101-1024x683.webp", "alt": "Event videography", "caption": "Event videography" },
-        { "src": "/projects/movemedia-website/jar_rof26_101-1024x683.webp", "alt": "Brand film", "caption": "Brand film" },
-        { "src": "/projects/movemedia-website/mmello-1024x576.webp", "alt": "Social content", "caption": "Social content" }
+        { "src": "/projects/movemedia-website/mmello-1024x576.webp", "alt": "Marshmello Party in the Park event video", "caption": "Marshmello — Party in the Park" },
+        { "src": "/projects/movemedia-website/qatar-eden-1024x576.webp", "alt": "Qatar Airways and Eden Park partnership", "caption": "Qatar Airways × Eden Park" },
+        { "src": "/projects/movemedia-website/guinz_2026_112-1024x683.webp", "alt": "Growing Up in New Zealand at Eden Park", "caption": "Growing Up in NZ — Eden Park" },
+        { "src": "/projects/movemedia-website/slkt-1024x682.webp", "alt": "SEA LIFE Kelly Tarlton's turtle releases", "caption": "SEA LIFE Kelly Tarlton's" },
+        { "src": "/projects/movemedia-website/iwo_pia26_101-1024x683.webp", "alt": "Property Industry Awards 2026 at NZICC", "caption": "Property Industry Awards — NZICC" },
+        { "src": "/projects/movemedia-website/aut_gradfest-1024x683.webp", "alt": "AUT Grad Fest photo and video", "caption": "AUT Grad Fest" },
+        { "src": "/projects/movemedia-website/sitesafe-1024x576.webp", "alt": "Site Safe Awards at Due Drop Events Centre", "caption": "Site Safe Awards" },
+        { "src": "/projects/movemedia-website/ripple_106-1024x683.webp", "alt": "Ripple payment roadshow event photos", "caption": "Ripple — payment roadshow" },
+        { "src": "/projects/movemedia-website/jar_rof26_101-1024x683.webp", "alt": "J.A. Russell Reel Oarsome fishing", "caption": "J.A. Russell — Reel Oarsome" }
       ]
     },
     {
