@@ -43,6 +43,7 @@
       ],
       "columns": 1,
       "images": [
+        { "src": "/projects/movemedia-website/site-home-full.jpg", "alt": "Move Media homepage", "caption": "Homepage — the full front page" },
         { "src": "/projects/movemedia-website/site-projects.jpg", "alt": "Move Media projects page", "caption": "Projects — a filterable wall of recent films and shoots" },
         { "src": "/projects/movemedia-website/site-about.jpg", "alt": "Move Media about page", "caption": "About — boutique studio, broadcast quality" }
       ]
