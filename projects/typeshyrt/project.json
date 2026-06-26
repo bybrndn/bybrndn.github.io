@@ -1,0 +1,81 @@
+{
+  "title": "typeshyrt",
+  "titleHTML": "type<br>shyrt",
+  "listTitle": "typeshyrt",
+  "nextTitle": "typeshyrt",
+  "subtitle": "Web Design — E-commerce",
+  "description": "A streetwear label where the storefront behaves like a social feed — scroll the drops, double-tap to open. Bold, monochrome and meme-fluent, designed and built end-to-end on Shopify.",
+  "theme": {
+    "bg": "#0d0d0d",
+    "bgDark": "#000000",
+    "ink": "#f0f0f0",
+    "inkMid": "rgba(255,255,255,0.45)",
+    "rule": "rgba(255,255,255,0.12)",
+    "accent": "#ffffff"
+  },
+  "hero": {
+    "layout": "split",
+    "cover": "/projects/typeshyrt/site-grid.jpg"
+  },
+  "meta": [
+    { "label": "Type", "value": "Web Design — E-commerce" },
+    { "label": "Platform", "value": "Shopify" },
+    { "label": "Role", "value": "Brand & Web Design" },
+    { "label": "Year", "value": "2026" }
+  ],
+  "link": { "label": "Visit typeshyrt.com", "url": "https://typeshyrt.com" },
+  "sections": [
+    {
+      "type": "text",
+      "label": "Overview",
+      "paragraphs": [
+        "typeshyrt turns internet vernacular into wearable type. Every tee is a single one-liner — group-chat energy, FYP captions, iMessage bubbles — printed clean on heavyweight cotton and sold for a flat $45.",
+        "Rather than a conventional shop grid, the storefront is built to feel like scrolling a feed. A stark black canvas, one giant wordmark, and a single prompt: <em>scroll through drops. double-tap to open.</em> The whole experience leans into the brand's native habitat — your phone.",
+        "I handled the look end-to-end on Shopify: the monochrome identity, the feed-style browsing, the product pages and the checkout flow."
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "The Storefront",
+      "paragraphs": [
+        "Drops are filed by mood, not category — For You Page, Repost, Quotes, iMessage and Now Playing — so browsing feels like flicking between tabs of an app, not aisles of a shop."
+      ],
+      "columns": 1,
+      "images": [
+        { "src": "/projects/typeshyrt/site-home.jpg", "alt": "typeshyrt landing page", "caption": "Landing — scroll through drops, double-tap to open" },
+        { "src": "/projects/typeshyrt/site-product.jpg", "alt": "typeshyrt product page", "caption": "Product page — flat $45, every size, worldwide shipping" }
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "The Drops",
+      "paragraphs": [
+        "Each drop is one line of type on a 180gsm relaxed-fit tee. The catalogue reads like a group chat — deadpan, chronically online and very screenshot-able."
+      ],
+      "columns": 3,
+      "images": [
+        { "src": "/projects/typeshyrt/products/i-love-my-gay-bf.jpg", "alt": "tee — i love my gay bf", "caption": "i love my gay bf" },
+        { "src": "/projects/typeshyrt/products/long-story-short-its-over.jpg", "alt": "tee — long story short, its over", "caption": "long story short, its over" },
+        { "src": "/projects/typeshyrt/products/vibe-rating-10-10.jpg", "alt": "tee — vibe rating 10/10", "caption": "vibe rating 10/10" },
+        { "src": "/projects/typeshyrt/products/what-happened-to-the-game-i-love.jpg", "alt": "tee — what happened to the game i love", "caption": "what happened to the game i love?" },
+        { "src": "/projects/typeshyrt/products/new-year-same-me.jpg", "alt": "tee — new year same me", "caption": "new year same me" },
+        { "src": "/projects/typeshyrt/products/lock-in.jpg", "alt": "tee — miss u", "caption": "miss u" },
+        { "src": "/projects/typeshyrt/products/yes-bro-shes-urs.jpg", "alt": "tee — yes bro, shes urs", "caption": "yes bro, shes urs" },
+        { "src": "/projects/typeshyrt/products/that-was-me.jpg", "alt": "tee — that was me", "caption": "that was me" },
+        { "src": "/projects/typeshyrt/products/my-reposts-r-better.jpg", "alt": "tee — chud", "caption": "chud" }
+      ]
+    },
+    {
+      "type": "palette",
+      "label": "Palette",
+      "paragraphs": [
+        "One rule: black and white, nothing else. The restraint keeps the focus on the type and lets the photography carry every drop."
+      ],
+      "swatches": [
+        { "name": "Off-Black", "hex": "#1C1C1A", "border": true },
+        { "name": "True Black", "hex": "#000000", "border": true },
+        { "name": "Paper", "hex": "#F5F5F5" }
+      ]
+    }
+  ]
+}

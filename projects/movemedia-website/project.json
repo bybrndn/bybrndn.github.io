@@ -1,0 +1,105 @@
+{
+  "title": "Move Media — Website",
+  "titleHTML": "MOVE<br><span>MEDIA</span>",
+  "listTitle": "Move Media — Website",
+  "nextTitle": "Move Media Website",
+  "subtitle": "Web Design — Video Production",
+  "description": "The digital home for Auckland video house Move Media — a dark, cinematic site built to let the footage do the talking. 'We capture what matters,' carried from brand into a full WordPress build.",
+  "theme": {
+    "bg": "#222932",
+    "bgDark": "#181d23",
+    "ink": "#ECF5F4",
+    "inkMid": "rgba(236,245,244,0.5)",
+    "rule": "rgba(236,245,244,0.09)",
+    "accent": "#2ABBB2",
+    "accent2": "#327C83"
+  },
+  "hero": {
+    "layout": "split",
+    "cover": "/projects/movemedia-website/site-home.jpg"
+  },
+  "meta": [
+    { "label": "Type", "value": "Web Design & Build" },
+    { "label": "Platform", "value": "WordPress" },
+    { "label": "Client", "value": "Move Media" },
+    { "label": "Year", "value": "2026" }
+  ],
+  "link": { "label": "Visit movemedia.co.nz", "url": "https://movemedia.co.nz" },
+  "sections": [
+    {
+      "type": "text",
+      "label": "Overview",
+      "paragraphs": [
+        "Move Media is an Auckland boutique corporate-media team — meaningful video and photos, with purpose-led edits, for the moments that matter most to a business. With the brand identity in place, they needed a website that felt as considered as the films they make.",
+        "The site leans dark and cinematic so the work stays centre stage. The homepage opens on a single line — <em>We Capture / What Matters</em> — in the brand's teal, then hands straight over to the footage. It's built on WordPress so the team can keep publishing new projects themselves.",
+        "This is the website chapter of the wider Move Media identity — the same teal, type and tone, translated into a living, scrollable product."
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "The Site",
+      "paragraphs": [
+        "A short, confident structure — Home, Projects, About, Contact — that gets out of the way of the imagery. Every page is built around full-bleed stills and a calm, dark canvas."
+      ],
+      "columns": 1,
+      "images": [
+        { "src": "/projects/movemedia-website/site-projects.jpg", "alt": "Move Media projects page", "caption": "Projects — a filterable wall of recent films and shoots" },
+        { "src": "/projects/movemedia-website/site-about.jpg", "alt": "Move Media about page", "caption": "About — boutique studio, broadcast quality" }
+      ]
+    },
+    {
+      "type": "values",
+      "label": "Services",
+      "paragraphs": [
+        "The build had to flex across everything Move Media offers, from one-off brand films to multi-day event coverage."
+      ],
+      "items": [
+        { "name": "Event Videography", "desc": "Conferences, awards nights and live moments, captured as they unfold." },
+        { "name": "Brand Films", "desc": "Story-led hero pieces that carry a company's voice and values." },
+        { "name": "Corporate Photography", "desc": "Clean, considered stills for teams, venues and events." },
+        { "name": "Conferences & Conventions", "desc": "Multi-day, multi-cam coverage edited on a tight turnaround." },
+        { "name": "Social Content", "desc": "Short-form cut-downs shaped for the feed." },
+        { "name": "Community & Education", "desc": "Purpose-led work for schools, charities and the public sector." }
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "Selected Work",
+      "paragraphs": [
+        "A cross-section of the films and shoots that populate the site — university campaigns, awards nights, conferences and community work."
+      ],
+      "columns": 3,
+      "images": [
+        { "src": "/projects/movemedia-website/slkt_40th_101-1024x683.webp", "alt": "SEA LIFE Kelly Tarlton's", "caption": "SEA LIFE Kelly Tarlton's" },
+        { "src": "/projects/movemedia-website/uoa_corl_111-1024x683.webp", "alt": "University of Auckland", "caption": "University of Auckland" },
+        { "src": "/projects/movemedia-website/uoa_trt-1024x683.webp", "alt": "University of Auckland", "caption": "University of Auckland" },
+        { "src": "/projects/movemedia-website/sitesafe-1024x576.webp", "alt": "Site Safe", "caption": "Site Safe" },
+        { "src": "/projects/movemedia-website/okewaterview-1024x683.webp", "alt": "Community and education", "caption": "Community & education" },
+        { "src": "/projects/movemedia-website/iwo_pia26_101-1024x683.webp", "alt": "Event videography", "caption": "Event videography" },
+        { "src": "/projects/movemedia-website/jar_rof26_101-1024x683.webp", "alt": "Brand film", "caption": "Brand film" },
+        { "src": "/projects/movemedia-website/mmello-1024x576.webp", "alt": "Social content", "caption": "Social content" }
+      ]
+    },
+    {
+      "type": "text",
+      "label": "Trusted By",
+      "paragraphs": [
+        "Move Media's work spans local and global names, so the site had to carry real weight without shouting — clean logo walls and quiet stats doing the reassuring.",
+        "ANZ · Spark · AUT · University of Auckland · NZ Defence Force · Qatar Airways · Hyundai · Coca-Cola · The Warehouse Group · SEA LIFE Kelly Tarlton's · Merlin Entertainments · Ministry of Education"
+      ]
+    },
+    {
+      "type": "palette",
+      "label": "Palette",
+      "paragraphs": [
+        "Carried straight from the Move Media identity — a single confident teal against deep slate, so the colour never competes with the footage."
+      ],
+      "swatches": [
+        { "name": "Teal", "hex": "#2ABBB2" },
+        { "name": "Slate", "hex": "#222932", "border": true },
+        { "name": "Carbon", "hex": "#181D23", "border": true },
+        { "name": "Mist", "hex": "#ECF5F4" }
+      ]
+    }
+  ]
+}
