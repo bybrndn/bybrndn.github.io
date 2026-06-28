@@ -31,10 +31,11 @@
   align-items: center;
   gap: 0.5rem;
   font-weight: 600;
-  transition: color 0.2s, gap 0.25s;
+  transition: color 0.2s, gap 0.25s, scale 0.16s var(--ease);
   align-self: flex-start;
 }
 .project-back:hover { color: var(--ink); gap: 0.9rem; }
+.project-back:active { scale: 0.96; }
 
 .project-title {
   font-family: var(--title-font);
@@ -43,6 +44,7 @@
   line-height: 0.9;
   letter-spacing: -0.02em;
   color: var(--ink);
+  text-wrap: balance;
 }
 .project-title span { color: var(--accent); }
 
@@ -142,6 +144,8 @@
   object-fit: cover; object-position: center;
   display: block;
   transition: transform 1s var(--ease);
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
 }
 .project-cover:hover img { transform: scale(1.03); }
 .layout-split .project-meta { display: flex; flex-direction: column; gap: 1.2rem; }
@@ -198,8 +202,10 @@
   object-fit: cover;
   filter: var(--image-filter);
   transition: transform 0.6s var(--ease);
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
 }
-.img-grid img.contain { object-fit: contain; max-height: 80px; background: transparent; filter: none; }
+.img-grid img.contain { object-fit: contain; max-height: 80px; background: transparent; filter: none; outline: none; }
 .img-grid img:hover { transform: scale(1.02); }
 .img-caption {
   font-size: 0.58rem;
@@ -286,9 +292,10 @@
   padding: 3.5rem 3.5vw;
   text-decoration: none;
   border-top: 1px solid var(--rule);
-  transition: padding-left 0.35s var(--ease);
+  transition: padding-left 0.35s var(--ease), scale 0.22s var(--ease);
 }
 .next-project:hover { padding-left: 5vw; }
+.next-project:active { scale: 0.985; }
 .next-label {
   font-size: 0.55rem;
   letter-spacing: 0.3em;
@@ -297,7 +304,7 @@
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
-.next-title { font-family: var(--title-font); font-weight: var(--title-weight); font-size: clamp(1.5rem, 3vw, 3rem); color: var(--ink); line-height: 1; }
+.next-title { font-family: var(--title-font); font-weight: var(--title-weight); font-size: clamp(1.5rem, 3vw, 3rem); color: var(--ink); line-height: 1; text-wrap: balance; }
 .next-arrow { font-size: 1.5rem; color: var(--ink-mid); transition: transform 0.3s var(--ease), color 0.2s; }
 .next-project:hover .next-arrow { transform: translate(6px, -6px); color: var(--ink); }
 

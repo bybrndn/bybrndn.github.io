@@ -80,9 +80,36 @@ body {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   overflow-x: hidden;
   cursor: none !important;
   max-width: 100vw;
+}
+
+/* ── TEXT POLISH ── */
+/* Balance display headings so line lengths even out; let body text avoid
+   orphans. Covers the named display classes that aren't real <hN> tags. */
+h1, h2, h3,
+.home-title, .home-index-num, .about-big, .work-big, .contact-big,
+.ha-tag, .ha-lead, .skill-name, .wi-title, .cl-value {
+  text-wrap: balance;
+}
+p, .ar-text, .ha-col-text, .home-desc, .work-intro, .contact-sub {
+  text-wrap: pretty;
+}
+
+/* ── SELECTION ── */
+::selection {
+  background: rgba(236, 244, 249, 0.16);
+  color: var(--ink);
+}
+
+/* ── KEYBOARD FOCUS ── */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+  border-radius: 1px;
 }
 
 /* ── PROGRESS BAR ── */
@@ -161,7 +188,9 @@ nav {
   align-items: center;
   gap: 0.55rem;
   text-decoration: none;
+  transition: scale 0.16s var(--ease);
 }
+.nav-logo:active { scale: 0.96; }
 .nav-logo .by {
   font-family: 'Overdrive', sans-serif;
   font-size: 0.75rem;
@@ -192,18 +221,31 @@ nav {
   text-transform: uppercase;
   color: rgba(245,244,240,0.45);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.25s var(--ease), scale 0.16s var(--ease);
   position: relative;
+}
+/* Enlarged, invisible hit area (≥40px) without affecting layout. */
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  inset: -1.2rem -0.7rem;
+}
+/* Underline grows from the left on hover and persists while active. */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 1px;
+  background: var(--white);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s var(--ease);
 }
 .nav-links a:hover,
 .nav-links a.active { color: var(--white); }
-.nav-links a.active::after {
-  content: '';
-  position: absolute;
-  bottom: -3px; left: 0; right: 0;
-  height: 1px;
-  background: var(--white);
-}
+.nav-links a:hover::after,
+.nav-links a.active::after { transform: scaleX(1); transform-origin: left; }
+.nav-links a:active { scale: 0.96; }
 
 .page {
   padding-top: 80px;
@@ -250,9 +292,11 @@ nav {
   text-transform: uppercase;
   color: var(--ink);
   text-decoration: none;
-  transition: gap 0.3s var(--ease);
+  transition: gap 0.3s var(--ease), scale 0.16s var(--ease);
 }
 .link-arrow:hover { gap: 1.3rem; }
+.link-arrow:active { scale: 0.96; }
+.link-arrow span { transition: transform 0.3s var(--ease); }
 
 .link-muted {
   font-size: 0.63rem;
@@ -261,9 +305,10 @@ nav {
   text-transform: uppercase;
   color: var(--ink-mid);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.2s, scale 0.16s var(--ease);
 }
 .link-muted:hover { color: var(--ink); }
+.link-muted:active { scale: 0.96; }
 
 /* ── HOME ── */
 .home-hero {
@@ -314,6 +359,8 @@ nav {
   filter: grayscale(10%) contrast(1.06);
   transition: transform 1s var(--ease);
   display: block;
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
 }
 .home-photo:hover img { transform: scale(1.02); }
 
@@ -401,11 +448,14 @@ nav {
   border-bottom: 1px solid transparent;
   padding: 0.9rem 0;
   white-space: nowrap;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
 }
 .ticker {
   display: inline-flex;
   animation: ticker 22s linear infinite;
 }
+.ticker-wrap:hover .ticker { animation-play-state: paused; }
 .ticker-item {
   font-size: 0.58rem;
   letter-spacing: 0.28em;
@@ -523,9 +573,10 @@ nav {
   color: #15181e;
   text-decoration: none;
   line-height: 1.3;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s, scale 0.16s var(--ease);
 }
 .cs-value:hover { opacity: 0.4; }
+.cs-value:active { scale: 0.96; }
 
 .cs-socials { display: flex; gap: 1.5rem; margin-top: 0.2rem; }
 .contact-strip * { color: inherit; }
@@ -536,9 +587,10 @@ nav {
   color: rgba(21,24,30,0.5);
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.2s;
+  transition: color 0.2s, scale 0.16s var(--ease);
 }
 .cs-social:hover { color: #15181e; }
+.cs-social:active { scale: 0.96; }
 
 /* ── ABOUT ── */
 .about-hero {
@@ -605,6 +657,8 @@ nav {
   filter: grayscale(15%) contrast(1.05);
   transition: transform 1s var(--ease);
   display: block;
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
 }
 .about-photo:hover img { transform: scale(1.03); }
 
@@ -731,7 +785,9 @@ nav {
   color: var(--ink);
   position: relative;
   overflow: hidden;
+  transition: scale 0.22s var(--ease);
 }
+.work-item:active { scale: 0.985; }
 .work-item::before {
   content: '';
   position: absolute;
@@ -832,10 +888,11 @@ nav {
   padding: 2rem 0;
   border-bottom: 1px solid transparent;
   text-decoration: none;
-  transition: padding-left 0.35s var(--ease);
+  transition: padding-left 0.35s var(--ease), scale 0.22s var(--ease);
 }
 .contact-line:first-child { border-top: 1px solid transparent; }
 .contact-line:hover { padding-left: 1.2rem; }
+.contact-line:active { scale: 0.985; }
 
 .cl-label {
   font-size: 0.56rem;
@@ -878,7 +935,11 @@ footer span {
 .hamburger {
   display: none !important;
   flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
   gap: 5px;
+  min-width: 40px;
+  min-height: 40px;
   background: none;
   border: none;
   cursor: none;
@@ -1098,4 +1159,22 @@ footer span {
   .home-title { font-size: 5.6vw; }
   .work-big, .about-big, .contact-big { font-size: 10vw; }
   .wi-title { font-size: 7vw; }
+}
+
+/* ── REDUCED MOTION ──
+   Honour the OS setting: keep content fully visible, drop the marquee,
+   parallax and large transforms, and make any remaining transitions
+   effectively instant. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .ticker { animation: none !important; }
+  .home-photo:hover img,
+  .about-photo:hover img { transform: none; }
 }
